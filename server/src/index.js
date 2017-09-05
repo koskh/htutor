@@ -11,7 +11,7 @@ const path = require('path');
 const api = require('./api');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const publicPath = path.resolve(__dirname, '../../build');
 
