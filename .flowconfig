@@ -1,0 +1,18 @@
+[ignore]
+.*/build/.*
+.*/node_modules/.*
+
+[include]
+
+
+[libs]
+flow
+flow-typed
+
+[options]
+esproposal.class_instance_fields=enable
+esproposal.class_static_fields=enable
+module.name_mapper='.*\(.pcss\)' -> 'CSSModule'
+module.name_mapper='.*\(flexboxgrid\)' -> 'CSSModule'
+module.name_mapper='.*\(css\)' -> 'CSSModule'
+module.system=haste

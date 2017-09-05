@@ -1,0 +1,53 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true,
+    "browser": true
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "flowtype"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+
+  "globals": {
+    "PROJECT_ENV": true
+  },
+  "rules": {
+    "arrow-body-style": 0,
+    "arrow-parens": [2, "as-needed"],
+    "comma-dangle": 0,
+    "eol-last": 1,
+    "indent": [2, 4],
+    "linebreak-style": 0,
+    "max-len": 0,
+    "no-confusing-arrow": 0,
+    "no-console": 1,
+    "no-empty": [2, { "allowEmptyCatch": true }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "no-underscore-dangle": ["error", { "allow": ["foo_", "_bar"], "allowAfterThis": true }],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "curly": ["error", "multi-or-nest"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/sort-comp": 0,
+    "react/jsx-boolean-value": ["error", "always"],
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
+    "react/jsx-indent": [1, 4]
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  }
+}
