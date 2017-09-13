@@ -5,9 +5,9 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const references = require('./references/index');
-const references2 = require('./references/index2'); // test only
-
 const random = require('./utils/random');
+
+const lesson = require('./lesson/index');
 
 const api = express.Router();
 
@@ -16,7 +16,8 @@ api.get('/', (req: express$Request, res: express$Response) => {
 });
 
 api.use('/references', references);
-api.use('/references2', references2);
+
+api.use('/lesson', lesson);
 
 api.use('/utils/random', random);
 

@@ -6,9 +6,9 @@ const apiPatch: string = `${config.serverApi}/api`;
 
 const urls: {[key: string]: any} = {
     references: () => `${apiPatch}/references`,
-    references2: userId => `${apiPatch}/references2/${userId}`,
+    lesson: () => `${apiPatch}/lesson`,
 
-    'auth/login': () => `${apiPatch}/auth/login`,
+    // 'auth/login': () => `${apiPatch}/auth/login`,
 };
 
 export default (name: string, ...args?: Array<any>): string => {

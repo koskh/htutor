@@ -34,13 +34,13 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    {/* ConnectedRouter will use the store from Provider automatically */}
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route path="/" component={DefaultLayout} />
-      </Switch>
-    </ConnectedRouter>
-  </Provider>,
+    <Provider store={store}>
+        {/* ConnectedRouter will use the store from Provider automatically */}
+        <ConnectedRouter history={history}>
+            <Switch>
+                <Route path="/" component={DefaultLayout} />
+            </Switch>
+        </ConnectedRouter>
+    </Provider>,
     document.getElementById('root')
 );

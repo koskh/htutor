@@ -1,5 +1,7 @@
-import dumpReducer from '../components/DumpReduxContainer/store/reducer/index';
+import dumpReducer from '../components/DumpReduxContainer/store/reducer';
+import testReducer from '../features/Test/store/reducer';
 
 export default {
-    dumpReduxComponent: dumpReducer
+    dumpReduxComponent: dumpReducer,
+    testComponent: testReducer
 };
