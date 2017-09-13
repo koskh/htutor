@@ -8,7 +8,7 @@ import styles from './index.pcss';
 //eslint-disable-next-line
 
 type Props = {
-    children?: React.Children
+    word: Word
 }
 
 // const defaultProps: Props = {
@@ -16,12 +16,12 @@ type Props = {
 // };
 
 
-class CardTest extends React.Component {
+export default class CardTest extends React.Component<Props> {
     props: Props;
     // state: State;
-    static defaultProps: Props = {
-        children: null
-    };
+    // static defaultProps: Props = {
+    //     children: null
+    // };
 
     // constructor(props: any) {
     //     super(props);
@@ -29,14 +29,14 @@ class CardTest extends React.Component {
 
 
     render(): React.Element<any> {
-        // const { children } = this.props;
+        const { word } = this.props;
 
         return (
             <div>
 
                 <div className={`row align-items-center border border-primary rounded ${styles.panel}`}>
                     <div className="col text-center">
-                        <h2>Проверяемое слово</h2>
+                        <h2> {word.foreign[0]} </h2>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@ class CardTest extends React.Component {
 
                 <div className={`row align-items-center mb-4 border border-warning rounded ${styles.panel}`}>
                     <div className="col text-center">
-                        <h2>вариант 1</h2>
+                        <h2>{word.native[0]}</h2>
                     </div>
                 </div>
                 <div className={`row align-items-center mb-4 border border-warning rounded ${styles.panel}`}>
@@ -63,6 +63,4 @@ class CardTest extends React.Component {
         );
     }
 }
-
-export default CardTest;
 

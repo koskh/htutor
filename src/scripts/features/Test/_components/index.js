@@ -1,7 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import CardTest from '../../../components/CardTest/index';
+
+import PendingIndicator from '../../../components/PendingIndicator';
+import CardTest from '../../../components/CardTest';
 
 type Props = {
     makeFetch: Function,
@@ -29,11 +31,18 @@ export default class Test extends React.Component<Props> {
     }
 
     render() {
+        const { isPending } = this.props.testComponent;
+        const { data } = this.props.testComponent.data || {};
+        const word: Word = data && data.words && data.words[0];
+
         return (
             <article>
                 <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 4</p>
 
-                <CardTest />
+                <PendingIndicator pending={isPending}>
+                    <CardTest word={word} />
+                </PendingIndicator>
+
             </article>
         );
     }

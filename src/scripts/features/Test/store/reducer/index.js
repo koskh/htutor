@@ -5,7 +5,7 @@ import { createReducer, nextState } from '../../../../store/utilities/index';
 const initialState: {} = {
     id: null,
     data: null,
-    isFetching: false,
+    isPending: true,
     isUpdating: false
 };
 
