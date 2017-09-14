@@ -37,6 +37,7 @@ export default class Test extends React.Component<Props, State> {
         this.props.cancelFetch();
     }
 
+
     onNextClick = () => {
         const { data } = this.props.testComponentStore;
         const length = data && data.words && data.words.length;
@@ -66,6 +67,7 @@ export default class Test extends React.Component<Props, State> {
     }
 
     render() {
+
         const { isPending, data } = this.props.testComponentStore;
 
         const { indexCurrentWord } = this.state;

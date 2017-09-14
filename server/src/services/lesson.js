@@ -31,7 +31,7 @@ exports.getTestLesson = function getLesson(id: number = 1): ?TestLesson {
         //eslint-disable-next-line
         v.shuffle = getShuffledWords();
     });
-    lesson.words = _.shuffle(lesson.words);
+    // lesson.words = _.shuffle(lesson.words);
 
     //eslint-disable-next-line
     return _.assign({}, lesson);
