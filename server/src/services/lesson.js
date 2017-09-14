@@ -6,7 +6,7 @@ const lessons: Array<Lesson> = [
     {
         id: 1,
         words: [
-            { foreign: ['hare'], native: ['заяц'], sounds: ['hare0001.mp3'] },
+            { foreign: ['hare'], native: ['заяц'], sounds: ['hare.wav'] },
             { foreign: ['careless'], native: ['небрежный', 'невнимательный', 'несерьёзный'], sounds: ['careless.wav'] },
             { foreign: ['next'], native: ['cледующий', 'ближайший'], sounds: ['next.wav'] },
         ],

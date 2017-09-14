@@ -43,31 +43,44 @@ export default class CardTest extends React.Component<Props> {
     _playSound = () => {
         this.audio.play();
         // console.log('Play sound');
-    }
+    };
+
+    onAnswerClick = () => {
+
+    };
+
+    onNextClick = () => {
+
+};
 
 
     render(): React.Element<any> {
         const { word } = this.props;
         const filesPath = '/files/';
-        const variants = 3;
+        const variantsQnt = 3;
+
+        const foreignWord = _.shuffle(word.foreign)[0];
+        const nativeWord = _.shuffle(word.native)[0];
+        const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
+        let answers = [nativeWord, ...shuffledWords];
+        answers = _.shuffle(answers);
+
 
         return (
             <div>
                 <audio id="audio" src={`${filesPath}${word.sounds[0]}`} ref={audio => { this.audio = audio; }} />
 
-                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
+                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{foreignWord}</button>
 
                 <button type="button" className="btn btn-secondary" onClick={this._playSound}>Звук</button>
 
                 <div className={`row ${styles.separator}`} />
 
-                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.native[0]}</button>
-
-                {_.times(variants, i => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4">{word.shuffle[i]}</button>)}
+                {_.map(answers, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4" onClick={this.onAnswerClick}>{v}</button>)}
 
                 <div className={`row ${styles.separator}`} />
 
-                <button type="button" className="btn btn-warning btn-lg btn-block">Пропустить</button>
+                <button type="button" className="btn btn-warning btn-lg btn-block" >Пропустить</button>
 
             </div>
         );

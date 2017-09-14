@@ -30,6 +30,10 @@ export default class Test extends React.Component<Props> {
         this.props.cancelFetch();
     }
 
+    // onNextClick = () => {
+    //
+    // }
+
     render() {
         const { isPending } = this.props.testComponent;
         const { data } = this.props.testComponent.data || {};
