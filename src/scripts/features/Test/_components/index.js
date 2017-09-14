@@ -70,11 +70,21 @@ export default class Test extends React.Component<Props, State> {
 
         const { indexCurrentWord } = this.state;
 
-        const word: TestWord = data.words[indexCurrentWord];
+        const word: ?TestWord = data && data.words && data.words[indexCurrentWord];
+
+        if (!word) {
+            return (
+                <article>
+                    <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
+                    <PendingIndicator pending={isPending} />
+                </article>
+            );
+        }
 
         const questionData = this._generateQuestionData(word);
 
         return (
+
             <article>
                 <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
 

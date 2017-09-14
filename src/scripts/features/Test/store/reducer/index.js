@@ -4,7 +4,7 @@ import { createReducer, nextState } from '../../../../store/utilities/index';
 
 export type ComponentStore = {
     id: ?any,
-    data: TestLesson,
+    data: ?TestLesson,
     error: ?any,
     isPending: boolean,
     isUpdating: boolean
@@ -12,16 +12,16 @@ export type ComponentStore = {
 
 const initialState: ComponentStore = {
     id: null,
-    // data: null,
-    data: {
-        id: 0,
-        words:[{
-            foreign: [],
-            native: [],
-            sounds: []
-        }],
-        title: ''
-    },
+    data: null,
+    // data: {
+    //     id: 0,
+    //     words:[{
+    //         foreign: [],
+    //         native: [],
+    //         sounds: []
+    //     }],
+    //     title: ''
+    // },
     error: null,
     isPending: true,
     isUpdating: false

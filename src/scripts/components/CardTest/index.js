@@ -28,7 +28,7 @@ export default class CardTest extends React.Component<Props, State> {
         isAnswered: false
     };
     static defaultProps: Props = {
-        word: {},
+        word: { foreign: [], native: [], sounds: [], shuffle: [] },
         foreignWord: '',
         answers: [],
         sound: '',
@@ -47,7 +47,7 @@ export default class CardTest extends React.Component<Props, State> {
     };
 
     onAnswerClick = (answer: string): void => {
-        const {isAnswered} = this.state;
+        const { isAnswered } = this.state;
         if (isAnswered)
             return;
 
@@ -56,7 +56,7 @@ export default class CardTest extends React.Component<Props, State> {
 
         const isRightAnswer = _.indexOf(word.native, answer) !== -1;
         const foreignWordClass = isRightAnswer ? 'btn-success' : 'btn-danger';
-        this.setState({ foreignWordClass, isAnswered: true});
+        this.setState({ foreignWordClass, isAnswered: true });
 
         this.props.onAnswer();
     };
