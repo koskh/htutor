@@ -34,14 +34,14 @@ export default class CardTest extends React.Component<Props, State> {
         this._playSound();
     }
 
-    componentWillReceiveProps() {
-        this.setState({ foreignWordClass: 'btn-light' });
-    }
-
-    componentDidUpdate() {
-        if (this.state.foreignWordClass === 'btn-light')
-            this._playSound();
-    }
+    // componentWillReceiveProps() {
+    //     this.setState({ foreignWordClass: 'btn-light' });
+    // }
+    //
+    // componentDidUpdate() {
+    //     if (this.state.foreignWordClass === 'btn-light')
+    //         this._playSound();
+    // }
 
     _playSound = () => {
         this.audio.play();

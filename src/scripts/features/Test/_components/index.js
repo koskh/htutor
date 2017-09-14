@@ -58,14 +58,14 @@ export default class Test extends React.Component<Props, State> {
 
         const { indexCurrentWord } = this.state;
 
-        const word: ?TestWord = data && data.words && data.words[indexCurrentWord];
+        const word: TestWord = data.words[indexCurrentWord];
 
         return (
             <article>
-                <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 4</p>
+                <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
 
                 <PendingIndicator pending={isPending}>
-                    <CardTest word={word} onAnswer={this.onAnswer} />
+                    <CardTest key={word.foreign[0]} word={word} onAnswer={this.onAnswer} />,
                     <button type="button" className="btn btn-warning btn-lg btn-block" onClick={this.onNextClick}>Пропустить</button>
                 </PendingIndicator>
 
