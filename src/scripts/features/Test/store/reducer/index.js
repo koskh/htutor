@@ -5,13 +5,14 @@ import { createReducer, nextState } from '../../../../store/utilities/index';
 export type ComponentStore = {
     id: ?any,
     data: TestLesson,
-    error?: any,
+    error: ?any,
     isPending: boolean,
     isUpdating: boolean
 }
 
 const initialState: ComponentStore = {
     id: null,
+    // data: null,
     data: {
         id: 0,
         words:[{

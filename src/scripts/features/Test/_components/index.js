@@ -50,22 +50,36 @@ export default class Test extends React.Component<Props, State> {
 
     onAnswer = (): void => {
         console.log('onAnswer');
+    };
+
+    _generateQuestionData(word: TestWord) {
+        const variantsQnt = 3;
+
+        const foreignWord = _.shuffle(word.foreign)[0];
+        const nativeWord = _.shuffle(word.native)[0];
+        const sound = _.shuffle(word.sounds)[0];
+        const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
+        let answers = [nativeWord, ...shuffledWords];
+        answers = _.shuffle(answers);
+
+        return { foreignWord, answers, sound };
     }
 
     render() {
         const { isPending, data } = this.props.testComponentStore;
-        // const { data } = this.props.testComponentStore;
 
         const { indexCurrentWord } = this.state;
 
         const word: TestWord = data.words[indexCurrentWord];
+
+        const questionData = this._generateQuestionData(word);
 
         return (
             <article>
                 <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
 
                 <PendingIndicator pending={isPending}>
-                    <CardTest key={word.foreign[0]} word={word} onAnswer={this.onAnswer} />,
+                    <CardTest key={word.foreign[0]} word={word} {...questionData} onAnswer={this.onAnswer} />,
                     <button type="button" className="btn btn-warning btn-lg btn-block" onClick={this.onNextClick}>Пропустить</button>
                 </PendingIndicator>
 

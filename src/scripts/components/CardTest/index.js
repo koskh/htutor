@@ -7,9 +7,11 @@ import cn from 'classnames';
 
 import styles from './index.pcss';
 
-//eslint-disable-next-line
 type Props = {
     word: TestWord,
+    foreignWord: string,
+    answers: Array<string>,
+    sound: string,
     onAnswer: Function
 }
 
@@ -21,11 +23,15 @@ type State = {
 export default class CardTest extends React.Component<Props, State> {
     props: Props;
     state: State = {
-        foreignWordClass: 'btn-light', //default, not answered class
+        foreignWordClass: 'btn-light', // default, not answered class
     };
-    // static defaultProps: Props = {
-    //     children: null
-    // };
+    static defaultProps: Props = {
+        word: {},
+        foreignWord: '',
+        answers: [],
+        sound: '',
+        onAnswer: () => {}
+    };
 
 
     audio: any = null;
@@ -33,15 +39,6 @@ export default class CardTest extends React.Component<Props, State> {
     componentDidMount() {
         this._playSound();
     }
-
-    // componentWillReceiveProps() {
-    //     this.setState({ foreignWordClass: 'btn-light' });
-    // }
-    //
-    // componentDidUpdate() {
-    //     if (this.state.foreignWordClass === 'btn-light')
-    //         this._playSound();
-    // }
 
     _playSound = () => {
         this.audio.play();
@@ -60,19 +57,11 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { word } = this.props;
+        const { word, foreignWord, answers, sound } = this.props;
+        // const { foreignWord, answers, sound } = this._getData(word);
         const { foreignWordClass } = this.state;
 
         invariant(word, 'CardTest need props.word');
-
-        const variantsQnt = 3;
-
-        const foreignWord = _.shuffle(word.foreign)[0];
-        const nativeWord = _.shuffle(word.native)[0];
-        const sound = _.shuffle(word.sounds)[0];
-        const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
-        let answers = [nativeWord, ...shuffledWords];
-        answers = _.shuffle(answers);
 
         return (
             <div>
