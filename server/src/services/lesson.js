@@ -27,13 +27,11 @@ exports.getTestLesson = function getLesson(id: number = 1): ?TestLesson {
     const lesson = _.find(lessons, { id });
     if (!lesson) return;
 
-    const words: Array<Word> = lesson.words;
-
-    _.each(words, (v: TestWord) => {
+    _.each(lesson.words, (v: TestWord) => {
         //eslint-disable-next-line
         v.shuffle = getShuffledWords();
     });
 
     //eslint-disable-next-line
-    return _.assign({}, lesson, { words });
+    return _.assign({}, lesson);
 };

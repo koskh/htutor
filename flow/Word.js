@@ -6,5 +6,5 @@ declare type Word = {
 };
 
 //eslint-disable-next-line
-declare type TestWord = {...Word, shuffle: Array<string>};
+declare type TestWord = Word & {shuffle: Array<string>};
 

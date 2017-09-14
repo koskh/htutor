@@ -1,5 +1,6 @@
 // @flow
 
+import _ from 'lodash';
 import * as React from 'react';
 import cn from 'classnames';
 
@@ -8,7 +9,7 @@ import styles from './index.pcss';
 //eslint-disable-next-line
 
 type Props = {
-    word: Word
+    word: TestWord
 }
 
 // const defaultProps: Props = {
@@ -48,6 +49,7 @@ export default class CardTest extends React.Component<Props> {
     render(): React.Element<any> {
         const { word } = this.props;
         const filesPath = '/files/';
+        const variants = 3;
 
         return (
             <div>
@@ -61,12 +63,7 @@ export default class CardTest extends React.Component<Props> {
 
                 <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.native[0]}</button>
 
-                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
-
-                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
-
-                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
-
+                {_.times(variants, i => <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.shuffle[i]}</button>)}
 
                 <div className={`row ${styles.separator}`} />
 

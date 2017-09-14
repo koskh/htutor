@@ -33,7 +33,7 @@ export default class Test extends React.Component<Props> {
     render() {
         const { isPending } = this.props.testComponent;
         const { data } = this.props.testComponent.data || {};
-        const word: Word = data && data.words && data.words[0];
+        const word: TestWord = data && data.words && data.words[0];
 
         return (
             <article>
