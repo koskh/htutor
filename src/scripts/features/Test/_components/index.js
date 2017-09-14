@@ -48,6 +48,10 @@ export default class Test extends React.Component<Props, State> {
         this.setState({ indexCurrentWord });
     };
 
+    onAnswer = (): void => {
+        console.log('onAnswer');
+    }
+
     render() {
         const { isPending, data } = this.props.testComponentStore;
         // const { data } = this.props.testComponentStore;
@@ -61,7 +65,7 @@ export default class Test extends React.Component<Props, State> {
                 <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 4</p>
 
                 <PendingIndicator pending={isPending}>
-                    <CardTest word={word} />
+                    <CardTest word={word} onAnswer={this.onAnswer} />
                     <button type="button" className="btn btn-warning btn-lg btn-block" onClick={this.onNextClick}>Пропустить</button>
                 </PendingIndicator>
 
