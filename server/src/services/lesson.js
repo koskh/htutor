@@ -5,7 +5,7 @@ const _ = require('lodash');
 const lessons: Array<Lesson> = [
     {
         id: 1,
-        words: [{ foreign: ['step'], native: ['шаг', 'делать шаг'], sounds: ['step.wav'] }],
+        words: [{ foreign: ['step'], native: ['шаг', 'делать шаг'], sounds: ['hare0001.mp3'] }],
         title: 'Lesson 1'
     }
 ];
