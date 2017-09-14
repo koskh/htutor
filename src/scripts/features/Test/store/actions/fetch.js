@@ -22,6 +22,7 @@ export function makeFetch(): Function {
             const request1 = bd.lessonTest({ lessonId: 1 });
             Requests.push(request1);
             const response = await request1.promise;
+
             dispatch(success({ data: response.data }));
         } catch (error) {
             dispatch(failure({ error }));

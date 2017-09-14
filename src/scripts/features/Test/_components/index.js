@@ -70,9 +70,7 @@ export default class Test extends React.Component<Props, State> {
 
         const { indexCurrentWord } = this.state;
 
-        const word: ?TestWord = data && data.words && data.words[indexCurrentWord];
-
-        if (!word) {
+        if (!data) {
             return (
                 <article>
                     <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
@@ -81,6 +79,7 @@ export default class Test extends React.Component<Props, State> {
             );
         }
 
+        const word: TestWord = data.words[indexCurrentWord];
         const questionData = this._generateQuestionData(word);
 
         return (
