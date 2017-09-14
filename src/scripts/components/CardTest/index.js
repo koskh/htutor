@@ -16,7 +16,8 @@ type Props = {
 }
 
 type State = {
-    foreignWordClass: string
+    foreignWordClass: string,
+    isAnswered: boolean
 }
 
 
@@ -24,6 +25,7 @@ export default class CardTest extends React.Component<Props, State> {
     props: Props;
     state: State = {
         foreignWordClass: 'btn-light', // default, not answered class
+        isAnswered: false
     };
     static defaultProps: Props = {
         word: {},
@@ -45,23 +47,24 @@ export default class CardTest extends React.Component<Props, State> {
     };
 
     onAnswerClick = (answer: string): void => {
+        const {isAnswered} = this.state;
+        if (isAnswered)
+            return;
+
         const { word } = this.props;
         invariant(word, 'CardTest need props.word');
 
         const isRightAnswer = _.indexOf(word.native, answer) !== -1;
         const foreignWordClass = isRightAnswer ? 'btn-success' : 'btn-danger';
-        this.setState({ foreignWordClass });
+        this.setState({ foreignWordClass, isAnswered: true});
 
         this.props.onAnswer();
     };
 
 
     render(): React.Element<any> {
-        const { word, foreignWord, answers, sound } = this.props;
-        // const { foreignWord, answers, sound } = this._getData(word);
+        const { foreignWord, answers, sound } = this.props;
         const { foreignWordClass } = this.state;
-
-        invariant(word, 'CardTest need props.word');
 
         return (
             <div>
