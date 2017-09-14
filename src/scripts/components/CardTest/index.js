@@ -80,8 +80,6 @@ export default class CardTest extends React.Component<Props> {
 
                 <div className={`row ${styles.separator}`} />
 
-                <button type="button" className="btn btn-warning btn-lg btn-block" >Пропустить</button>
-
             </div>
         );
     }

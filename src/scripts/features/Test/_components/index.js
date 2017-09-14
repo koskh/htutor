@@ -1,22 +1,29 @@
 // @flow
 
+import _ from 'lodash';
 import * as React from 'react';
 
 import PendingIndicator from '../../../components/PendingIndicator';
 import CardTest from '../../../components/CardTest';
 
+import type { ComponentStore } from '../store/reducer';
+
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
-    testComponent: {
-        isPending: boolean,
-        data?: any,
-        error?: any
-    }
+    testComponentStore: ComponentStore
 }
 
-export default class Test extends React.Component<Props> {
+type State = {
+    indexCurrentWord: number
+}
+
+export default class Test extends React.Component<Props, State> {
     props: Props;
+
+    state: State = {
+        indexCurrentWord: 0
+    };
 
     componentWillMount() {
         document.title = 'HTutor· проверяем';
@@ -30,13 +37,16 @@ export default class Test extends React.Component<Props> {
         this.props.cancelFetch();
     }
 
-    // onNextClick = () => {
-    //
-    // }
+    onNextClick = () => {
+
+    }
 
     render() {
-        const { isPending } = this.props.testComponent;
-        const { data } = this.props.testComponent.data || {};
+        const { isPending, data } = this.props.testComponentStore;
+        // const { data } = this.props.testComponentStore;
+
+        const { indexCurrentWord } = this.state;
+
         const word: TestWord = data && data.words && data.words[0];
 
         return (
@@ -45,6 +55,7 @@ export default class Test extends React.Component<Props> {
 
                 <PendingIndicator pending={isPending}>
                     <CardTest word={word} />
+                    <button type="button" className="btn btn-warning btn-lg btn-block" onClick={this.onNextClick}>Пропустить</button>
                 </PendingIndicator>
 
             </article>
