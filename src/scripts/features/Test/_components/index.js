@@ -19,7 +19,7 @@ export default class Test extends React.Component<Props> {
     props: Props;
 
     componentWillMount() {
-        document.title = 'Home· главная страница';
+        document.title = 'HTutor· проверяем';
     }
 
     componentDidMount() {

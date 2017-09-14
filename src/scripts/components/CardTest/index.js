@@ -33,31 +33,22 @@ export default class CardTest extends React.Component<Props> {
 
         return (
             <div>
-
-                <div className={`row align-items-center border border-primary rounded ${styles.panel}`}>
-                    <div className="col text-center">
-                        <h2> {word.foreign[0]} </h2>
-                    </div>
-                </div>
+                <button type="button" className="btn btn-light btn-lg btn-block">{word.foreign[0]}</button>
 
                 <div className={`row ${styles.separator}`} />
 
-                <div className={`row align-items-center mb-4 border border-warning rounded ${styles.panel}`}>
-                    <div className="col text-center">
-                        <h2>{word.native[0]}</h2>
-                    </div>
-                </div>
-                <div className={`row align-items-center mb-4 border border-warning rounded ${styles.panel}`}>
-                    <div className="col text-center">
-                        <h2>вариант 2</h2>
-                    </div>
-                </div>
-                <div className={`row align-items-center mb-4 border border-warning rounded ${styles.panel}`}>
-                    <div className="col text-center">
-                        <h2>вариант 3</h2>
-                    </div>
-                </div>
+                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
 
+                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
+
+                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
+
+                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
+
+
+                <div className={`row ${styles.separator}`} />
+
+                <button type="button" className="btn btn-warning btn-lg btn-block">Пропустить</button>
 
             </div>
         );
