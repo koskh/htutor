@@ -38,8 +38,15 @@ export default class Test extends React.Component<Props, State> {
     }
 
     onNextClick = () => {
+        const { data } = this.props.testComponentStore;
+        const length = data && data.words && data.words.length;
 
-    }
+        let { indexCurrentWord } = this.state;
+        indexCurrentWord += 1;
+        indexCurrentWord = indexCurrentWord === length ? 0 : indexCurrentWord;
+
+        this.setState({ indexCurrentWord });
+    };
 
     render() {
         const { isPending, data } = this.props.testComponentStore;
