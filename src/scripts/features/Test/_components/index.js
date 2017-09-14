@@ -47,7 +47,7 @@ export default class Test extends React.Component<Props, State> {
 
         const { indexCurrentWord } = this.state;
 
-        const word: TestWord = data && data.words && data.words[0];
+        const word: ?TestWord = data && data.words && data.words[indexCurrentWord];
 
         return (
             <article>

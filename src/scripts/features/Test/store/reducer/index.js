@@ -4,7 +4,7 @@ import { createReducer, nextState } from '../../../../store/utilities/index';
 
 export type ComponentStore = {
     id: ?any,
-    data: ?any,
+    data: ?TestLesson,
     error?: any,
     isPending: boolean,
     isUpdating: boolean
