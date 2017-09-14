@@ -59,7 +59,7 @@ export default class CardTest extends React.Component<Props> {
 
                 <div className={`row ${styles.separator}`} />
 
-                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
+                <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.native[0]}</button>
 
                 <button type="button" className="btn btn-light btn-lg btn-block mb-4">{word.foreign[0]}</button>
 

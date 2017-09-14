@@ -2,6 +2,14 @@
 declare type Lesson = {
     id: number,
     //eslint-disable-next-line
-    words: Array<Lesson>,
+    words: Array<Word>,
     title: string,
+}
+
+//eslint-disable-next-line
+declare type TestLesson = {
+    id: number,
+    //eslint-disable-next-line
+    words: Array<TestWord>,
+    title: string
 }

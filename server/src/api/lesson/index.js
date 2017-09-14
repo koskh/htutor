@@ -6,10 +6,14 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 
-const { getLesson } = require('../../services/lesson');
+const { getLesson, getTestLesson } = require('../../services/lesson');
 
 router.get('/:id?', (req: express$Request, res: express$Response) => {
     res.json(getLesson());
+});
+
+router.get('/:id/test', (req: express$Request, res: express$Response) => {
+    res.json(getTestLesson());
 });
 
 

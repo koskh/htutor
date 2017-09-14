@@ -19,32 +19,11 @@ export function makeFetch(): Function {
         dispatch(request({ error: null }));
 
         try {
-            // // паралельн загрузк
-            // const request1 = common.references();
-            // const request2 = common.references2({ userId: 123, method: 'get'});
-            //
-            // Requests.push(request1);
-            // const response1 = await request1.promise;
-            //
-            // Requests.push(request2);
-            // const response2 = await request2.promise;
-
-            // последовательн загрузка
-            const request1 = bd.lesson();
-            // const request1 = common.references();
+            const request1 = bd.lessonTest({ lessonId: 1 });
             Requests.push(request1);
             const response = await request1.promise;
-
-            // const request2 = common.references2({ userId: 123, method: 'post', data: response1.data });
-            // Requests.push(request2);
-            // const response2 = await request2.promise;
-
-            // const response = { ...response1.data, ...response2.data };
-            // console.log(response);
-
             dispatch(success({ data: response }));
         } catch (error) {
-            debugger;
             dispatch(failure({ error }));
         }
     };
