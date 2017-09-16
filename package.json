@@ -79,7 +79,8 @@
     "style-loader": "^0.18.2",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "webpack": "^3.5.5"
+    "webpack": "^3.5.5",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "scripts": {
     "test": "mocha --require mocha.setup.js src/**/*.spec.js --reporter progress",

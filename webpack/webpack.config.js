@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 // const extractBootstrap = new ExtractTextPlugin({ filename: 'bootstrap.css', allChunks: true });
 // const extractGlobalApplicationStyles = new ExtractTextPlugin({ filename: 'global.css', allChunks: true });
@@ -58,14 +59,15 @@ module.exports = {
             // async: true,
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new CopyWebpackPlugin(
-            [
-                { from: 'src/static_assets', to: 'files' }
-            ], {
-                ignore: [],
-                copyUnmodified: true
-            }
-        )
+        // new CopyWebpackPlugin(
+        //     [
+        //         { from: 'src/static_assets', to: 'files' }
+        //     ], {
+        //         ignore: [],
+        //         copyUnmodified: true
+        //     }
+        // ),
+        new WebpackShellPlugin({onBuildStart:[], onBuildEnd:['ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/en_snd/en_snd/ build/sounds']})
 
     ]
 

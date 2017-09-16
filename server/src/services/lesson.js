@@ -1,14 +1,16 @@
 // @flow
 const _ = require('lodash');
 
+const LocalSoundsFolder = '/media/Video/soft/Linux_Soft/StarDict_Словари/en_snd/en_snd/';
+
 //eslint-disable-next-line
 const lessons: Array<Lesson> = [
     {
         id: 1,
         words: [
-            { foreign: ['hare'], native: ['заяц'], sounds: ['/files/hare.wav'] },
-            { foreign: ['careless'], native: ['небрежный', 'невнимательный', 'несерьёзный'], sounds: ['/files/careless.wav'] },
-            { foreign: ['next'], native: ['cледующий', 'ближайший'], sounds: ['/files/next.wav'] },
+            { foreign: ['hare'], native: ['заяц'], sounds: ['/sounds/h/hare.wav'] },
+            { foreign: ['careless'], native: ['небрежный', 'невнимательный', 'несерьёзный'], sounds: ['/sounds/c/careless.wav'] },
+            { foreign: ['next'], native: ['cледующий', 'ближайший'], sounds: ['/sounds/n/next.wav'] },
         ],
         title: 'Lesson 1'
     }

@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const extractApplicationCss = new ExtractTextPlugin({ filename: 'index.css', allChunks: true });
 const extractBootstrapCss = new ExtractTextPlugin({ filename: 'bootstrap.css', allChunks: true });
 
@@ -33,7 +34,7 @@ baseConfig.module.rules.push(
                     importLoaders: 1,
                 }
             },
-                'postcss-loader'
+            'postcss-loader'
             ]
         })
     },
@@ -52,7 +53,7 @@ baseConfig.module.rules.push(
                     // minimize: true
                 }
             },
-                'postcss-loader'
+            'postcss-loader'
             ]
         })
     }
