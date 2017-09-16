@@ -23,9 +23,9 @@ export function makeFetch(): Function {
             Requests.push(request1);
             const response = await request1.promise;
 
-            response.data.words = _.shuffle(response.data.words);
+            // response.data.words = _.shuffle(response.data.words);
 
-            dispatch(success({ data: response.data }));
+            dispatch(success({ data: response.data.data }));
         } catch (error) {
             dispatch(failure({ error }));
         }

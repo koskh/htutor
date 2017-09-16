@@ -6,19 +6,23 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 
-const { getLessons, getLesson, getTestLesson } = require('../../services/lessons');
+const { getLessons, getLesson, getRandomLessonId, getTestLesson } = require('../../services/lessons');
 
-const respond: ServerRespond = {
-    data: null,
-    error: null,
-    errors: null
-};
 
 router.get('/', (req: express$Request, res: express$Response) => {
-    res.json(getLessons());
+    const respond: ServerRespond = {};
+    respond.data = getLessons();
+    res.json(respond);
+});
+
+router.get('/randomId', (req: express$Request, res: express$Response) => {
+    const respond: ServerRespond = {};
+    respond.data = { id: getRandomLessonId() };
+    res.json(respond);
 });
 
 router.get('/:lessonId?', (req: express$Request, res: express$Response) => {
+    const respond: ServerRespond = {};
     const lessonId = Number.parseInt(req.params.lessonId, 10);
 
     if (Number.isNaN(lessonId)) {
@@ -37,10 +41,12 @@ router.get('/:lessonId?', (req: express$Request, res: express$Response) => {
         return;
     }
 
-    res.json(lesson);
+    respond.data = lesson;
+    res.json(respond);
 });
 
 router.get('/:lessonId/test', (req: express$Request, res: express$Response) => {
+    const respond: ServerRespond = { };
     const lessonId = Number.parseInt(req.params.lessonId, 10);
 
     if (Number.isNaN(lessonId)) {
@@ -59,7 +65,8 @@ router.get('/:lessonId/test', (req: express$Request, res: express$Response) => {
         return;
     }
 
-    res.json(testLesson);
+    respond.data = testLesson;
+    res.json(respond);
 });
 
 

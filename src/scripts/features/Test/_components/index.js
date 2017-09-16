@@ -86,7 +86,6 @@ export default class Test extends React.Component<Props, State> {
         if (!data) {
             return (
                 <article>
-                    <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
                     <PendingIndicator pending={isPending} />
                 </article>
             );

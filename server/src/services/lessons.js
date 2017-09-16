@@ -15,7 +15,7 @@ _.each(lessons, lesson => {
     _.each(lesson.words, word => {
         AllNatives = _.concat(AllNatives, word.native);
     });
-})
+});
 
 
 function getShuffledWords(): Array<string> {
@@ -32,7 +32,7 @@ exports.getLesson = function getLesson(id: number): ?Lesson {
 };
 
 
-exports.getTestLesson = function getLesson(id: number ): ?TestLesson {
+exports.getTestLesson = function getLesson(id: number): ?TestLesson {
     const lesson = _.find(lessons, { id });
     if (!lesson) return;
 
@@ -44,4 +44,8 @@ exports.getTestLesson = function getLesson(id: number ): ?TestLesson {
 
     //eslint-disable-next-line
     return _.assign({}, lesson);
+};
+
+exports.getRandomLessonId = function getRandomLessonId(): number {
+    return _.shuffle(lessons)[0].id || 0;
 };

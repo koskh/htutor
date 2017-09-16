@@ -19,13 +19,20 @@ export function makeFetch(lessonId: number): Function {
         dispatch(request({ error: null }));
 
         try {
-            const request1 = bd.lessonTest({ lessonId });
+
+            const requestRandomId = bd.randomLessonId();
+            Requests.push(requestRandomId);
+            const responseRandomId = await requestRandomId.promise;
+            const randomId = responseRandomId.data.data.id;
+
+
+            const request1 = bd.lessonTest({ lessonId: lessonId || randomId });
             Requests.push(request1);
             const response = await request1.promise;
 
-            response.data.words = _.shuffle(response.data.words);
+            response.data.data.words = _.shuffle(response.data.data.words);
 
-            dispatch(success({ data: response.data }));
+            dispatch(success({ data: response.data.data }));
         } catch (error) {
             dispatch(failure({ error }));
         }

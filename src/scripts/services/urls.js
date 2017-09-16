@@ -7,6 +7,7 @@ const apiPatch: string = `${config.serverApi}/api`;
 const urls: {[key: string]: any} = {
     references: () => `${apiPatch}/references`,
     lessons: () => `${apiPatch}/lessons`,
+    randomLessonId: () => `${apiPatch}/lessons/randomId`,
     lesson: lessonId => `${apiPatch}/lessons/${lessonId}`,
     'lesson/test': lessonId => `${apiPatch}/lessons/${lessonId}/test`,
 
