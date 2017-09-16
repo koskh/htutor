@@ -67,7 +67,7 @@ module.exports = {
         //         copyUnmodified: true
         //     }
         // ),
-        new WebpackShellPlugin({onBuildStart:[], onBuildEnd:['ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/en_snd/en_snd/ build/sounds']})
+        // new WebpackShellPlugin({onBuildStart:[], onBuildEnd:['ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ build/sounds']})
 
     ]
 

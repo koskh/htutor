@@ -1,20 +1,12 @@
 // @flow
 const _ = require('lodash');
 
-const LocalSoundsFolder = '/media/Video/soft/Linux_Soft/StarDict_Словари/en_snd/en_snd/';
+const Lesson_1 = require('./bd/Lesson_1');
 
 //eslint-disable-next-line
-const lessons: Array<Lesson> = [
-    {
-        id: 1,
-        words: [
-            { foreign: ['hare'], native: ['заяц'], sounds: ['/sounds/h/hare.wav'] },
-            { foreign: ['careless'], native: ['небрежный', 'невнимательный', 'несерьёзный'], sounds: ['/sounds/c/careless.wav'] },
-            { foreign: ['next'], native: ['cледующий', 'ближайший'], sounds: ['/sounds/n/next.wav'] },
-        ],
-        title: 'Lesson 1'
-    }
-];
+const lessons: Array<Lesson> = [];
+
+lessons.push(Lesson_1);
 
 function getShuffledWords(): Array<string> {
     return ['abc', 'dcb', 'ert', 'qweqweqwe', 'qweqwr'];
