@@ -72,7 +72,7 @@ export default class CardTest extends React.Component<Props, State> {
 
                 <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{foreignWord}</button>
 
-                <button type="button" className="btn btn-secondary" onClick={this._playSound}>Звук</button>
+                <button type="button" className="btn btn-secondary" disabled={!sound} onClick={this._playSound}>Звук</button>
 
                 <div className={`row ${styles.separator}`} />
 
