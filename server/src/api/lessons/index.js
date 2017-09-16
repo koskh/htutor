@@ -8,16 +8,58 @@ const router = express.Router();
 
 const { getLessons, getLesson, getTestLesson } = require('../../services/lessons');
 
-router.get('/:id?', (req: express$Request, res: express$Response) => {
+const respond: ServerRespond = {
+    data: null,
+    error: null,
+    errors: null
+};
+
+router.get('/', (req: express$Request, res: express$Response) => {
     res.json(getLessons());
 });
 
-router.get('/:id?', (req: express$Request, res: express$Response) => {
-    res.json(getLesson());
+router.get('/:lessonId?', (req: express$Request, res: express$Response) => {
+    const lessonId = Number.parseInt(req.params.lessonId, 10);
+
+    if (Number.isNaN(lessonId)) {
+        res.status(400);
+        respond.error = 'Неверные входные данные';
+        res.json(respond);
+        return;
+    }
+
+    const lesson = getLesson(lessonId);
+
+    if (!lesson) {
+        res.status(400);
+        respond.error = 'Нет урока с таким ID';
+        res.json(respond);
+        return;
+    }
+
+    res.json(lesson);
 });
 
-router.get('/:id/test', (req: express$Request, res: express$Response) => {
-    res.json(getTestLesson());
+router.get('/:lessonId/test', (req: express$Request, res: express$Response) => {
+    const lessonId = Number.parseInt(req.params.lessonId, 10);
+
+    if (Number.isNaN(lessonId)) {
+        res.status(400);
+        respond.error = 'Неверные входные данные';
+        res.json(respond);
+        return;
+    }
+
+    const testLesson = getTestLesson(lessonId);
+
+    if (!testLesson) {
+        res.status(400);
+        respond.error = 'Нет урока с таким ID';
+        res.json(respond);
+        return;
+    }
+
+    res.json(testLesson);
 });
 
 

@@ -27,12 +27,12 @@ exports.getLessons = function getLessons(): ?Array<Lesson> {
     return lessons;
 };
 
-exports.getLesson = function getLesson(id: number = 1): ?Lesson {
+exports.getLesson = function getLesson(id: number): ?Lesson {
     return _.find(lessons, { id });
 };
 
 
-exports.getTestLesson = function getLesson(id: number = 1): ?TestLesson {
+exports.getTestLesson = function getLesson(id: number ): ?TestLesson {
     const lesson = _.find(lessons, { id });
     if (!lesson) return;
 

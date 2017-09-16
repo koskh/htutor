@@ -12,7 +12,8 @@ type Props = {
     makeFetch: Function,
     cancelFetch: Function,
     testComponentStore: ComponentStore,
-    history: any
+    history: any,
+    match: any
 }
 
 type State = {
@@ -31,7 +32,8 @@ export default class Test extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        this.props.makeFetch();
+        const lessonId = this.props.match.params.lessonId;
+        this.props.makeFetch(lessonId);
     }
 
     componentWillUnmount() {
@@ -59,7 +61,7 @@ export default class Test extends React.Component<Props, State> {
 
         const timeNextQuestion = 1000;
         setTimeout(() => {
-            this.onNextClick()
+            this.onNextClick();
         }, timeNextQuestion);
     };
 
