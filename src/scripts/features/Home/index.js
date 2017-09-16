@@ -1,16 +1,12 @@
-import * as React from 'react';
-// import Header from '../../components/page-header';
+// @flow
+import { connect } from 'react-redux';
 
-export default class Home extends React.Component {
-    componentWillMount() {
-        document.title = 'Home· главная страница';
-    }
+import { makeFetch, cancelFetch} from './store/actions/fetch';
 
-    render() {
-        return (
-            <article>
-                <p>Главная страница приложения.</p>
-            </article>
-        );
-    }
+import Component from './_components';
+
+function mapStateToProps({homeComponentStore, router}: State) {
+    return { homeComponentStore, router};
 }
+
+export default connect(mapStateToProps, { makeFetch, cancelFetch })(Component);

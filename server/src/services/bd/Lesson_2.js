@@ -1,7 +1,7 @@
 // @flow
 
 module.exports = {
-    id: 1,
+    id: 2,
     words: [
         { foreign: ['hare'], native: ['заяц'], sounds: ['/sounds/h/hare.ogg'] }
     ],

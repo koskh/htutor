@@ -10,9 +10,6 @@ const lessons: Array<Lesson> = [
     Lesson2
 ];
 
-// lessons.push(Lesson_1);
-// lessons.push(Lesson_2);
-
 let AllNatives: Array<string> = [];
 _.each(lessons, lesson => {
     _.each(lesson.words, word => {
@@ -25,6 +22,10 @@ function getShuffledWords(): Array<string> {
     const shuffledQwnt = 5;
     return _.slice(_.shuffle(AllNatives), shuffledQwnt);
 }
+
+exports.getLessons = function getLessons(): ?Array<Lesson> {
+    return lessons;
+};
 
 exports.getLesson = function getLesson(id: number = 1): ?Lesson {
     return _.find(lessons, { id });

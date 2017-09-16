@@ -1,5 +1,7 @@
+import homeReducer from '../features/Home/store/reducer';
 import testReducer from '../features/Test/store/reducer';
 
 export default {
-    testComponentStore: testReducer
+    homeComponentStore: homeReducer,
+    testComponentStore: testReducer,
 };
