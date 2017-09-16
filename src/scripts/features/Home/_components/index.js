@@ -63,18 +63,9 @@ export default class Test extends React.Component<Props> {
     //     }, timeNextQuestion);
     // };
 
-    // _generateQuestionData(word: TestWord) {
-    //     const variantsQnt = 3;
-    //
-    //     const foreignWord = _.shuffle(word.foreign)[0];
-    //     const nativeWord = _.shuffle(word.native)[0];
-    //     const sound = _.shuffle(word.sounds)[0];
-    //     const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
-    //     let answers = [nativeWord, ...shuffledWords];
-    //     answers = _.shuffle(answers);
-    //
-    //     return { foreignWord, answers, sound };
-    // }
+    onLessonClick(lessonId: number) {
+        this.props.history.push(`/test/${lessonId}`);
+    }
 
     render() {
         const { isPending, data } = this.props.homeComponentStore;
@@ -93,14 +84,15 @@ export default class Test extends React.Component<Props> {
         // const word: TestWord = data.words[indexCurrentWord];
         // const questionData = this._generateQuestionData(word);
 
+
         return (
 
             <article>
                 <h4 className="text-center">Список доступных уроков</h4>
 
-                <PendingIndicator pending={isPending}>
-                    список уроков
-                </PendingIndicator>
+                {_.map((data: Array<Lesson>), (v, i) =>
+                    <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-2 text-left" onClick={() => this.onLessonClick(v.id)}>{v.title}</button>
+                )}
 
             </article>
         );
