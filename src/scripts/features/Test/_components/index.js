@@ -49,8 +49,12 @@ export default class Test extends React.Component<Props, State> {
         this.setState({ indexCurrentWord });
     };
 
-    onAnswer = (): void => {
-        console.log('onAnswer');
+    onAnswer = (isRightAnswer: boolean): void => {
+
+        const timeNextQuestion = 1000;
+        setTimeout(() => {
+            this.onNextClick()
+        }, timeNextQuestion);
     };
 
     _generateQuestionData(word: TestWord) {
@@ -67,7 +71,6 @@ export default class Test extends React.Component<Props, State> {
     }
 
     render() {
-
         const { isPending, data } = this.props.testComponentStore;
 
         const { indexCurrentWord } = this.state;
