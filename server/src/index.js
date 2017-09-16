@@ -11,6 +11,7 @@ const path = require('path');
 const api = require('./api');
 
 const app = express();
+const host = '192.168.1.10';
 const port = 3001;
 
 const publicPath = path.resolve(__dirname, '../../build');
@@ -35,7 +36,7 @@ app.get('*', (request: express$Request, response: express$Response) => {
     response.sendFile(path.resolve(publicPath, 'index.html'));
 });
 
-app.listen(port, err => {
+app.listen(port, host, err => {
     if (err) {
         console.log(err);
         return;

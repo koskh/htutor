@@ -8,8 +8,17 @@ const lessons: Array<Lesson> = [];
 
 lessons.push(Lesson_1);
 
+let AllNatives: Array<string> = [];
+_.each(lessons, lesson => {
+    _.each(lesson.words, word => {
+        AllNatives = _.concat(AllNatives, word.native);
+    });
+})
+
+
 function getShuffledWords(): Array<string> {
-    return ['abc', 'dcb', 'ert', 'qweqweqwe', 'qweqwr'];
+    const shuffledQwnt = 5;
+    return _.slice(_.shuffle(AllNatives), shuffledQwnt);
 }
 
 exports.getLesson = function getLesson(id: number = 1): ?Lesson {
