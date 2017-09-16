@@ -49,6 +49,7 @@ export default class Test extends React.Component<Props, State> {
 
         if (indexCurrentWord === length) {
             this.props.history.push('/home');
+            return;
         }
 
         this.setState({ indexCurrentWord });
