@@ -39,30 +39,6 @@ export default class Test extends React.Component<Props> {
     }
 
 
-    // onNextClick = () => {
-    //     const { data } = this.props.componentStore;
-    //     const length = data && data.words && data.words.length;
-    //
-    //     let { indexCurrentWord } = this.state;
-    //     indexCurrentWord += 1;
-    //     // indexCurrentWord = indexCurrentWord === length ? 0 : indexCurrentWord;
-    //
-    //     if (indexCurrentWord === length) {
-    //         this.props.history.push('/home');
-    //         return;
-    //     }
-    //
-    //     this.setState({ indexCurrentWord });
-    // };
-    //
-    // onAnswer = (isRightAnswer: boolean): void => {
-    //
-    //     const timeNextQuestion = 1000;
-    //     setTimeout(() => {
-    //         this.onNextClick()
-    //     }, timeNextQuestion);
-    // };
-
     onLessonClick(lessonId: number) {
         this.props.history.push(`/test/${lessonId}`);
     }

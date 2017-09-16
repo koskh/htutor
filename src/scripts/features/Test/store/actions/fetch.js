@@ -19,14 +19,15 @@ export function makeFetch(lessonId: number): Function {
         dispatch(request({ error: null }));
 
         try {
+            if (!lessonId) {
+                const requestRandomId = bd.randomLessonId();
+                Requests.push(requestRandomId);
+                const responseRandomId = await requestRandomId.promise;
+                //eslint-disable-next-line
+                lessonId = responseRandomId.data.data.id;
+            }
 
-            const requestRandomId = bd.randomLessonId();
-            Requests.push(requestRandomId);
-            const responseRandomId = await requestRandomId.promise;
-            const randomId = responseRandomId.data.data.id;
-
-
-            const request1 = bd.lessonTest({ lessonId: lessonId || randomId });
+            const request1 = bd.lessonTest({ lessonId });
             Requests.push(request1);
             const response = await request1.promise;
 
