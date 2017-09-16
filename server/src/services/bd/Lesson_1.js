@@ -37,5 +37,5 @@ module.exports = {
         { foreign: ['handle'], native: ['рукоять', 'повод, предлог', 'управлять (чем-л.)'], sounds: ['/sounds/h/handle.ogg'] },
         { foreign: ['ledge'], native: ['полочка', 'выступ'], sounds: ['/sounds/l/ledge.ogg'] },
     ],
-    title: 'Lesson 1'
+    title: 'Lesson 1. Switch board.'
 };

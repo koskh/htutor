@@ -11,7 +11,8 @@ import type { ComponentStore } from '../store/reducer';
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
-    testComponentStore: ComponentStore
+    testComponentStore: ComponentStore,
+    history: any
 }
 
 type State = {
@@ -44,7 +45,11 @@ export default class Test extends React.Component<Props, State> {
 
         let { indexCurrentWord } = this.state;
         indexCurrentWord += 1;
-        indexCurrentWord = indexCurrentWord === length ? 0 : indexCurrentWord;
+        // indexCurrentWord = indexCurrentWord === length ? 0 : indexCurrentWord;
+
+        if (indexCurrentWord === length) {
+            this.props.history.push('/home');
+        }
 
         this.setState({ indexCurrentWord });
     };
