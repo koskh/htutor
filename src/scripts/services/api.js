@@ -42,7 +42,8 @@ export const common: {[string]: Api} = {
 };
 
 export const bd: {[string]: Api} = {
-    lesson: () => createAjaxRequest('lesson')(),
+    lessons: () => createAjaxRequest('lessons')(),
+    lesson: options => createAjaxRequest('lesson', options.lessonId)(options),
     lessonTest: options => createAjaxRequest('lesson/test', options.lessonId)(options)
     // references2: options => createAjaxRequest('references2', options.userId)(options),
 };
