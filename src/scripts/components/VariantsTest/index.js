@@ -28,7 +28,7 @@ const audioContext = AudioContext && new AudioContext();
 export default class CardTest extends React.Component<Props, State> {
     props: Props;
     state: State = {
-        foreignWordClass: 'btn-light', // default, not answered class
+        foreignWordClass: 'btn-secondary', // default, not answered class
         isAnswered: false
     };
     static defaultProps: Props = {
@@ -100,9 +100,12 @@ export default class CardTest extends React.Component<Props, State> {
             <div>
                 <audio id="audio" src={`${sound}`} ref={audio => { this.audio = audio; }} />
 
-                <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
+                <div className="relative">
+                    <button type="button" className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
+                    <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'mr-3 icon-sound') } disabled={!(sound && isForwardTranslate)} onClick={this._playSound} ></button>
+                </div>
 
-                <button type="button" className="btn btn-secondary" disabled={!(sound && isForwardTranslate)} onClick={this._playSound}>Звук</button>
+
 
                 <div className={`row ${styles.separator}`} />
 
