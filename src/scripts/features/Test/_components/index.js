@@ -11,6 +11,7 @@ import type { ComponentStore } from '../store/reducer';
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
+    resetStore: Function,
     testComponentStore: ComponentStore,
     history: any,
     match: any
@@ -33,11 +34,14 @@ export default class Test extends React.Component<Props, State> {
 
     componentDidMount() {
         const lessonId = this.props.match.params.lessonId;
+
         this.props.makeFetch(lessonId);
     }
 
     componentWillUnmount() {
         this.props.cancelFetch();
+        this.props.resetStore();
+        // debugger;
     }
 
 
@@ -98,7 +102,6 @@ export default class Test extends React.Component<Props, State> {
 
     render() {
         const { isPending, data } = this.props.testComponentStore;
-
         const { indexCurrentWord } = this.state;
 
         if (!data) {
@@ -121,7 +124,6 @@ export default class Test extends React.Component<Props, State> {
         return (
 
             <article>
-                <p className="text-center">Статистика слова: показов: 0, правильн: 0, ошибок: 0</p>
 
                 <PendingIndicator pending={isPending}>
                     <CardTest key={word.foreign[0]} word={word} {...questionData} onAnswer={this.onAnswer} />,

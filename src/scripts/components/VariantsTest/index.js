@@ -7,6 +7,7 @@ import cn from 'classnames';
 
 import styles from './index.pcss';
 
+
 type Props = {
     rightVariants: Array<string>,
     questionWord: string,
@@ -21,6 +22,7 @@ type State = {
     isAnswered: boolean
 }
 
+const context = new (window.AudioContext || window.webkitAudioContext)();
 
 export default class CardTest extends React.Component<Props, State> {
     props: Props;
@@ -43,11 +45,26 @@ export default class CardTest extends React.Component<Props, State> {
     componentDidMount() {
         const { isForwardTranslate } = this.props;
         if (isForwardTranslate)
-            this._playSound();
+        this._playSound();
     }
 
     _playSound = () => {
-        this.audio.play();
+        // this.audio.play();
+        const url = this.props.sound;
+        const request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'arraybuffer';
+
+        request.onload = () => {
+            context.decodeAudioData(request.response, buffer => {
+                const source = context.createBufferSource();
+                source.buffer = buffer;
+                source.connect(context.destination);
+                source.start(0);
+            });
+        };
+
+        request.send();
     };
 
     onAnswerClick = (answer: string): void => {
@@ -55,11 +72,10 @@ export default class CardTest extends React.Component<Props, State> {
         if (isAnswered)
             return;
 
-        const { isForwardTranslate } = this.props;
-        if (!isForwardTranslate)
-            this._playSound();
+        const { isForwardTranslate, rightVariants } = this.props;
 
-        const { rightVariants } = this.props;
+        if (!isForwardTranslate)
+         this._playSound();
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
 
@@ -76,7 +92,7 @@ export default class CardTest extends React.Component<Props, State> {
 
         return (
             <div>
-                <audio id="audio" src={`${sound}`} ref={audio => { this.audio = audio; }} />
+
 
                 <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
 
