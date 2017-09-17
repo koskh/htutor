@@ -17,10 +17,21 @@ _.each(lessons, lesson => {
     });
 });
 
+let AllForeigns: Array<string> = [];
+_.each(lessons, lesson => {
+    _.each(lesson.words, word => {
+        AllForeigns = _.concat(AllNatives, word.foreign);
+    });
+});
 
-function getShuffledWords(): Array<string> {
+
+function getShuffledNativesWords(): Array<string> {
     const shuffledQwnt = 5;
     return _.slice(_.shuffle(AllNatives), shuffledQwnt);
+}
+function getShuffledAllForeignsWords(): Array<string> {
+    const shuffledQwnt = 5;
+    return _.slice(_.shuffle(AllForeigns), shuffledQwnt);
 }
 
 exports.getLessons = function getLessons(): ?Array<Lesson> {
@@ -38,7 +49,7 @@ exports.getTestLesson = function getLesson(id: number): ?TestLesson {
 
     _.each(lesson.words, (v: TestWord) => {
         //eslint-disable-next-line
-        v.shuffle = getShuffledWords();
+        v.shuffle = getShuffledNativesWords();
     });
     // lesson.words = _.shuffle(lesson.words);
 

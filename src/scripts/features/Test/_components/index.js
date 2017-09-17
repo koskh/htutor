@@ -4,7 +4,7 @@ import _ from 'lodash';
 import * as React from 'react';
 
 import PendingIndicator from '../../../components/PendingIndicator';
-import CardTest from '../../../components/CardTest';
+import CardTest from '../../../components/EngToRusCardTest';
 
 import type { ComponentStore } from '../store/reducer';
 
@@ -68,14 +68,14 @@ export default class Test extends React.Component<Props, State> {
     _generateQuestionData(word: TestWord) {
         const variantsQnt = 3;
 
-        const foreignWord = _.shuffle(word.foreign)[0];
+        const questionWord = _.shuffle(word.foreign)[0];
         const nativeWord = _.shuffle(word.native)[0];
         const sound = _.shuffle(word.sounds)[0];
         const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
         let answers = [nativeWord, ...shuffledWords];
         answers = _.shuffle(answers);
 
-        return { foreignWord, answers, sound };
+        return { questionWord, answers, sound };
     }
 
     render() {

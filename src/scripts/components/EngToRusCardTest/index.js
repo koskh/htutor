@@ -9,7 +9,7 @@ import styles from './index.pcss';
 
 type Props = {
     word: TestWord,
-    foreignWord: string,
+    questionWord: string,
     answers: Array<string>,
     sound: string,
     onAnswer: Function
@@ -29,7 +29,7 @@ export default class CardTest extends React.Component<Props, State> {
     };
     static defaultProps: Props = {
         word: { foreign: [], native: [], sounds: [], shuffle: [] },
-        foreignWord: '',
+        questionWord: '',
         answers: [],
         sound: '',
         onAnswer: () => {}
@@ -63,14 +63,14 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { foreignWord, answers, sound } = this.props;
+        const { questionWord, answers, sound } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
             <div>
                 <audio id="audio" src={`${sound}`} ref={audio => { this.audio = audio; }} />
 
-                <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{foreignWord}</button>
+                <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
 
                 <button type="button" className="btn btn-secondary" disabled={!sound} onClick={this._playSound}>Звук</button>
 
