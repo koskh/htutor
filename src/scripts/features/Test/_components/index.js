@@ -4,7 +4,7 @@ import _ from 'lodash';
 import * as React from 'react';
 
 import PendingIndicator from '../../../components/PendingIndicator';
-import CardTest from '../../../components/EngToRusCardTest';
+import CardTest from '../../../components/VariantsTest';
 
 import type { ComponentStore } from '../store/reducer';
 
@@ -64,17 +64,30 @@ export default class Test extends React.Component<Props, State> {
         }, timeNextQuestion);
     };
 
-    _generateQuestionData(word: TestWord) { // EngToRus
-        const variantsQnt = 3;
+    _generateEngToRusQuestion(word: TestWord) { // EngToRus
+        const variantsQnt = 4;
 
-        const questionWord = _.shuffle(word.foreign)[0];
-        const nativeWord = _.shuffle(word.native)[0];
-        const sound = _.shuffle(word.sounds)[0];
-        const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
+        const rightVariants = word.native; // привильн ответы
+        const questionWord = _.shuffle(word.foreign)[0]; // вопрошаемое слово
+        const nativeWord = _.shuffle(word.native)[0]; // правильн русск вариант
+        const sound = _.shuffle(word.sounds)[0]; // файл звука
+        const shuffledWords = _.slice(_.shuffle(word.shuffledNative), 0, variantsQnt);
         let variants = [nativeWord, ...shuffledWords];
-        variants = _.shuffle(variants);
+        variants = _.shuffle(variants); // запутываемые варианты ответа
 
-        const rightVariants = word.native;
+        return { questionWord, variants, rightVariants, sound };
+    }
+
+    _generateRusToEngQuestion(word: TestWord) { // RusToEng
+        const variantsQnt = 4;
+
+        const rightVariants = word.foreign; // привильн ответы
+        const questionWord = _.shuffle(word.native)[0]; // вопрошаемое русск вариант
+        const nativeWord = _.shuffle(word.foreign)[0]; //  правильн иностран слово
+        const sound = ''; // файл звука пустой, что бы не подсказывало
+        const shuffledWords = _.slice(_.shuffle(word.shuffledForeign), 0, variantsQnt);
+        let variants = [nativeWord, ...shuffledWords];
+        variants = _.shuffle(variants); // запутываемые варианты ответа
 
         return { questionWord, variants, rightVariants, sound };
     }
@@ -93,7 +106,8 @@ export default class Test extends React.Component<Props, State> {
         }
 
         const word: TestWord = data.words[indexCurrentWord];
-        const questionData = this._generateQuestionData(word);
+        // const questionData = this._generateEngToRusQuestion(word);
+        const questionData = this._generateRusToEngQuestion(word);
 
         return (
 

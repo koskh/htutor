@@ -10,6 +10,7 @@ declare type TestWord = {
     foreign: Array<string>,
     native: Array<string>,
     sounds: Array<string>,
-    shuffle: Array<string>
+    shuffledNative: Array<string>,
+    shuffledForeign: Array<string>,
 };
 

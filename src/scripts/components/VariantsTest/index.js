@@ -54,6 +54,7 @@ export default class CardTest extends React.Component<Props, State> {
         const { rightVariants } = this.props;
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
+
         const foreignWordClass = isRightAnswer ? 'btn-success' : 'btn-danger';
         this.setState({ foreignWordClass, isAnswered: true });
 

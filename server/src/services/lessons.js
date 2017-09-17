@@ -20,18 +20,16 @@ _.each(lessons, lesson => {
 let AllForeigns: Array<string> = [];
 _.each(lessons, lesson => {
     _.each(lesson.words, word => {
-        AllForeigns = _.concat(AllNatives, word.foreign);
+        AllForeigns = _.concat(AllForeigns, word.foreign);
     });
 });
 
 
-function getShuffledNativesWords(): Array<string> {
-    const shuffledQwnt = 5;
-    return _.slice(_.shuffle(AllNatives), shuffledQwnt);
+function getShuffledNativesWords(shuffledQnt: number): Array<string> {
+    return _.slice(_.shuffle(AllNatives), 0, shuffledQnt);
 }
-function getShuffledAllForeignsWords(): Array<string> {
-    const shuffledQwnt = 5;
-    return _.slice(_.shuffle(AllForeigns), shuffledQwnt);
+function getShuffledForeignsWords(shuffledQnt: number): Array<string> {
+    return _.slice(_.shuffle(AllForeigns), 0, shuffledQnt);
 }
 
 exports.getLessons = function getLessons(): ?Array<Lesson> {
@@ -43,13 +41,14 @@ exports.getLesson = function getLesson(id: number): ?Lesson {
 };
 
 
-exports.getTestLesson = function getLesson(id: number): ?TestLesson {
+exports.getTestLesson = function getLesson(id: number, shuffledQnt: number = 10): ?TestLesson {
     const lesson = _.find(lessons, { id });
     if (!lesson) return;
 
     _.each(lesson.words, (v: TestWord) => {
         //eslint-disable-next-line
-        v.shuffle = getShuffledNativesWords();
+        v.shuffledNative = getShuffledNativesWords(shuffledQnt);
+        v.shuffledForeign = getShuffledForeignsWords(shuffledQnt);
     });
     // lesson.words = _.shuffle(lesson.words);
 
