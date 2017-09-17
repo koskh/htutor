@@ -8,9 +8,9 @@ import cn from 'classnames';
 import styles from './index.pcss';
 
 type Props = {
-    word: TestWord,
+    rightVariants: Array<string>,
     questionWord: string,
-    answers: Array<string>,
+    variants: Array<string>,
     sound: string,
     onAnswer: Function
 }
@@ -28,9 +28,9 @@ export default class CardTest extends React.Component<Props, State> {
         isAnswered: false
     };
     static defaultProps: Props = {
-        word: { foreign: [], native: [], sounds: [], shuffle: [] },
+        rightVariants: [],
         questionWord: '',
-        answers: [],
+        variants: [],
         sound: '',
         onAnswer: () => {}
     };
@@ -51,10 +51,9 @@ export default class CardTest extends React.Component<Props, State> {
         if (isAnswered)
             return;
 
-        const { word } = this.props;
-        invariant(word, 'CardTest need props.word');
+        const { rightVariants } = this.props;
 
-        const isRightAnswer = _.indexOf(word.native, answer) !== -1;
+        const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
         const foreignWordClass = isRightAnswer ? 'btn-success' : 'btn-danger';
         this.setState({ foreignWordClass, isAnswered: true });
 
@@ -63,7 +62,7 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { questionWord, answers, sound } = this.props;
+        const { questionWord, variants, sound } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
@@ -76,7 +75,7 @@ export default class CardTest extends React.Component<Props, State> {
 
                 <div className={`row ${styles.separator}`} />
 
-                {_.map(answers, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4" onClick={() => this.onAnswerClick(v)}>{v}</button>)}
+                {_.map(variants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4" onClick={() => this.onAnswerClick(v)}>{v}</button>)}
 
                 <div className={`row ${styles.separator}`} />
 

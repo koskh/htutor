@@ -58,24 +58,25 @@ export default class Test extends React.Component<Props, State> {
     };
 
     onAnswer = (isRightAnswer: boolean): void => {
-
         const timeNextQuestion = 1000;
         setTimeout(() => {
             this.onNextClick();
         }, timeNextQuestion);
     };
 
-    _generateQuestionData(word: TestWord) {
+    _generateQuestionData(word: TestWord) { // EngToRus
         const variantsQnt = 3;
 
         const questionWord = _.shuffle(word.foreign)[0];
         const nativeWord = _.shuffle(word.native)[0];
         const sound = _.shuffle(word.sounds)[0];
         const shuffledWords = _.slice(_.shuffle(word.shuffle), 0, variantsQnt);
-        let answers = [nativeWord, ...shuffledWords];
-        answers = _.shuffle(answers);
+        let variants = [nativeWord, ...shuffledWords];
+        variants = _.shuffle(variants);
 
-        return { questionWord, answers, sound };
+        const rightVariants = word.native;
+
+        return { questionWord, variants, rightVariants, sound };
     }
 
     render() {
