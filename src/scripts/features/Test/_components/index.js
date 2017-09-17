@@ -110,8 +110,13 @@ export default class Test extends React.Component<Props, State> {
         }
 
         const word: TestWord = data.words[indexCurrentWord];
-        // const questionData = this._generateEngToRusQuestion(word);
-        const questionData = this._generateRusToEngQuestion(word);
+
+        const questionGenerators = {
+            cardForward: this._generateEngToRusQuestion,
+            cardReverse: this._generateRusToEngQuestion
+        }
+
+        const questionData = _.sample(questionGenerators)(word);
 
         return (
 

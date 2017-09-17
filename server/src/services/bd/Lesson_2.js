@@ -7,7 +7,7 @@ module.exports = {
         { foreign: ['spell'], native: ['заклинание', ' писать или произносить (слово) по буквам', 'период (чего-л.)'], sounds: ['/sounds/s/spell.ogg'] },
         { foreign: ['sleep (slept,slept )'], native: ['сон; дремота', 'спать (прям и пренеосн смысл)'], sounds: ['/sounds/s/sleep.ogg'] },
         { foreign: ['steel'], native: ['сталь', 'твёрдость', 'холодное оружие; меч, шпага'], sounds: ['/sounds/s/steel.ogg'] },
-        { foreign: ['even'], native: ['плоский', 'однородный, равномерный (о действ., процесc., сост.)', 'выравнивать, сглаживать', 'даже'], sounds: ['/sounds/i/even.ogg'] },
+        { foreign: ['even'], native: ['плоский', 'однородный, равномерный (о действ., процесc., сост.)', 'выравнивать, сглаживать', 'даже'], sounds: ['/sounds/e/even.ogg'] },
         { foreign: ['though'], native: ['хотя, несмотря на', 'тем не менее', 'всё-таки'], sounds: ['/sounds/t/though.ogg'] },
         { foreign: ['peep'], native: ['беглый взгляд', 'тайный взгляд', 'заглядывать (куда-л.)'], sounds: ['/sounds/p/peep.ogg'] },
         { foreign: ['file'], native: ['надфиль', 'шлифовка', 'скоросшиватель', 'файл', 'дело; досье', 'регистрировать (документы)', 'подшивать к делу'], sounds: ['/sounds/f/file.ogg'] },
