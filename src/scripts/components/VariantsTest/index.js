@@ -22,7 +22,8 @@ type State = {
     isAnswered: boolean
 }
 
-const context = new (window.AudioContext || window.webkitAudioContext)();
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioContext = AudioContext && new AudioContext();
 
 export default class CardTest extends React.Component<Props, State> {
     props: Props;
@@ -45,26 +46,31 @@ export default class CardTest extends React.Component<Props, State> {
     componentDidMount() {
         const { isForwardTranslate } = this.props;
         if (isForwardTranslate)
-        this._playSound();
+            this._playSound();
     }
 
     _playSound = () => {
-        // this.audio.play();
-        const url = this.props.sound;
-        const request = new XMLHttpRequest();
-        request.open('GET', url, true);
-        request.responseType = 'arraybuffer';
+        if (!audioContext) {
+            this.audio.play();
+        }
 
-        request.onload = () => {
-            context.decodeAudioData(request.response, buffer => {
-                const source = context.createBufferSource();
-                source.buffer = buffer;
-                source.connect(context.destination);
-                source.start(0);
-            });
-        };
+        else {
+            const url = this.props.sound;
+            const request = new XMLHttpRequest();
+            request.open('GET', url, true);
+            request.responseType = 'arraybuffer';
 
-        request.send();
+            request.onload = () => {
+                audioContext.decodeAudioData(request.response, buffer => {
+                    const source = audioContext.createBufferSource();
+                    source.buffer = buffer;
+                    source.connect(audioContext.destination);
+                    source.start(0);
+                });
+            };
+
+            request.send();
+        }
     };
 
     onAnswerClick = (answer: string): void => {
@@ -75,7 +81,7 @@ export default class CardTest extends React.Component<Props, State> {
         const { isForwardTranslate, rightVariants } = this.props;
 
         if (!isForwardTranslate)
-         this._playSound();
+            this._playSound();
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
 
@@ -92,7 +98,7 @@ export default class CardTest extends React.Component<Props, State> {
 
         return (
             <div>
-
+                <audio id="audio" src={`${sound}`} ref={audio => { this.audio = audio; }} />
 
                 <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
 
