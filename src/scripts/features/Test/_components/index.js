@@ -75,7 +75,9 @@ export default class Test extends React.Component<Props, State> {
         let variants = [nativeWord, ...shuffledWords];
         variants = _.shuffle(variants); // запутываемые варианты ответа
 
-        return { questionWord, variants, rightVariants, sound };
+        const isForwardTranslate = true;
+
+        return { questionWord, variants, rightVariants, sound, isForwardTranslate };
     }
 
     _generateRusToEngQuestion(word: TestWord) { // RusToEng
@@ -84,12 +86,14 @@ export default class Test extends React.Component<Props, State> {
         const rightVariants = word.foreign; // привильн ответы
         const questionWord = _.shuffle(word.native)[0]; // вопрошаемое русск вариант
         const nativeWord = _.shuffle(word.foreign)[0]; //  правильн иностран слово
-        const sound = ''; // файл звука пустой, что бы не подсказывало
+        const sound = _.shuffle(word.sounds)[0]; // файл звука пустой, что бы не подсказывало
         const shuffledWords = _.slice(_.shuffle(word.shuffledForeign), 0, variantsQnt);
         let variants = [nativeWord, ...shuffledWords];
         variants = _.shuffle(variants); // запутываемые варианты ответа
 
-        return { questionWord, variants, rightVariants, sound };
+        const isForwardTranslate = false;
+
+        return { questionWord, variants, rightVariants, sound, isForwardTranslate };
     }
 
     render() {

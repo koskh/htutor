@@ -12,6 +12,7 @@ type Props = {
     questionWord: string,
     variants: Array<string>,
     sound: string,
+    isForwardTranslate: boolean,
     onAnswer: Function
 }
 
@@ -32,6 +33,7 @@ export default class CardTest extends React.Component<Props, State> {
         questionWord: '',
         variants: [],
         sound: '',
+        isForwardTranslate: true,
         onAnswer: () => {}
     };
 
@@ -39,7 +41,9 @@ export default class CardTest extends React.Component<Props, State> {
     audio: any = null;
 
     componentDidMount() {
-        this._playSound();
+        const { isForwardTranslate } = this.props;
+        if (isForwardTranslate)
+            this._playSound();
     }
 
     _playSound = () => {
@@ -50,6 +54,10 @@ export default class CardTest extends React.Component<Props, State> {
         const { isAnswered } = this.state;
         if (isAnswered)
             return;
+
+        const { isForwardTranslate } = this.props;
+        if (!isForwardTranslate)
+            this._playSound();
 
         const { rightVariants } = this.props;
 
@@ -63,7 +71,7 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { questionWord, variants, sound } = this.props;
+        const { questionWord, variants, sound, isForwardTranslate } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
@@ -72,7 +80,7 @@ export default class CardTest extends React.Component<Props, State> {
 
                 <button type="button" className={cn('btn  btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
 
-                <button type="button" className="btn btn-secondary" disabled={!sound} onClick={this._playSound}>Звук</button>
+                <button type="button" className="btn btn-secondary" disabled={!(sound && isForwardTranslate)} onClick={this._playSound}>Звук</button>
 
                 <div className={`row ${styles.separator}`} />
 
