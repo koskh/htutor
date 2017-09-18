@@ -3,8 +3,12 @@
 import _ from 'lodash';
 import * as React from 'react';
 
+import invariant from 'invariant';
+import cn from 'classnames';
+
 import PendingIndicator from '../../../components/PendingIndicator';
-// import CardTest from '../../../components/CardTest';
+
+import styles from './index.pcss';
 
 import type { ComponentStore } from '../store/reducer';
 
@@ -38,8 +42,11 @@ export default class Test extends React.Component<Props> {
         this.props.cancelFetch();
     }
 
+    onLearnClick(lessonId: number) {
+        this.props.history.push(`/learn/${lessonId}`);
+    }
 
-    onLessonClick(lessonId: number) {
+    onTestClick(lessonId: number) {
         this.props.history.push(`/test/${lessonId}`);
     }
 
@@ -67,7 +74,11 @@ export default class Test extends React.Component<Props> {
                 <h4 className="text-center">Список доступных уроков</h4>
 
                 {_.map((data: Array<Lesson>), (v, i) =>
-                    <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-2 text-left" onClick={() => this.onLessonClick(v.id)}>{v.title}</button>
+                    (<div className="relative" key={i}>
+                        <button type="button" className="btn btn-light btn-lg btn-block mb-2 text-left" >{v.title}</button>
+                        <button type="button" className={cn('btn btn-secondary', styles['blackboard-btn'], 'mr-3 icon-blackboard')} onClick={() => this.onLearnClick(v.id)}/>
+                        <button type="button" className={cn('btn btn-secondary', styles['gauge-btn'], 'mr-3 icon-shuffle')} onClick={() => this.onTestClick(v.id)} />
+                    </div>)
                 )}
 
             </article>
