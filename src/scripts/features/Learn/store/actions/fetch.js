@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILURE, FETCH_CANCEL } from '../constants';
 import { createAction } from '../../../../store/utilities/index';
 
-import { bd, common } from '../../../../services/api';
+import { bd } from '../../../../services/api';
 
 export const request: ThunkAction = createAction(FETCH_REQUEST);
 export const success: ThunkAction = createAction(FETCH_SUCCESS);
@@ -27,9 +27,9 @@ export function makeFetch(lessonId: number): Function {
                 lessonId = responseRandomId.data.data.id;
             }
 
-            const request1 = bd.lessonTest({ lessonId });
-            Requests.push(request1);
-            const response = await request1.promise;
+            const requestLesson = bd.lesson({ lessonId });
+            Requests.push(requestLesson);
+            const response = await requestLesson.promise;
 
             response.data.data.words = _.shuffle(response.data.data.words);
 

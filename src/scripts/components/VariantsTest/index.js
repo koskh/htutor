@@ -51,7 +51,9 @@ export default class CardTest extends React.Component<Props, State> {
 
     _playSound = () => {
         if (!audioContext) {
-            this.audio && this.audio.play();
+            // this.audio && this.audio.play();
+            this.audio.load();
+            this.audio.play();
         }
 
         else {

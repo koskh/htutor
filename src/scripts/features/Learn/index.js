@@ -1,17 +1,13 @@
-import * as React from 'react';
+// @flow
+import { connect } from 'react-redux';
 
+import { makeFetch, cancelFetch} from './store/actions/fetch';
+import resetStore from './store/actions/reset';
 
+import Component from './_components';
 
-export default class Home extends React.Component {
-    componentWillMount() {
-        document.title = 'Home· главная страница';
-    }
-
-    render() {
-        return (
-            <article>
-                <p>Learn page</p>
-            </article>
-        );
-    }
+function mapStateToProps({learnComponentStore}: State) {
+    return { learnComponentStore};
 }
+
+export default connect(mapStateToProps, { makeFetch, cancelFetch, resetStore })(Component);
