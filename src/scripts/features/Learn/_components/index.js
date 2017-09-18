@@ -15,7 +15,9 @@ import type { ComponentStore } from '../store/reducer';
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
+    resetStore: Function,
     learnComponentStore: ComponentStore,
+    match: any,
     history: any
 }
 
@@ -40,11 +42,14 @@ export default class Test extends React.Component<Props> {
     }
 
     componentDidMount() {
-        this.props.makeFetch();
+        const lessonId = this.props.match.params.lessonId;
+        this.props.makeFetch(lessonId);
     }
 
     componentWillUnmount() {
         this.props.cancelFetch();
+        this.props.resetStore();
+        // debugger;
     }
 
     // onLearnClick(lessonId: number) {

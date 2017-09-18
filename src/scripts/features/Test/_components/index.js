@@ -34,7 +34,6 @@ export default class Test extends React.Component<Props, State> {
 
     componentDidMount() {
         const lessonId = this.props.match.params.lessonId;
-
         this.props.makeFetch(lessonId);
     }
 

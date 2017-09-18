@@ -31,8 +31,6 @@ export function makeFetch(lessonId: number): Function {
             Requests.push(requestLesson);
             const response = await requestLesson.promise;
 
-            response.data.data.words = _.shuffle(response.data.data.words);
-
             dispatch(success({ data: response.data.data }));
         } catch (error) {
             dispatch(failure({ error }));
