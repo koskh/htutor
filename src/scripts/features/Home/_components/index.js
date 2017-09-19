@@ -74,11 +74,17 @@ export default class Test extends React.Component<Props> {
                 <h4 className="text-center">Список доступных уроков</h4>
 
                 {_.map((data: Array<Lesson>), (v, i) =>
-                    (<div className="relative" key={i}>
-                        <button type="button" className="btn btn-light btn-lg btn-block mb-2 text-left" >{v.title}</button>
-                        <button type="button" className={cn('btn btn-secondary', styles['blackboard-btn'], 'mr-3 icon-blackboard')} onClick={() => this.onLearnClick(v.id)}/>
-                        <button type="button" className={cn('btn btn-secondary', styles['gauge-btn'], 'mr-3 icon-shuffle')} onClick={() => this.onTestClick(v.id)} />
-                    </div>)
+                    (
+                        <div className="btn btn-light btn-lg btn-block mb-2 text-left" key={i}>
+                            <div className="row " >
+                                <div className="col-8 text-truncate">{v.title}</div>
+                                <div className="col-4 text-right">
+                                    <button type="button" className={cn('btn btn-secondary', styles['blackboard-btn'], 'mr-3 icon-blackboard')} onClick={() => this.onLearnClick(v.id)} />
+                                    <button type="button" className={cn('btn btn-secondary', styles['gauge-btn'], 'icon-shuffle')} onClick={() => this.onTestClick(v.id)} />
+                                </div>
+                            </div>
+                        </div>
+                    )
                 )}
 
             </article>
