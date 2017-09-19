@@ -54,9 +54,7 @@ export default class CardTest extends React.Component<Props, State> {
             // this.audio && this.audio.play();
             this.audio.load();
             this.audio.play();
-        }
-
-        else {
+        } else {
             const url = this.props.sound;
             const request = new XMLHttpRequest();
             request.open('GET', url, true);
@@ -102,18 +100,22 @@ export default class CardTest extends React.Component<Props, State> {
             <div>
                 <audio id="audio" src={`${sound}`} ref={audio => { this.audio = audio; }} />
 
-                <div className="relative">
-                    <button type="button" className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>{questionWord}</button>
-                    <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'mr-3 icon-sound') } disabled={!(sound && isForwardTranslate)} onClick={this._playSound} ></button>
+                <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>
+                    <div className="row">
+                        <div className="col-2">
+                            &nbsp;
+                        </div>
+                        <div className="col-8 text-truncate">
+                            {questionWord}
+                        </div>
+                        <div className="col-2">
+                            <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'mr-3 icon-sound')} disabled={!(sound && isForwardTranslate)} onClick={this._playSound} />
+                        </div>
+
+                    </div>
                 </div>
 
-
-
-                <div className={`row ${styles.separator}`} />
-
-                {_.map(variants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4" onClick={() => this.onAnswerClick(v)}>{v}</button>)}
-
-                <div className={`row ${styles.separator}`} />
+                {_.map(variants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this.onAnswerClick(v)}>{v}</button>)}
 
             </div>
         );

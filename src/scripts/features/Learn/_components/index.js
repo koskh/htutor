@@ -110,11 +110,19 @@ export default class Test extends React.Component<Props> {
                 <h4 className="text-center">{data.title}</h4>
 
                 {_.map((data.words: Array<Word>), (v, i) =>
-                    (<div className="relative btn btn-light btn-lg btn-block text-left" key={i}>
-                        <div className="">{v.foreign.join(',')}</div>
-                        <div className="mr-4 fs-3 lh-3 text-wrap">{v.native.join(' / ')}</div>
-                        <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'mr-3 icon-sound')} disabled={!(v.sounds.length)} onClick={() => this._playSound(v)} />
-                    </div>)
+                    (
+                        <div className="relative btn btn-light btn-lg btn-block text-left" key={i}>
+                            <div className="row">
+                                <div className="col-9">
+                                    <div>{v.foreign.join(',')}</div>
+                                    <div className="mr-4 fs-3 lh-3 text-wrap">{v.native.join(' / ')}</div>
+                                </div>
+                                <div className="col-3 align-self-center text-right">
+                                    <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], ' icon-sound')} disabled={!(v.sounds.length)} onClick={() => this._playSound(v)} />
+                                </div>
+                            </div>
+                        </div>
+                    )
                 )}
 
             </article>
