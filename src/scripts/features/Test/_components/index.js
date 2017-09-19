@@ -125,7 +125,7 @@ export default class Test extends React.Component<Props, State> {
             <article>
 
                 <PendingIndicator pending={isPending}>
-                    <CardTest key={word.foreign[0]} word={word} {...questionData} onAnswer={this.onAnswer} />,
+                    <CardTest key={word.foreign[0]} word={word} {...questionData} onAnswer={this.onAnswer} />
                     <button type="button" className="btn btn-warning btn-lg btn-block" onClick={this.onNextClick}>Пропустить</button>
                 </PendingIndicator>
 

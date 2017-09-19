@@ -50,12 +50,13 @@ export default class CardTest extends React.Component<Props, State> {
     }
 
     _playSound = () => {
+        const url = this.props.sound;
+
         if (!audioContext) {
-            // this.audio && this.audio.play();
+            this.audio.src = url;
             this.audio.load();
             this.audio.play();
         } else {
-            const url = this.props.sound;
             const request = new XMLHttpRequest();
             request.open('GET', url, true);
             request.responseType = 'arraybuffer';
@@ -98,7 +99,7 @@ export default class CardTest extends React.Component<Props, State> {
 
         return (
             <div>
-                <audio id="audio" src={`${sound}`} ref={audio => { this.audio = audio; }} />
+                <audio id="audio" ref={audio => { this.audio = audio; }} />
 
                 <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>
                     <div className="row">
