@@ -27,6 +27,10 @@ const DefaultLayout = () => {
                 </Switch>
             </main>
 
+            <footer className="mt-3">
+                &nbsp;
+            </footer>
+
         </section>
     );
 };
