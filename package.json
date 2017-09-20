@@ -89,7 +89,7 @@
     "build:debug": "rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ build/sounds && webpack --config webpack/webpack.debug.config.js",
     "build:release": "cross-env NODE_ENV=production && rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ build/sounds && webpack --config webpack/webpack.release.config.js",
     "first-step": "flow-typed install && npm run build:debug && npm run server-start",
-    "start": "flow-remove-types --pretty --out-dir server/build/ server/src/ && node server/build/index.js",
+    "start": "npm run build:release && npm run server-start"
   },
   "dependencies": {
     "cross-env": "^5.0.5",
