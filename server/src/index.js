@@ -14,7 +14,7 @@ const app = express();
 const host = '192.168.1.10';
 const port = 3001;
 
-const publicPath = path.resolve(__dirname, '../../build');
+const publicPath = path.resolve(__dirname, './static');
 
 // const options = {
 //     noInfo: false,

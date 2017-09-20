@@ -84,10 +84,10 @@
   },
   "scripts": {
     "test": "mocha --require mocha.setup.js src/**/*.spec.js --reporter progress",
-    "webpack-watch": "rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ build/sounds && webpack --watch  --config webpack/webpack.debug.config.js",
-    "server-start": "flow-remove-types --pretty --out-dir server/build/ server/src/ && node server/build/index.js",
-    "build:debug": "rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ build/sounds && webpack --config webpack/webpack.debug.config.js",
-    "build:release": "cross-env NODE_ENV=production && rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ build/sounds && webpack --config webpack/webpack.release.config.js",
+    "webpack-watch": "mkdir -p output/static && rimraf output/static/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ static/sounds && webpack --watch  --config webpack/webpack.debug.config.js",
+    "server-start": "mkdir -p output/static && flow-remove-types --pretty --out-dir output server/src/ && node output/index.js",
+    "build:debug": "mkdir -p output/static &&/static && rimraf output/static/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --config webpack/webpack.debug.config.js",
+    "build:release": "cross-env NODE_ENV=production && mkdir -p output/static && rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --config webpack/webpack.release.config.js",
     "first-step": "flow-typed install && npm run build:debug && npm run server-start",
     "start": "npm run build:release && npm run server-start"
   },

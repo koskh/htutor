@@ -22,7 +22,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve('./', 'build'),
+        path: path.resolve('./output', 'static'),
         publicPath: '/',
         filename: '[name].js'
     },
