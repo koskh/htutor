@@ -9,9 +9,9 @@ import CardTest from '../../../components/VariantsTest';
 import type { ComponentStore } from '../store/reducer';
 
 type Props = {
-    makeFetch: Function,
-    cancelFetch: Function,
-    resetStore: Function,
+    makeFetch: (lessonId: ?string) => void,
+    cancelFetch: () => void,
+    resetStore: () => void,
     testComponentStore: ComponentStore,
     history: any,
     match: any
@@ -33,7 +33,7 @@ export default class Test extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        const lessonId = this.props.match.params.lessonId;
+        const lessonId: ?string = this.props.match.params.lessonId;
         this.props.makeFetch(lessonId);
     }
 
@@ -50,7 +50,6 @@ export default class Test extends React.Component<Props, State> {
 
         let { indexCurrentWord } = this.state;
         indexCurrentWord += 1;
-        // indexCurrentWord = indexCurrentWord === length ? 0 : indexCurrentWord;
 
         if (indexCurrentWord === length) {
             this.props.history.push('/home');
@@ -116,7 +115,7 @@ export default class Test extends React.Component<Props, State> {
         const questionGenerators = {
             cardForward: this._generateEngToRusQuestion,
             cardReverse: this._generateRusToEngQuestion
-        }
+        };
 
         const questionData = _.sample(questionGenerators)(word);
 

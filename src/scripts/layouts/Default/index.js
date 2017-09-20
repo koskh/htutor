@@ -22,7 +22,7 @@ const DefaultLayout = () => {
                     <Route exact={true} path="/" component={Home} />
                     <Route path="/home" component={Home} />
                     <Route path="/learn/:lessonId?" component={Learn} />
-                    <Route path="/test/:lessonId?" component={Test} key={new Date()} />
+                    <Route path="/test/:lessonId?" component={Test} />
                     <Route component={NotFound} />
                 </Switch>
             </main>

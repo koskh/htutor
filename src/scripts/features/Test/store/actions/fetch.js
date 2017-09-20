@@ -14,7 +14,7 @@ export const cancel: ThunkAction = createAction(FETCH_CANCEL);
 
 const Requests: Array<AjaxRequest> = [];
 
-export function makeFetch(lessonId: number): Function {
+export function makeFetch(lessonId: string): Function {
     return async (dispatch: Dispatch): Promise<any> => {
         dispatch(request({ error: null }));
 
