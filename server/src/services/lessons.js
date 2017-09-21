@@ -6,7 +6,7 @@ const Lesson2 = require('./bd/Lesson_2');
 const Lesson3 = require('./bd/Lesson_3');
 const Lesson4 = require('./bd/Lesson_4');
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 const lessons: Array<Lesson> = [
     Lesson1,
     Lesson2,
@@ -50,13 +50,13 @@ exports.getTestLesson = function getLesson(id: number, shuffledQnt: number = 10)
     if (!lesson) return;
 
     _.each(lesson.words, (v: TestWord) => {
-        //eslint-disable-next-line
+        // eslint-disable-next-line
         v.shuffledNative = getShuffledNativesWords(shuffledQnt);
         v.shuffledForeign = getShuffledForeignsWords(shuffledQnt);
     });
     // lesson.words = _.shuffle(lesson.words);
 
-    //eslint-disable-next-line
+    // eslint-disable-next-line
     return _.assign({}, lesson);
 };
 
