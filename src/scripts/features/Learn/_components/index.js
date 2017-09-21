@@ -19,8 +19,7 @@ type Props = {
     cancelFetch: Function,
     resetStore: Function,
     learnComponentStore: ComponentStore,
-    match: any,
-    history: any
+    match: any
 }
 
 export default class Test extends React.Component<Props> {
