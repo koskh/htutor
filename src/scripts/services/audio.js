@@ -25,7 +25,6 @@ function play(url) {
         audio.load();
         audio.play();
     } else {
-
         if (proxyStorage.get(url)) {
             _decodeAudio(proxyStorage.get(url));
             return;
@@ -37,7 +36,7 @@ function play(url) {
         request.send();
 
         request.onload = () => {
-            proxyStorage.set (url, new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString());
+            proxyStorage.set(url, new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString());
             _decodeAudio(proxyStorage.get(url));
         };
     }
