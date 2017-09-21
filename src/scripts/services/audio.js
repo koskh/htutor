@@ -4,34 +4,19 @@ const audioCtx = AudioContext && new AudioContext();
 let audioSrv = null;
 const encoder = new TextEncoder();
 
-// const proxyStorage = {
-//
-//     set: (url, int16array) => {
-//         localStorage.setItem(url, int16array);
-//     },
-//
-//     get: url => {
-//         const bufferString = localStorage.getItem(url);
-//
-//         return bufferString ? new Int16Array(encoder.encode(bufferString).buffer) : undefined;
-//     }
-// };
+const proxyStorage = {
 
-function ab2str(buf) {
-    return String.fromCharCode.apply(null, new Uint16Array(buf));
-}
+    set: (url, arrayAsString) => {
+        localStorage.setItem(url, arrayAsString);
+    },
 
-function str2ab(str) {
-    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
-    var bufView = new Uint16Array(buf);
-    for (var i=0, strLen=str.length; i<strLen; i++) {
-        bufView[i] = str.charCodeAt(i);
+    get: url => {
+        return localStorage.getItem(url);
     }
-    return buf;
-}
+};
 
 
-const proxyStorage = {};
+// const proxyStorage = {};
 
 function play(url) {
     if (!audioCtx) {
@@ -40,10 +25,11 @@ function play(url) {
         audio.load();
         audio.play();
     } else {
-        // if (proxyStorage.get(url)) {
-        //     _decodeAudio(proxyStorage.get(url));
-        //     return;
-        // }
+
+        if (proxyStorage.get(url)) {
+            _decodeAudio(proxyStorage.get(url));
+            return;
+        }
 
         const request = new XMLHttpRequest();
         request.open('GET', url, true);
@@ -51,11 +37,8 @@ function play(url) {
         request.send();
 
         request.onload = () => {
-            proxyStorage[url] = new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString();
-            // let buffer = new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2));
-            // let string = ab2str(new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)));
-
-            _decodeAudio(proxyStorage[url]);
+            proxyStorage.set (url, new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString());
+            _decodeAudio(proxyStorage.get(url));
         };
     }
 }
