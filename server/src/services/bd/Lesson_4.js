@@ -30,7 +30,7 @@ module.exports = {
         { foreign: ['drawer'], native: ['(выдвижной) ящик (стола, комода)', 'чертёжник'], sounds: ['/sounds/d/drawer.ogg'] },
         { foreign: ['intent'], native: ['намерение, замысел, цель', 'поглощённый, занятый (работой)'], sounds: ['/sounds/i/intent.ogg'] },
         { foreign: ['drone'], native: ['трутень', 'тунеядец', 'гудение, гул, жужжание'], sounds: ['/sounds/d/drone.ogg'] },
-        { foreign: ['firm'], native: ['крепкий', 'непоколебимый', 'крепко', 'уплотнять, улаживать', 'фирма'], sounds: ['/sounds/в/firm.ogg'] },
+        { foreign: ['firm'], native: ['крепкий', 'непоколебимый', 'крепко', 'уплотнять, улаживать', 'фирма'], sounds: ['/sounds/f/firm.ogg'] },
         { foreign: ['cure'], native: ['лечение, лекарство, излечивать', 'cредство решения какой-л. проблемы ', 'заготавливать, консервировать'], sounds: ['/sounds/c/cure.ogg'] },
         { foreign: ['upright'], native: ['вертикальный', 'колонна'], sounds: ['/sounds/u/upright.ogg'] },
     ],

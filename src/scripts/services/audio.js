@@ -3,6 +3,8 @@ const audioCtx = AudioContext && new AudioContext();
 
 let audioSrv = null;
 
+const audio = new window.Audio();
+
 const proxyStorage = {
 
     set: (url, arrayAsString) => {
@@ -15,13 +17,10 @@ const proxyStorage = {
 };
 
 
-// const proxyStorage = {};
-
 function play(url) {
     if (!audioCtx) {
-        const audio = new window.Audio();
         audio.src = url;
-        audio.load();
+        // audio.load();
         audio.play();
     } else {
         if (proxyStorage.get(url)) {
@@ -35,23 +34,20 @@ function play(url) {
         request.send();
 
         request.onload = () => {
-            proxyStorage.set(url, new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString());
-            _decodeAudio(proxyStorage.get(url));
+            proxyStorage.set(url, new Int8Array(request.response).toString());
+            _decodeAudio( proxyStorage.get(url));
         };
     }
 }
 
-function _decodeAudio(arrayAsString) {
-    const arr = arrayAsString.split(',');
-    const fullBuffer = Int16Array.from(arr).buffer;
-
-    // debugger
+function _decodeAudio(bufferString) {
+    const fullBuffer = Int8Array.from(bufferString.split(',')).buffer;
 
     audioCtx.decodeAudioData(fullBuffer, buffer => {
         const source = audioCtx.createBufferSource();
         source.buffer = buffer;
         source.connect(audioCtx.destination);
-        source.start(0);
+        source.start();
     });
 }
 

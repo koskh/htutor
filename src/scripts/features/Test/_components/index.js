@@ -60,7 +60,7 @@ export default class Test extends React.Component<Props, State> {
     };
 
     onAnswer = (isRightAnswer: boolean): void => {
-        const timeNextQuestion = 1500;
+        const timeNextQuestion = 1000;
         setTimeout(() => {
             this.onNextClick();
         }, timeNextQuestion);
