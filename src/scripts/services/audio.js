@@ -17,6 +17,20 @@ const encoder = new TextEncoder();
 //     }
 // };
 
+function ab2str(buf) {
+    return String.fromCharCode.apply(null, new Uint16Array(buf));
+}
+
+function str2ab(str) {
+    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+    var bufView = new Uint16Array(buf);
+    for (var i=0, strLen=str.length; i<strLen; i++) {
+        bufView[i] = str.charCodeAt(i);
+    }
+    return buf;
+}
+
+
 const proxyStorage = {};
 
 function play(url) {
@@ -37,18 +51,20 @@ function play(url) {
         request.send();
 
         request.onload = () => {
-            // proxyStorage[url] = new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString();
-            proxyStorage[url] = new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2));
+            proxyStorage[url] = new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)).toString();
+            // let buffer = new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2));
+            // let string = ab2str(new Int16Array(request.response, 0, Math.floor(request.response.byteLength / 2)));
+
             _decodeAudio(proxyStorage[url]);
         };
     }
 }
 
-function _decodeAudio(array) {
-    // const fullBuffer = (new Int16Array(encoder.encode(arrayString).buffer)).buffer;
-    const fullBuffer = new Int16Array(array).buffer;
+function _decodeAudio(arrayAsString) {
+    const arr = arrayAsString.split(',');
+    const fullBuffer = Int16Array.from(arr).buffer;
 
-    debugger
+    // debugger
 
     audioCtx.decodeAudioData(fullBuffer, buffer => {
         const source = audioCtx.createBufferSource();
