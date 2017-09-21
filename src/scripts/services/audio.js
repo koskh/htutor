@@ -2,7 +2,6 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = AudioContext && new AudioContext();
 
 let audioSrv = null;
-const encoder = new TextEncoder();
 
 const proxyStorage = {
 
