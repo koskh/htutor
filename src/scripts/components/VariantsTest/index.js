@@ -2,11 +2,13 @@
 
 import _ from 'lodash';
 import * as React from 'react';
+
+import audioSrv from '../../services/audio';
+
 import invariant from 'invariant';
 import cn from 'classnames';
 
 import styles from './index.pcss';
-
 
 type Props = {
     rightVariants: Array<string>,
@@ -22,8 +24,6 @@ type State = {
     isAnswered: boolean
 }
 
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-const audioContext = AudioContext && new AudioContext();
 
 export default class CardTest extends React.Component<Props, State> {
     props: Props;
@@ -41,8 +41,6 @@ export default class CardTest extends React.Component<Props, State> {
     };
 
 
-    audio: any = null;
-
     componentDidMount() {
         const { isForwardTranslate } = this.props;
         if (isForwardTranslate)
@@ -51,27 +49,7 @@ export default class CardTest extends React.Component<Props, State> {
 
     _playSound = () => {
         const url = this.props.sound;
-
-        if (!audioContext) {
-            this.audio.src = url;
-            this.audio.load();
-            this.audio.play();
-        } else {
-            const request = new XMLHttpRequest();
-            request.open('GET', url, true);
-            request.responseType = 'arraybuffer';
-
-            request.onload = () => {
-                audioContext.decodeAudioData(request.response, buffer => {
-                    const source = audioContext.createBufferSource();
-                    source.buffer = buffer;
-                    source.connect(audioContext.destination);
-                    source.start(0);
-                });
-            };
-
-            request.send();
-        }
+        audioSrv.play(url);
     };
 
     onAnswerClick = (answer: string): void => {
@@ -99,8 +77,6 @@ export default class CardTest extends React.Component<Props, State> {
 
         return (
             <div>
-                <audio id="audio" ref={audio => { this.audio = audio; }} />
-
                 <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>
                     <div className="row">
                         <div className="col-2">
