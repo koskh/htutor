@@ -73,12 +73,13 @@ export default class Test extends React.Component<Props, State> {
         const additiveWordsQuantity = 4;
         const { native, foreign, shuffledNative, shuffledForeign, sounds } = word;
 
-        const rightVariants = isForward ? foreign : native;
+        const quizWord = _.sample(isForward ? foreign : native);
+        const rightVariants = isForward ? native : foreign;
 
         const additiveWords = _.slice(isForward ? shuffledNative : shuffledForeign, 0, additiveWordsQuantity);
-        const quizVariants = _.shuffle([_.sample(rightVariants), ...additiveWords]);
+        const quizVariants = _.shuffle([_.sample(isForward ? native : foreign), ...additiveWords]);
 
-        return { quizVariants, rightVariants, sounds };
+        return { quizWord, quizVariants, rightVariants, sounds };
     }
 
     render() {
@@ -95,23 +96,21 @@ export default class Test extends React.Component<Props, State> {
 
         const word: TestWord = data.words[indexCurrentWord];
 
-        // const questionData = _.sample(questionGenerators)(word);
-
         const QuizVariants = {
-            forward: { component: ForwardVariantsTest, isForward: true },
-            reverse: { component: ReverseVariantsTest, isForward: false }
+            forward: { Component: ForwardVariantsTest, isForward: true },
+            reverse: { Component: ReverseVariantsTest, isForward: false }
         };
 
-        const quiz = _.sample(QuizVariants);
-        const QuizComponent = quiz.component;
-        const questionData = this._getQuestionData(word, quiz.isForward);
+        const quizVariant = _.sample(QuizVariants);
+        const QuizComponent = quizVariant.Component;
+        const questionData = this._getQuestionData(word, quizVariant.isForward);
 
         return (
 
             <article>
 
                 <PendingIndicator pending={isPending}>
-                    <QuizComponent key={word.foreign[0]} word={word} {...questionData} onAnswer={this.onAnswer} />
+                    <QuizComponent key={word.foreign[0]} {...questionData} onAnswer={this.onAnswer} />
                     <button type="button" className="btn btn-warning btn-lg btn-block" onClick={this.onNextClick}>Пропустить</button>
                 </PendingIndicator>
 

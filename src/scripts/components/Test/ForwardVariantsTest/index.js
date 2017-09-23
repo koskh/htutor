@@ -9,6 +9,7 @@ import cn from 'classnames';
 import SoundBtn from '../../SoundBtn';
 
 type Props = {
+    quizWord: string,
     rightVariants: Array<string>,
     quizVariants: Array<string>,
     sounds: Array<string>,
@@ -21,8 +22,9 @@ type State = {
 }
 
 
-export default class CardTest extends React.Component<Props, State> {
+export default class ForwardVariantsTest extends React.Component<Props, State> {
     static defaultProps: Props = {
+        quizWord: '',
         rightVariants: [],
         quizVariants: [],
         sounds: [],
@@ -35,7 +37,6 @@ export default class CardTest extends React.Component<Props, State> {
         foreignWordClass: 'btn-secondary', // default, not answered class
         isAnswered: false
     };
-
 
     soundBtn: ?SoundBtn = null;
 
@@ -64,7 +65,7 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { rightVariants, quizVariants, sounds } = this.props;
+        const { quizWord, quizVariants, sounds } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
@@ -75,7 +76,7 @@ export default class CardTest extends React.Component<Props, State> {
                             &nbsp;
                         </div>
                         <div className="col-8 text-truncate">
-                            {_.sample(rightVariants)}
+                            {quizWord}
                         </div>
                         <div className="col-2 ">
                             <SoundBtn urls={sounds} ref={soundBtn => { this.soundBtn = soundBtn; }} />

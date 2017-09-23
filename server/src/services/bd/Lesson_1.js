@@ -32,7 +32,7 @@ module.exports = {
         { foreign: ['seat'], native: ['сиденье'], sounds: ['/sounds/s/seat.ogg'] },
         { foreign: ['facility'], native: ['возможность', 'услуги', 'удобства', 'доступность'], sounds: ['/sounds/f/facility.ogg'] },
         { foreign: ['embrace'], native: ['обниматься', 'выбирать', 'заключать в себе, охватывать '], sounds: ['/sounds/e/embrace.ogg'] },
-        { foreign: ['impact'], native: ['удар, толчок', 'сильное воздействие', 'заключать в себе, охватывать'], sounds: ['/sounds/i/impact01.mp3'] },
+        { foreign: ['impact'], native: ['удар, толчок', 'сильное воздействие'], sounds: ['/sounds/i/impact01.mp3'] },
         { foreign: ['light'], native: ['свет', 'освещение', 'лампа'], sounds: ['/sounds/l/light.ogg'] },
         { foreign: ['handle'], native: ['рукоять', 'повод, предлог', 'управлять (чем-л.)'], sounds: ['/sounds/h/handle.ogg'] },
         { foreign: ['ledge'], native: ['полочка', 'выступ'], sounds: ['/sounds/l/ledge.ogg'] },

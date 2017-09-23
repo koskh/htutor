@@ -4,53 +4,22 @@ import _ from 'lodash';
 import * as React from 'react';
 
 import cn from 'classnames';
-// import styles from './index.pcss';
-
 import SoundBtn from '../../SoundBtn';
 
-type Props = {
-    rightVariants: Array<string>,
-    quizVariants: Array<string>,
-    sounds: Array<string>,
-    onAnswer: Function
-}
-
-type State = {
-    foreignWordClass: string,
-    isAnswered: boolean
-}
+import ForwardVariantsTest from '../ForwardVariantsTest';
 
 
-export default class CardTest extends React.Component<Props, State> {
-    static defaultProps: Props = {
-        rightVariants: [],
-        quizVariants: [],
-        sounds: [],
-        onAnswer: () => {}
-    };
-
-    props: Props;
-
-    state: State = {
-        foreignWordClass: 'btn-secondary', // default, not answered class
-        isAnswered: false
-    };
-
-
-    soundBtn: ?SoundBtn = null;
-
+export default class ReverseVariantsTest extends ForwardVariantsTest {
     componentDidMount() {
-        this._playSound();
-    }
 
-    _playSound = () => {
-        this.soundBtn && this.soundBtn.playSound();
-    };
+    }
 
     _onAnswerClick = (answer: string): void => {
         const { isAnswered } = this.state;
         if (isAnswered)
             return;
+
+        this._playSound();
 
         const { rightVariants } = this.props;
 
@@ -64,7 +33,7 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { rightVariants, quizVariants, sounds } = this.props;
+        const { quizWord, quizVariants, sounds } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
@@ -75,10 +44,10 @@ export default class CardTest extends React.Component<Props, State> {
                             &nbsp;
                         </div>
                         <div className="col-8 text-truncate">
-                            {_.sample(rightVariants)}
+                            {quizWord}
                         </div>
                         <div className="col-2 ">
-                            <SoundBtn urls={sounds} ref={soundBtn => { this.soundBtn = soundBtn; }} />
+                            <SoundBtn urls={sounds} isDisabled={true} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                         </div>
 
                     </div>

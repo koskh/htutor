@@ -11,15 +11,15 @@ describe('<VariantTest />', () => {
         expect(component).to.have.length(1);
     });
 
-    it('simulates click event "Play sound"', () => {
-        const spy = sinon.spy();
-        VariantTest.prototype._onSoundClick = spy;
-
-        const component = shallow(<VariantTest />);
-        component.find('.js-sound').simulate('click');
-
-        expect(spy.calledOnce).to.equal(true);
-    });
+    // it('simulates click event "Play sound"', () => {
+    //     const spy = sinon.spy();
+    //     VariantTest.prototype._onSoundClick = spy;
+    //
+    //     const component = shallow(<VariantTest />);
+    //     component.find('.js-sound').simulate('click');
+    //
+    //     expect(spy.calledOnce).to.equal(true);
+    // });
     //
     // it('simulates click event "Answer"', () => {
     //     const spy = sinon.spy();
