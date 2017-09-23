@@ -10,10 +10,8 @@ import SoundBtn from '../../SoundBtn';
 
 type Props = {
     rightVariants: Array<string>,
-    questionWord: string,
-    variants: Array<string>,
+    quizVariants: Array<string>,
     sounds: Array<string>,
-    isForwardTranslate: boolean,
     onAnswer: Function
 }
 
@@ -26,10 +24,8 @@ type State = {
 export default class CardTest extends React.Component<Props, State> {
     static defaultProps: Props = {
         rightVariants: [],
-        questionWord: '',
-        variants: [],
+        quizVariants: [],
         sounds: [],
-        isForwardTranslate: true,
         onAnswer: () => {}
     };
 
@@ -44,9 +40,7 @@ export default class CardTest extends React.Component<Props, State> {
     soundBtn: ?SoundBtn = null;
 
     componentDidMount() {
-        const { isForwardTranslate } = this.props;
-        if (isForwardTranslate)
-            this._playSound();
+        this._playSound();
     }
 
     _playSound = () => {
@@ -58,10 +52,7 @@ export default class CardTest extends React.Component<Props, State> {
         if (isAnswered)
             return;
 
-        const { isForwardTranslate, rightVariants } = this.props;
-
-        if (!isForwardTranslate)
-            this._playSound();
+        const { rightVariants } = this.props;
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
 
@@ -73,7 +64,7 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { questionWord, variants, sounds, isForwardTranslate } = this.props;
+        const { rightVariants, quizVariants, sounds } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
@@ -84,16 +75,16 @@ export default class CardTest extends React.Component<Props, State> {
                             &nbsp;
                         </div>
                         <div className="col-8 text-truncate">
-                            {questionWord}
+                            {_.sample(rightVariants)}
                         </div>
                         <div className="col-2 ">
-                            <SoundBtn urls={sounds} isDisabled={!isForwardTranslate} ref={soundBtn => { this.soundBtn = soundBtn; }} />
+                            <SoundBtn urls={sounds} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                         </div>
 
                     </div>
                 </div>
 
-                {_.map(variants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
+                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
 
             </div>
         );
