@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import * as React from 'react';
 
-import audioSrv from '../../services/audio';
+import audioSrv from '../../../services/audio';
 
 import invariant from 'invariant';
 import cn from 'classnames';

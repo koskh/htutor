@@ -4,7 +4,7 @@ import _ from 'lodash';
 import * as React from 'react';
 
 import PendingIndicator from '../../../components/PendingIndicator';
-import CardTest from '../../../components/VariantsTest';
+import CardTest from '../../../components/Test/VariantsTest';
 
 import type { ComponentStore } from '../store/reducer';
 

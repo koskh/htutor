@@ -3,9 +3,7 @@ const audioCtx = AudioContext && new AudioContext();
 
 let audioSrv = null;
 
-const audio = new window.Audio();
-
-const proxyStorage = {
+const _proxyStorage = {
 
     set: (url, arrayAsString) => {
         localStorage.setItem(url, arrayAsString);
@@ -19,12 +17,12 @@ const proxyStorage = {
 
 function play(url) {
     if (!audioCtx) {
+        const audio = new window.Audio();
         audio.src = url;
-        // audio.load();
         audio.play();
     } else {
-        if (proxyStorage.get(url)) {
-            _decodeAudio(proxyStorage.get(url));
+        if (_proxyStorage.get(url)) {
+            _decodeAudio(_proxyStorage.get(url));
             return;
         }
 
@@ -34,8 +32,8 @@ function play(url) {
         request.send();
 
         request.onload = () => {
-            proxyStorage.set(url, new Int8Array(request.response).toString());
-            _decodeAudio( proxyStorage.get(url));
+            _proxyStorage.set(url, new Int8Array(request.response).toString());
+            _decodeAudio( _proxyStorage.get(url));
         };
     }
 }
