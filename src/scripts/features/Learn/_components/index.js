@@ -10,7 +10,6 @@ import SoundBtn from '../../../components/SoundBtn'
 import PendingIndicator from '../../../components/PendingIndicator';
 
 
-
 import type { ComponentStore } from '../store/reducer';
 
 type Props = {
