@@ -16,6 +16,9 @@ const _proxyStorage = {
 
 
 function play(url) {
+    if (!url)
+        return;
+
     if (!audioCtx) {
         const audio = new window.Audio();
         audio.src = url;
@@ -33,7 +36,7 @@ function play(url) {
 
         request.onload = () => {
             _proxyStorage.set(url, new Int8Array(request.response).toString());
-            _decodeAudio( _proxyStorage.get(url));
+            _decodeAudio(_proxyStorage.get(url));
         };
     }
 }

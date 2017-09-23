@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import * as React from 'react';
 
-import audioSrv from '../../../services/audio';
+import SoundBtn from '../../SoundBtn';
 
 import invariant from 'invariant';
 import cn from 'classnames';
@@ -26,11 +26,6 @@ type State = {
 
 
 export default class CardTest extends React.Component<Props, State> {
-    props: Props;
-    state: State = {
-        foreignWordClass: 'btn-secondary', // default, not answered class
-        isAnswered: false
-    };
     static defaultProps: Props = {
         rightVariants: [],
         questionWord: '',
@@ -40,6 +35,15 @@ export default class CardTest extends React.Component<Props, State> {
         onAnswer: () => {}
     };
 
+    props: Props;
+
+    state: State = {
+        foreignWordClass: 'btn-secondary', // default, not answered class
+        isAnswered: false
+    };
+
+
+    soundBtn: ?SoundBtn = null;
 
     componentDidMount() {
         const { isForwardTranslate } = this.props;
@@ -48,11 +52,10 @@ export default class CardTest extends React.Component<Props, State> {
     }
 
     _playSound = () => {
-        const url = this.props.sound;
-        audioSrv.play(url);
+        this.soundBtn && this.soundBtn.playSound();
     };
 
-    onAnswerClick = (answer: string): void => {
+    _onAnswerClick = (answer: string): void => {
         const { isAnswered } = this.state;
         if (isAnswered)
             return;
@@ -86,13 +89,13 @@ export default class CardTest extends React.Component<Props, State> {
                             {questionWord}
                         </div>
                         <div className="col-2">
-                            <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'mr-3 icon-sound')} disabled={!(sound && isForwardTranslate)} onClick={this._playSound} />
+                            <SoundBtn url={sound} isDisabled={!isForwardTranslate} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                         </div>
 
                     </div>
                 </div>
 
-                {_.map(variants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this.onAnswerClick(v)}>{v}</button>)}
+                {_.map(variants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
 
             </div>
         );
