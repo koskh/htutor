@@ -1,5 +1,6 @@
 // @flow
 
+import _ from 'lodash';
 import * as React from 'react';
 import cn from 'classnames';
 import styles from './index.pcss';
@@ -7,13 +8,13 @@ import styles from './index.pcss';
 import audioSrv from '../../services/audio';
 
 type Props = {
-    url: string,
+    urls: Array<string>,
     isDisabled: boolean
 }
 
 export default class SoundBtn extends React.Component<Props> {
     static defaultProps: Props = {
-        url: '',
+        urls: [],
         isDisabled: false
     };
 
@@ -24,13 +25,13 @@ export default class SoundBtn extends React.Component<Props> {
     }
 
     playSound() {
-        (audioSrv: AudioService).play(this.props.url);
+        (audioSrv: AudioService).play(_.sample(this.props.urls));
     }
 
     render(): React.Element<any> {
-        const { isDisabled, url } = this.props;
+        const { isDisabled, urls } = this.props;
         return (
-            <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'icon-sound')} disabled={isDisabled || !url} onClick={() => this._onSoundClick()} />
+            <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'icon-sound')} disabled={isDisabled || !urls.length} onClick={() => this._onSoundClick()} />
         );
     }
 }

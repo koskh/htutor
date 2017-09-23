@@ -3,18 +3,16 @@
 import _ from 'lodash';
 import * as React from 'react';
 
-import SoundBtn from '../../SoundBtn';
-
-import invariant from 'invariant';
 import cn from 'classnames';
+// import styles from './index.pcss';
 
-import styles from './index.pcss';
+import SoundBtn from '../../SoundBtn';
 
 type Props = {
     rightVariants: Array<string>,
     questionWord: string,
     variants: Array<string>,
-    sound: string,
+    sounds: Array<string>,
     isForwardTranslate: boolean,
     onAnswer: Function
 }
@@ -30,7 +28,7 @@ export default class CardTest extends React.Component<Props, State> {
         rightVariants: [],
         questionWord: '',
         variants: [],
-        sound: '',
+        sounds: [],
         isForwardTranslate: true,
         onAnswer: () => {}
     };
@@ -75,7 +73,7 @@ export default class CardTest extends React.Component<Props, State> {
 
 
     render(): React.Element<any> {
-        const { questionWord, variants, sound, isForwardTranslate } = this.props;
+        const { questionWord, variants, sounds, isForwardTranslate } = this.props;
         const { foreignWordClass } = this.state;
 
         return (
@@ -89,7 +87,7 @@ export default class CardTest extends React.Component<Props, State> {
                             {questionWord}
                         </div>
                         <div className="col-2 ">
-                            <SoundBtn url={sound} isDisabled={!isForwardTranslate} ref={soundBtn => { this.soundBtn = soundBtn; }} />
+                            <SoundBtn urls={sounds} isDisabled={!isForwardTranslate} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                         </div>
 
                     </div>

@@ -78,7 +78,7 @@ export default class Test extends React.Component<Props> {
                                     <div className="fs-3 text-wrap">{v.native.join(' / ')}</div>
                                 </div>
                                 <div className="col-3 align-self-center text-right ">
-                                    <SoundBtn url={v.sounds[0]} isDisabled={!v.sounds.length} />
+                                    <SoundBtn urls={v.sounds} isDisabled={!v.sounds.length} />
                                 </div>
                             </div>
                         </div>
