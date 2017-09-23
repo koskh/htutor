@@ -88,7 +88,7 @@ export default class CardTest extends React.Component<Props, State> {
                         <div className="col-8 text-truncate">
                             {questionWord}
                         </div>
-                        <div className="col-2">
+                        <div className="col-2 ">
                             <SoundBtn url={sound} isDisabled={!isForwardTranslate} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                         </div>
 

@@ -3,14 +3,13 @@
 import _ from 'lodash';
 import * as React from 'react';
 
-import invariant from 'invariant';
 import cn from 'classnames';
+import styles from './index.pcss';
 
-import audioSrv from '../../../services/audio';
-
+import SoundBtn from '../../../components/SoundBtn'
 import PendingIndicator from '../../../components/PendingIndicator';
 
-import styles from './index.pcss';
+
 
 import type { ComponentStore } from '../store/reducer';
 
@@ -30,6 +29,7 @@ export default class Test extends React.Component<Props> {
     // };
 
     audio: any = null;
+    soundBtn: ?SoundBtn = null;
 
     componentWillMount() {
         document.title = 'HTutor· Изучение урока';
@@ -45,13 +45,14 @@ export default class Test extends React.Component<Props> {
         this.props.resetStore();
     }
 
-    _playSound = (word: Word) => {
-        const url = word.sounds[0];
-        audioSrv.play(url);
-    };
+    // _playSound = (word: Word) => {
+    //     const url = word.sounds[0];
+    //     audioSrv.play(url);
+    // };
 
     render() {
         const { isPending, data } = this.props.learnComponentStore;
+
 
         if (!data) {
             return (
@@ -66,8 +67,6 @@ export default class Test extends React.Component<Props> {
         return (
 
             <article>
-                <audio id="audio" ref={audio => { this.audio = audio; }} />
-
                 <h4 className="text-center">{data.title}</h4>
 
                 {_.map((data.words: Array<Word>), (v, i) =>
@@ -78,8 +77,8 @@ export default class Test extends React.Component<Props> {
                                     <div>{v.foreign.join(',')}</div>
                                     <div className="fs-3 text-wrap">{v.native.join(' / ')}</div>
                                 </div>
-                                <div className="col-3 align-self-center text-right">
-                                    <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], ' icon-sound')} disabled={!(v.sounds.length)} onClick={() => this._playSound(v)} />
+                                <div className="col-3 align-self-center text-right ">
+                                    <SoundBtn url={v.sounds[0]} isDisabled={!v.sounds.length} />
                                 </div>
                             </div>
                         </div>
