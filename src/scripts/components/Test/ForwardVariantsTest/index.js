@@ -21,6 +21,11 @@ type State = {
     isAnswered: boolean
 }
 
+export const foreignWordClasses = {
+    default: 'btn-secondary',
+    right: 'btn-success',
+    wrong: 'btn-danger'
+};
 
 export default class ForwardVariantsTest extends React.Component<Props, State> {
     static defaultProps: Props = {
@@ -34,7 +39,7 @@ export default class ForwardVariantsTest extends React.Component<Props, State> {
     props: Props;
 
     state: State = {
-        foreignWordClass: 'btn-secondary', // default, not answered class
+        foreignWordClass: foreignWordClasses.default,
         isAnswered: false
     };
 
@@ -44,9 +49,9 @@ export default class ForwardVariantsTest extends React.Component<Props, State> {
         this._playSound();
     }
 
-    _playSound = () => {
+    _playSound() {
         this.soundBtn && this.soundBtn.playSound();
-    };
+    }
 
     _onAnswerClick = (answer: string): void => {
         const { isAnswered } = this.state;
@@ -57,7 +62,7 @@ export default class ForwardVariantsTest extends React.Component<Props, State> {
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
 
-        const foreignWordClass = isRightAnswer ? 'btn-success' : 'btn-danger';
+        const foreignWordClass = isRightAnswer ? foreignWordClasses.right : foreignWordClasses.wrong;
         this.setState({ foreignWordClass, isAnswered: true });
 
         this.props.onAnswer(isRightAnswer);
@@ -70,12 +75,12 @@ export default class ForwardVariantsTest extends React.Component<Props, State> {
 
         return (
             <div>
-                <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>
+                <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass, 'qa-quiz-place')}>
                     <div className="row">
                         <div className="col-2">
                             &nbsp;
                         </div>
-                        <div className="col-8 text-truncate">
+                        <div className="col-8 text-truncate qa-quiz-word">
                             {quizWord}
                         </div>
                         <div className="col-2 ">
@@ -85,7 +90,7 @@ export default class ForwardVariantsTest extends React.Component<Props, State> {
                     </div>
                 </div>
 
-                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
+                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate qa-quiz-variant" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
 
             </div>
         );

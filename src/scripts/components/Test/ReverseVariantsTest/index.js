@@ -8,7 +8,6 @@ import SoundBtn from '../../SoundBtn';
 
 import ForwardVariantsTest from '../ForwardVariantsTest';
 
-
 export default class ReverseVariantsTest extends ForwardVariantsTest {
     componentDidMount() {
 
@@ -38,12 +37,12 @@ export default class ReverseVariantsTest extends ForwardVariantsTest {
 
         return (
             <div>
-                <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass)}>
+                <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass, 'qa-quiz-place')}>
                     <div className="row">
                         <div className="col-2">
                             &nbsp;
                         </div>
-                        <div className="col-8 text-truncate">
+                        <div className="col-8 text-truncate qa-quiz-word">
                             {quizWord}
                         </div>
                         <div className="col-2 ">
@@ -53,7 +52,7 @@ export default class ReverseVariantsTest extends ForwardVariantsTest {
                     </div>
                 </div>
 
-                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
+                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate qa-quiz-variant" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
 
             </div>
         );
