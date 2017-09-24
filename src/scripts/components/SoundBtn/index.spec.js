@@ -13,7 +13,7 @@ describe('<SoundBtn />', () => {
 
     it('simulates click event "Play sound"', () => {
         const spy = sinon.spy();
-        SoundBtn.prototype._onSoundClick = spy;
+        SoundBtn.prototype.playSound = spy;
 
         const component = shallow(<SoundBtn />);
         component.find('button').simulate('click');
