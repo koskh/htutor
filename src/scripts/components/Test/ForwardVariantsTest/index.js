@@ -2,55 +2,15 @@
 
 import _ from 'lodash';
 import * as React from 'react';
-
 import cn from 'classnames';
-// import styles from './index.pcss';
 
 import SoundBtn from '../../SoundBtn';
+import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
-type Props = {
-    quizWord: string,
-    rightVariants: Array<string>,
-    quizVariants: Array<string>,
-    sounds: Array<string>,
-    onAnswer: Function
-}
 
-type State = {
-    foreignWordClass: string,
-    isAnswered: boolean
-}
-
-export const foreignWordClasses = {
-    default: 'btn-secondary',
-    right: 'btn-success',
-    wrong: 'btn-danger'
-};
-
-export default class ForwardVariantsTest extends React.Component<Props, State> {
-    static defaultProps: Props = {
-        quizWord: '',
-        rightVariants: [],
-        quizVariants: [],
-        sounds: [],
-        onAnswer: () => {}
-    };
-
-    props: Props;
-
-    state: State = {
-        foreignWordClass: foreignWordClasses.default,
-        isAnswered: false
-    };
-
-    soundBtn: ?SoundBtn = null;
-
+export default class ForwardVariantsTest extends TemplateClass {
     componentDidMount() {
         this._playSound();
-    }
-
-    _playSound() {
-        this.soundBtn && this.soundBtn.playSound();
     }
 
     _onAnswerClick = (answer: string): void => {

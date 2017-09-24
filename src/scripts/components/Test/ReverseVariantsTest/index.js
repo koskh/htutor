@@ -2,13 +2,12 @@
 
 import _ from 'lodash';
 import * as React from 'react';
-
 import cn from 'classnames';
+
 import SoundBtn from '../../SoundBtn';
+import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
-import ForwardVariantsTest from '../ForwardVariantsTest';
-
-export default class ReverseVariantsTest extends ForwardVariantsTest {
+export default class ReverseVariantsTest extends TemplateClass {
     componentDidMount() {
 
     }
@@ -24,7 +23,7 @@ export default class ReverseVariantsTest extends ForwardVariantsTest {
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
 
-        const foreignWordClass = isRightAnswer ? 'btn-success' : 'btn-danger';
+        const foreignWordClass = isRightAnswer ? foreignWordClasses.right :foreignWordClasses.wrong;
         this.setState({ foreignWordClass, isAnswered: true });
 
         this.props.onAnswer(isRightAnswer);

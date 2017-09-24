@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 
 import ReverseVariantTest from '.';
-import { foreignWordClasses } from '../ForwardVariantsTest';
+import { foreignWordClasses } from '../TemplateClass';
 
 
 const questionData = {
