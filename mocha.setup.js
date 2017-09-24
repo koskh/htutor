@@ -29,4 +29,5 @@ global.document = window.document;
 global.navigator = {
     userAgent: 'node.js',
 };
+global.HTMLElement = global.window.HTMLElement;
 copyProps(window, global);
