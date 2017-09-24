@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 
-import VariantTest from '.';
+import ForwardVariantTest from '.';
 
-describe('<VariantTest />', () => {
+
+describe('<ForwardVariantTest />', () => {
     it('renders without errors', () => {
-        const component = shallow(<VariantTest />);
-        expect(component).to.have.length(1);
+        const wrapper = shallow(<ForwardVariantTest />);
+        expect(wrapper).to.have.length(1);
     });
-    // it('has got this.soundBtn', () => {
-    //     const component = shallow(<VariantTest />);
-    //     expect(component).to.have.length(1);
-    // });
+
+    it('has got this.soundBtn', () => {
+        const wrapper = mount(<ForwardVariantTest />);
+        expect(wrapper.soundBtn).not.be.null;
+    });
 });
 
