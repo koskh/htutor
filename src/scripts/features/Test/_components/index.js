@@ -6,6 +6,14 @@ import * as React from 'react';
 import PendingIndicator from '../../../components/PendingIndicator';
 import ForwardVariantsTest from '../../../components/Test/ForwardVariantsTest';
 import ReverseVariantsTest from '../../../components/Test/ReverseVariantsTest';
+import SoundTest from '../../../components/Test/SoundTest';
+
+
+import generateQuiz from './utilities/generateQuiz';
+
+export type QuizVariant = { Component: React.createClass, options: { isForward: boolean, mustHaveSound: boolean } }
+export type QuizVariants = {[key: string]: QuizVariant}
+export type QuestionData = { quizVariants: Array<string>, rightVariants: Array<string>, sounds: Array<string>}
 
 import type { ComponentStore } from '../store/reducer';
 
@@ -69,17 +77,14 @@ export default class Test extends React.Component<Props, State> {
     };
 
 
-    _getQuestionData(word: TestWord, isForward: boolean = true): { quizVariants: Array<string>, rightVariants: Array<string>, sounds: Array<string>} {
-        const additiveWordsQuantity = 4;
-        const { native, foreign, shuffledNative, shuffledForeign, sounds } = word;
+    _generateQuiz(word: TestWord): {QuizComponent: React.createClass, questionData: QuestionData} {
+        const variants: QuizVariants = {
+            forward: { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
+            reverse: { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
+            sound: { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
+        };
 
-        const quizWord = _.sample(isForward ? foreign : native);
-        const rightVariants = isForward ? native : foreign;
-
-        const additiveWords = _.slice(isForward ? shuffledNative : shuffledForeign, 0, additiveWordsQuantity);
-        const quizVariants = _.shuffle([_.sample(isForward ? native : foreign), ...additiveWords]);
-
-        return { quizWord, quizVariants, rightVariants, sounds };
+        return generateQuiz(word, variants);
     }
 
     render() {
@@ -95,15 +100,7 @@ export default class Test extends React.Component<Props, State> {
         }
 
         const word: TestWord = data.words[indexCurrentWord];
-
-        const QuizVariants = {
-            forward: { Component: ForwardVariantsTest, isForward: true },
-            reverse: { Component: ReverseVariantsTest, isForward: false }
-        };
-
-        const quizVariant = _.sample(QuizVariants);
-        const QuizComponent = quizVariant.Component;
-        const questionData = this._getQuestionData(word, quizVariant.isForward);
+        const { QuizComponent, questionData } = this._generateQuiz(word);
 
         return (
 
