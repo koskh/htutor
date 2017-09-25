@@ -23,7 +23,7 @@ export default class ReverseVariantsTest extends TemplateClass {
 
         const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
 
-        const foreignWordClass = isRightAnswer ? foreignWordClasses.right :foreignWordClasses.wrong;
+        const foreignWordClass = isRightAnswer ? foreignWordClasses.right : foreignWordClasses.wrong;
         this.setState({ foreignWordClass, isAnswered: true });
 
         this.props.onAnswer(isRightAnswer);
@@ -36,18 +36,20 @@ export default class ReverseVariantsTest extends TemplateClass {
 
         return (
             <div>
-                <div className={cn('btn btn-lg btn-block mb-4', foreignWordClass, 'qa-quiz-place')}>
-                    <div className="row">
-                        <div className="col-2">
+                <div className="d-flex align-items-center justify-content-center quiz-head-height mb-4">
+                    <div className={cn('btn btn-lg btn-block', foreignWordClass, 'qa-quiz-place')}>
+                        <div className="row">
+                            <div className="col-2">
                             &nbsp;
-                        </div>
-                        <div className="col-8 text-truncate qa-quiz-word">
-                            {quizWord}
-                        </div>
-                        <div className="col-2 ">
-                            <SoundBtn urls={sounds} isDisabled={true} ref={soundBtn => { this.soundBtn = soundBtn; }} />
-                        </div>
+                            </div>
+                            <div className="col-8 text-truncate qa-quiz-word">
+                                {quizWord}
+                            </div>
+                            <div className="col-2 ">
+                                <SoundBtn urls={sounds} isDisabled={true} ref={soundBtn => { this.soundBtn = soundBtn; }} />
+                            </div>
 
+                        </div>
                     </div>
                 </div>
 

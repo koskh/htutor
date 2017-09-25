@@ -38,7 +38,7 @@ export default class ForwardVariantsTest extends TemplateClass {
             <div>
                 <div className="row mb-4">
                     <div className="col d-flex align-items-center justify-content-center">
-                        <div className={cn('btn btn-lg btn-block d-flex align-items-center justify-content-center rounded-circle', styles['quiz-place'], foreignWordClass, 'qa-quiz-place')}>
+                        <div className={cn('btn btn-lg btn-block d-flex align-items-center justify-content-center rounded-circle ', styles['quiz-place'], foreignWordClass, 'qa-quiz-place')}>
                             <SoundBtn urls={sounds} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                         </div>
                     </div>
