@@ -11,11 +11,11 @@ import SoundTest from '../../../components/Test/SoundTest';
 
 import generateQuiz from './utilities/generateQuiz';
 
+import type { ComponentStore } from '../store/reducer';
+
 export type QuizVariant = { Component: React.createClass, options: { isForward: boolean, mustHaveSound: boolean } }
 export type QuizVariants = {[key: string]: QuizVariant}
 export type QuestionData = { quizVariants: Array<string>, rightVariants: Array<string>, sounds: Array<string>}
-
-import type { ComponentStore } from '../store/reducer';
 
 type Props = {
     makeFetch: (lessonId: ?string) => void,
