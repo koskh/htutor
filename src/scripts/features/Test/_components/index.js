@@ -13,7 +13,9 @@ import generateQuiz from './utilities/generateQuiz';
 
 import type { ComponentStore } from '../store/reducer';
 
-export type QuizVariant = { Component: React.createClass, options: { isForward: boolean, mustHaveSound: boolean } }
+
+export type QuizOptions = { isForward: boolean, mustHaveSound: boolean, additiveWordsQuantity?: number };
+export type QuizVariant = { Component: React.createClass, options: QuizOptions }
 export type QuizVariants = {[key: string]: QuizVariant}
 export type QuestionData = { quizVariants: Array<string>, rightVariants: Array<string>, sounds: Array<string>}
 

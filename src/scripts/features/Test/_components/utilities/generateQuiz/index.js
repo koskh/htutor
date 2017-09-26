@@ -2,9 +2,17 @@
 
 import _ from 'lodash';
 
-import type {QuizVariant, QuizVariants, QuestionData} from '../../index';
+import type {QuizOptions, QuizVariant, QuizVariants, QuestionData } from '../../index';
 
 export default function generateQuiz(word: TestWord, variants: QuizVariants): {QuizComponent: React$Component<*>, questionData: QuestionData} {
+    const variant = getAppropriateQuizVariant(word, variants);
+    const QuizComponent = variant.Component;
+    const questionData = getQuestionData(word, variant.options);
+
+    return { QuizComponent, questionData };
+}
+
+function getAppropriateQuizVariant(word, variants): QuizVariant {
     let variant: QuizVariant = _.sample(variants);
 
     try {
@@ -16,17 +24,12 @@ export default function generateQuiz(word: TestWord, variants: QuizVariants): {Q
         variant = _.sample(variantsCanWithoutSound);
     }
 
-
-    const QuizComponent = variant.Component;
-    const questionData = getQuestionData(word, variant.options);
-
-    return { QuizComponent, questionData };
+    return variant;
 }
 
-function getQuestionData(word: TestWord, options: {[key: string]: boolean}): QuestionData {
-    const additiveWordsQuantity = 4;
+function getQuestionData(word: TestWord, options: QuizOptions): QuestionData {
     const { native, foreign, shuffledNative, shuffledForeign, sounds } = word;
-    const { isForward } = options;
+    const { isForward, additiveWordsQuantity = 4 } = options;
 
     const quizWord = _.sample(isForward ? foreign : native);
     const rightVariants = isForward ? native : foreign;
