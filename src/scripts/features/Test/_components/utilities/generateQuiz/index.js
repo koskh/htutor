@@ -2,18 +2,22 @@
 
 import _ from 'lodash';
 
-import type {QuizOptions, QuizVariant, QuizVariants, QuestionData } from '../../index';
+import type { QuizOptions, QuizVariant, QuizVariants, QuestionData } from '../../index';
 
-export default function generateQuiz(word: TestWord, variants: QuizVariants): {QuizComponent: React$Component<*>, questionData: QuestionData} {
-    const variant = getAppropriateQuizVariant(word, variants);
+export default function generateQuiz(word: TestWord, variants: QuizVariants, randomFunction: Function = getRandomQuizVariant): {QuizComponent: React$Component<*>, questionData: QuestionData} {
+    const variant = getAppropriateQuizVariant(word, variants, randomFunction);
     const QuizComponent = variant.Component;
     const questionData = getQuestionData(word, variant.options);
 
     return { QuizComponent, questionData };
 }
 
-function getAppropriateQuizVariant(word, variants): QuizVariant {
-    let variant: QuizVariant = _.sample(variants);
+function getRandomQuizVariant(variants: QuizVariants): QuizVariant {
+    return _.sample(variants);
+}
+
+function getAppropriateQuizVariant(word, variants, randomFunction): QuizVariant {
+    let variant: QuizVariant = randomFunction(variants);
 
     try {
         const { mustHaveSound = false } = variant.options;
@@ -21,7 +25,10 @@ function getAppropriateQuizVariant(word, variants): QuizVariant {
             throw new Error('Need other QuizVariant');
     } catch (e) {
         const variantsCanWithoutSound = _.filter(variants, v => { return v.options.mustHaveSound === false; });
-        variant = _.sample(variantsCanWithoutSound);
+        if (!variantsCanWithoutSound.length)
+            throw new Error('GenerateQuiz cant return appropriate quizVariant');
+
+        variant = randomFunction(variantsCanWithoutSound);
     }
 
     return variant;

@@ -16,7 +16,7 @@ import type { ComponentStore } from '../store/reducer';
 
 export type QuizOptions = { isForward: boolean, mustHaveSound?: boolean, additiveWordsQuantity?: number };
 export type QuizVariant = { Component: React.createClass, options: QuizOptions }
-export type QuizVariants = {[key: string]: QuizVariant}
+export type QuizVariants = Array<QuizVariant>
 export type QuestionData = { quizVariants: Array<string>, rightVariants: Array<string>, sounds: Array<string>}
 
 type Props = {
@@ -80,11 +80,11 @@ export default class Test extends React.Component<Props, State> {
 
 
     _generateQuiz(word: TestWord): {QuizComponent: React.createClass, questionData: QuestionData} {
-        const variants: QuizVariants = {
-            forward: { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
-            reverse: { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
-            sound: { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
-        };
+        const variants: QuizVariants = [
+            { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
+            { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
+            { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
+        ];
 
         return generateQuiz(word, variants);
     }
