@@ -16,7 +16,7 @@ function getAppropriateQuizVariant(word, variants): QuizVariant {
     let variant: QuizVariant = _.sample(variants);
 
     try {
-        const { mustHaveSound } = variant.options;
+        const { mustHaveSound = false } = variant.options;
         if (mustHaveSound && !word.sounds.length)
             throw new Error('Need other QuizVariant');
     } catch (e) {
