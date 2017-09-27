@@ -35,7 +35,7 @@
     "no-console": 1,
     "no-empty": [2, { "allowEmptyCatch": true }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "no-underscore-dangle": ["error", { "allow": ["foo_", "_bar"], "allowAfterThis": true }],
+    "no-underscore-dangle": 0,
     "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
     "no-use-before-define": ["error", { "functions": false }],
     "curly": ["error", "multi-or-nest"],

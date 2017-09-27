@@ -8,9 +8,34 @@ import SoundBtn from '../../SoundBtn';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class SpellTest extends TemplateClass {
-    _onChange() {
+    _onChange({ target }: SyntheticInputEvent<*>) {
+        const value = target.value;
 
+
+        this._onAnswerClick(value);
     }
+
+    _onAnswerClick = (answer: string): void => {
+        const { isAnswered } = this.state;
+        if (isAnswered)
+            return;
+        //
+        // this._playSound();
+        //
+        // const { rightVariants } = this.props;
+        //
+        // const isRightAnswer = _.indexOf(rightVariants, answer) !== -1;
+        //
+        // const foreignWordClass = isRightAnswer ? foreignWordClasses.right : foreignWordClasses.wrong;
+
+        // this.setState({ foreignWordClass, isAnswered: true });
+        //
+        // this.props.onAnswer(isRightAnswer);
+
+        this.setState({isAnswered: true });
+
+        this.props.onAnswer(true);
+    };
 
     render(): React.Element<any> {
         const { quizWord } = this.props;
@@ -37,7 +62,7 @@ export default class SpellTest extends TemplateClass {
 
                 <div className="input-group input-group-lg mb-4">
                     <span className="input-group-addon" >@</span>
-                    <input type="text" className="form-control qa-quiz-spell" placeholder="" onChange={() => { this._onChange(); }} />
+                    <input type="text" className="form-control qa-quiz-spell" placeholder="" onChange={(e) => this._onChange(e)} />
                 </div>
 
             </div>

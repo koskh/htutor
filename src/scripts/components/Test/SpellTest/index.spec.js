@@ -37,5 +37,17 @@ describe('<SpellTest />', () => {
         expect(onChangeSpy.called).to.equal(true);
         // expect(onChangeSpy.calledWith(NodeName, ComponentValue)).to.equal(true);
     });
+
+    it('right input call onAnswer(right)', () => {
+        const onAnswerSpy = sinon.spy();
+
+        const wrapper = shallow(<SpellTest {...questionData} onAnswer={onAnswerSpy} />);
+
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.quizWord } });
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.quizWord } });
+
+        expect(onAnswerSpy.calledWith(true)).to.equal(true);
+        expect(onAnswerSpy.calledOnce).to.equal(true);
+    });
 });
 
