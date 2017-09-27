@@ -8,10 +8,7 @@ import SoundBtn from '../../SoundBtn';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class SpellTest extends TemplateClass {
-    input: ?HTMLInputElement = null;
-
     componentDidMount() {
-        this.input && this.input.focus();
         this._playSound();
     }
 
@@ -71,7 +68,7 @@ export default class SpellTest extends TemplateClass {
 
                 <div className="input-group input-group-lg mb-4">
                     <span className="input-group-addon">@</span>
-                    <input type="text" className="form-control qa-quiz-spell" placeholder="" ref={input => { this.input = input; }} onChange={e => this._onChange(e)} />
+                    <input type="text" className="form-control qa-quiz-spell" placeholder="" autoFocus={true} onChange={e => this._onChange(e)} />
                 </div>
 
             </div>
