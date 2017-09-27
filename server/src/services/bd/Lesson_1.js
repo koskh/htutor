@@ -34,7 +34,7 @@ module.exports = {
         { foreign: ['embrace'], native: ['обниматься', 'выбирать', 'заключать в себе, охватывать '], sounds: ['/sounds/e/embrace.ogg'] },
         { foreign: ['impact'], native: ['удар, толчок', 'сильное воздействие'], sounds: ['/sounds/i/impact01.mp3'] },
         { foreign: ['light'], native: ['свет', 'освещение', 'лампа'], sounds: ['/sounds/l/light.ogg'] },
-        { foreign: ['handle'], native: ['рукоять', 'повод, предлог', 'управлять (чем-л.)'], sounds: ['/sounds/h/handle.ogg'] },
+        { foreign: ['handle'], native: ['рукоять', 'повод, предлог', 'управлять (чем-л.), справляться (с чем-л.), обрабатывать (что-л.)'], sounds: ['/sounds/h/handle.ogg'] },
         { foreign: ['ledge'], native: ['полочка', 'выступ'], sounds: ['/sounds/l/ledge.ogg'] },
     ],
     title: 'Lesson 1. Switch board.'

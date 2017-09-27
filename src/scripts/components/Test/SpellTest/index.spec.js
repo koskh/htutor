@@ -15,6 +15,14 @@ const questionData = {
     onAnswer: () => {}
 };
 
+const questionDataWithCompositeRightAnswer = {
+    quizWord: 'TestWord123',
+    rightVariants: ['rightWord (V2, V3)', 'right123123'],
+    quizVariants: ['quiz1', 'right1', 'quiz3'],
+    sounds: '/test/test.mp3',
+    onAnswer: () => {}
+};
+
 describe('<SpellTest />', () => {
     it('renders without errors', () => {
         const wrapper = shallow(<SpellTest />);
@@ -40,14 +48,36 @@ describe('<SpellTest />', () => {
 
     it('right input call onAnswer(right)', () => {
         const onAnswerSpy = sinon.spy();
-
         const wrapper = shallow(<SpellTest {...questionData} onAnswer={onAnswerSpy} />);
 
-        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.quizWord } });
-        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.quizWord } });
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.rightVariants[0] } });
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.rightVariants[1] } });
 
         expect(onAnswerSpy.calledWith(true)).to.equal(true);
         expect(onAnswerSpy.calledOnce).to.equal(true);
+    });
+
+    it('change color quiz-word on right answer', () => {
+        const onAnswerSpy = sinon.spy();
+        const wrapper = shallow(<SpellTest {...questionData} onAnswer={onAnswerSpy} />);
+
+        expect(wrapper.find('.qa-quiz-place').hasClass(foreignWordClasses.default)).to.equal(true);
+
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.rightVariants[0] } });
+        expect(wrapper.find('.qa-quiz-place').hasClass(foreignWordClasses.right)).to.equal(true);
+
+    });
+
+    it('is able to "trimmed" rightVariant to one word', () => {
+        const rightAnswerForCompositedWord = 'rightWord';
+        const onAnswerSpy = sinon.spy();
+        const wrapper = shallow(<SpellTest {...questionDataWithCompositeRightAnswer} onAnswer={onAnswerSpy} />);
+
+        expect(wrapper.find('.qa-quiz-place').hasClass(foreignWordClasses.default)).to.equal(true);
+
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: rightAnswerForCompositedWord } });
+        expect(wrapper.find('.qa-quiz-place').hasClass(foreignWordClasses.right)).to.equal(true);
+
     });
 });
 
