@@ -8,9 +8,6 @@ import SoundBtn from '../../SoundBtn';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class ReverseVariantsTest extends TemplateClass {
-    componentDidMount() {
-
-    }
 
     _onAnswerClick = (answer: string): void => {
         const { isAnswered } = this.state;
