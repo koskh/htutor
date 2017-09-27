@@ -33,6 +33,11 @@ export default class SpellTest extends TemplateClass {
                     </div>
                 </div>
 
+                <div className="input-group">
+                    <span className="input-group-addon" >@</span>
+                    <input type="text" className="form-control qa-quiz-spell" placeholder="" />
+                </div>
+
             </div>
         );
     }

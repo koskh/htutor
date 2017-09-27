@@ -21,7 +21,12 @@ describe('<SpellTest />', () => {
         expect(wrapper).to.have.length(1);
     });
 
+    it('renders props', () => {
+        const wrapper = shallow(<SpellTest {...questionData} />);
 
+        expect(wrapper.find('.qa-quiz-word').contains(questionData.quizWord)).to.equal(true);
+        expect(wrapper.find('.qa-quiz-spell')).to.have.length(1);
+    });
 
 
 });
