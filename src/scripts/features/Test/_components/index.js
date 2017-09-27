@@ -7,6 +7,7 @@ import PendingIndicator from '../../../components/PendingIndicator';
 import ForwardVariantsTest from '../../../components/Test/ForwardVariantsTest';
 import ReverseVariantsTest from '../../../components/Test/ReverseVariantsTest';
 import SoundTest from '../../../components/Test/SoundTest';
+import SpellTest from '../../../components/Test/SpellTest';
 
 
 import generateQuiz from './utilities/generateQuiz';
@@ -81,9 +82,10 @@ export default class Test extends React.Component<Props, State> {
 
     _generateQuiz(word: TestWord): {QuizComponent: React.createClass, questionData: QuestionData} {
         const variants: QuizVariants = [
-            { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
-            { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
-            { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
+            // { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
+            // { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
+            // { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
+            { Component: SpellTest, options: { isForward: false, mustHaveSound: false } },
         ];
 
         return generateQuiz(word, variants);

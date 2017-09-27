@@ -8,7 +8,9 @@ import SoundBtn from '../../SoundBtn';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class SpellTest extends TemplateClass {
+    _onChange() {
 
+    }
 
     render(): React.Element<any> {
         const { quizWord } = this.props;
@@ -33,9 +35,9 @@ export default class SpellTest extends TemplateClass {
                     </div>
                 </div>
 
-                <div className="input-group">
+                <div className="input-group input-group-lg mb-4">
                     <span className="input-group-addon" >@</span>
-                    <input type="text" className="form-control qa-quiz-spell" placeholder="" />
+                    <input type="text" className="form-control qa-quiz-spell" placeholder="" onChange={() => { this._onChange(); }} />
                 </div>
 
             </div>

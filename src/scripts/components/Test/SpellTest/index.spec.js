@@ -28,6 +28,14 @@ describe('<SpellTest />', () => {
         expect(wrapper.find('.qa-quiz-spell')).to.have.length(1);
     });
 
+    it('handles change input', () => {
+        const onChangeSpy = sinon.spy();
+        SpellTest.prototype._onChange = onChangeSpy;
+        const wrapper = shallow(<SpellTest {...questionData} />);
 
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: 'Test' } });
+        expect(onChangeSpy.called).to.equal(true);
+        // expect(onChangeSpy.calledWith(NodeName, ComponentValue)).to.equal(true);
+    });
 });
 
