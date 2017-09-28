@@ -33,6 +33,7 @@ export default class SpellTest extends TemplateClass {
         const isRightAnswer = _.indexOf(trimmedRightAnswers, trimmedAnswer) !== -1;
         const foreignWordClass = isRightAnswer ? foreignWordClasses.right : foreignWordClasses.wrong;
 
+        this.setState({ answer: trimmedAnswer });
 
         if (!isRightAnswer)
             return;
@@ -43,6 +44,11 @@ export default class SpellTest extends TemplateClass {
         this.props.onAnswer(isRightAnswer);
     };
 
+    _onHelpClick() {
+        const { rightVariants } = this.props;
+        const trimmedRightAnswer = _.first(_.split(rightVariants[0], ' ', 1));
+    }
+
     _getPlaceholder(rightVariants: Array<string>): string {
         const trimmedRightAnswer = _.first(_.split(rightVariants[0], ' ', 1));
         return _.replace(trimmedRightAnswer, /./gi, '#');
@@ -50,7 +56,7 @@ export default class SpellTest extends TemplateClass {
 
     render(): React.Element<any> {
         const { quizWord, rightVariants } = this.props;
-        const { foreignWordClass } = this.state;
+        const { foreignWordClass, answer } = this.state;
 
         const placeholder: string = this._getPlaceholder(rightVariants);
 
@@ -74,8 +80,8 @@ export default class SpellTest extends TemplateClass {
                 </div>
 
                 <div className="input-group input-group-lg mb-4">
-                    <span className="input-group-addon">@</span>
-                    <input type="text" className="form-control text-lowercase qa-quiz-spell" placeholder={placeholder} autoFocus={true} onChange={e => this._onChange(e)} />
+                    <span className="input-group-addon qa-quiz-help" onClick={() => this._onHelpClick()}>@</span>
+                    <input type="text" className="form-control text-lowercase qa-quiz-spell" placeholder={placeholder} value={answer} autoFocus={true} onChange={e => this._onChange(e)} />
                 </div>
 
             </div>

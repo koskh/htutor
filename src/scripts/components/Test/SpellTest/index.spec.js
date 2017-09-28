@@ -36,17 +36,27 @@ describe('<SpellTest />', () => {
         expect(wrapper.find('.qa-quiz-spell')).to.have.length(1);
     });
 
-    it('handles change input', () => {
+    it('handles help click', () => {
         const onChangeSpy = sinon.spy();
-        SpellTest.prototype._onChange = onChangeSpy;
+        SpellTest.prototype._onHelpClick = onChangeSpy;
         const wrapper = shallow(<SpellTest {...questionData} />);
 
-        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: 'Test' } });
+        wrapper.find('.qa-quiz-help').simulate('click');
         expect(onChangeSpy.called).to.equal(true);
         // expect(onChangeSpy.calledWith(NodeName, ComponentValue)).to.equal(true);
     });
 
-    it('right input call onAnswer(right)', () => {
+    it('adds letter when click help', () => {
+        const onChangeSpy = sinon.spy();
+        SpellTest.prototype._onHelpClick = onChangeSpy;
+        const wrapper = shallow(<SpellTest {...questionData} />);
+
+        wrapper.find('.qa-quiz-help').simulate('click');
+        expect(wrapper.find('.qa-quiz-help').props().value).to.equal( questionData.rightVariants[0][0]);
+        // expect(onChangeSpy.calledWith(NodeName, ComponentValue)).to.equal(true);
+    });
+
+    it('calls onAnswer(right) on right input ', () => {
         const onAnswerSpy = sinon.spy();
         const wrapper = shallow(<SpellTest {...questionData} onAnswer={onAnswerSpy} />);
 

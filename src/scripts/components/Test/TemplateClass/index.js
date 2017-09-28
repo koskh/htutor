@@ -17,6 +17,7 @@ type Props = {
 }
 
 type State = {
+    answer: string,
     foreignWordClass: string,
     isAnswered: boolean
 }
@@ -39,6 +40,7 @@ export class TemplateClass extends React.Component<Props, State> {
     props: Props;
 
     state: State = {
+        answer: '',
         foreignWordClass: foreignWordClasses.default,
         isAnswered: false
     };
