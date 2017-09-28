@@ -36,9 +36,9 @@ describe('<SpellTest />', () => {
         expect(wrapper.find('.qa-quiz-spell')).to.have.length(1);
     });
 
+
     it('handles help click', () => {
-        const onChangeSpy = sinon.spy();
-        SpellTest.prototype._onHelpClick = onChangeSpy;
+        const onChangeSpy = sinon.spy(SpellTest.prototype, '_onHelpClick');
         const wrapper = shallow(<SpellTest {...questionData} />);
 
         wrapper.find('.qa-quiz-help').simulate('click');
@@ -47,12 +47,33 @@ describe('<SpellTest />', () => {
     });
 
     it('adds letter when click help', () => {
-        const onChangeSpy = sinon.spy();
-        SpellTest.prototype._onHelpClick = onChangeSpy;
         const wrapper = shallow(<SpellTest {...questionData} />);
 
         wrapper.find('.qa-quiz-help').simulate('click');
-        expect(wrapper.find('.qa-quiz-help').props().value).to.equal( questionData.rightVariants[0][0]);
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(questionData.rightVariants[0][0]);
+        wrapper.find('.qa-quiz-help').simulate('click');
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(`${questionData.rightVariants[0][0]}${questionData.rightVariants[0][1]}`);
+    });
+
+    it('adds letter when click help no more then right word', () => {
+        const wrapper = shallow(<SpellTest {...questionData} />);
+
+       for (let i = 0; i < questionData.rightVariants[0].length; i += 1)
+            wrapper.find('.qa-quiz-help').simulate('click');
+
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(questionData.rightVariants[0]);
+
+        // one more click
+        wrapper.find('.qa-quiz-help').simulate('click');
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(questionData.rightVariants[0]);
+    });
+
+    it('handles change input', () => {
+        const onChangeSpy = sinon.spy(SpellTest.prototype, '_onChange');
+        const wrapper = shallow(<SpellTest {...questionData} />);
+
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: 'Test' } });
+        expect(onChangeSpy.called).to.equal(true);
         // expect(onChangeSpy.calledWith(NodeName, ComponentValue)).to.equal(true);
     });
 
@@ -75,7 +96,6 @@ describe('<SpellTest />', () => {
 
         wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: questionData.rightVariants[0] } });
         expect(wrapper.find('.qa-quiz-place').hasClass(foreignWordClasses.right)).to.equal(true);
-
     });
 
     it('is able to "trimmed" rightVariant to one word', () => {
@@ -87,7 +107,6 @@ describe('<SpellTest />', () => {
 
         wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: rightAnswerForCompositedWord } });
         expect(wrapper.find('.qa-quiz-place').hasClass(foreignWordClasses.right)).to.equal(true);
-
     });
 });
 

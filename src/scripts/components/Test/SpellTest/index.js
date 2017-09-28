@@ -47,6 +47,15 @@ export default class SpellTest extends TemplateClass {
     _onHelpClick() {
         const { rightVariants } = this.props;
         const trimmedRightAnswer = _.first(_.split(rightVariants[0], ' ', 1));
+
+        const {answer} = this.state;
+        const answeredLength = answer.length;
+
+        if (answer.length === trimmedRightAnswer.length)
+            return;
+
+        const helpedAnswer = answer + trimmedRightAnswer[answeredLength];
+        this.setState({answer: helpedAnswer});
     }
 
     _getPlaceholder(rightVariants: Array<string>): string {
