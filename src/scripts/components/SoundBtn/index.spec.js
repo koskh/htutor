@@ -12,13 +12,14 @@ describe('<SoundBtn />', () => {
     });
 
     it('simulates click event "Play sound"', () => {
-        const spy = sinon.spy();
-        SoundBtn.prototype.playSound = spy;
+        const spyOnSoundClick = sinon.spy(SoundBtn.prototype, '_onSoundClick');
+        const spyPlaySound = sinon.spy(SoundBtn.prototype, 'playSound');
 
         const component = shallow(<SoundBtn />);
         component.find('button').simulate('click');
 
-        expect(spy.calledOnce).to.equal(true);
+        expect(spyOnSoundClick.calledOnce).to.equal(true);
+        expect(spyPlaySound.calledOnce).to.equal(true);
     });
 });
 

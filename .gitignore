@@ -1,4 +1,6 @@
-.idea
-node_modules
-output
-flow-typed
+.idea/
+node_modules/
+output/
+flow-typed/
+.nyc_output/
+/coverage/
