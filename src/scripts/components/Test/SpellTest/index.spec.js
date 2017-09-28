@@ -58,7 +58,7 @@ describe('<SpellTest />', () => {
     it('adds letter when click help no more then right word', () => {
         const wrapper = shallow(<SpellTest {...questionData} />);
 
-       for (let i = 0; i < questionData.rightVariants[0].length; i += 1)
+        for (let i = 0; i < questionData.rightVariants[0].length; i += 1)
             wrapper.find('.qa-quiz-help').simulate('click');
 
         expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(questionData.rightVariants[0]);
@@ -66,6 +66,16 @@ describe('<SpellTest />', () => {
         // one more click
         wrapper.find('.qa-quiz-help').simulate('click');
         expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(questionData.rightVariants[0]);
+    });
+
+    it('calls onAnswer(right) on all helped letters', () => {
+        const onAnswerSpy = sinon.spy();
+        const wrapper = shallow(<SpellTest {...questionData} onAnswer={onAnswerSpy} />);
+
+        for (let i = 0; i < questionData.rightVariants[0].length; i += 1)
+            wrapper.find('.qa-quiz-help').simulate('click');
+
+        expect(onAnswerSpy.calledWith(true)).to.equal(true);
     });
 
     it('handles change input', () => {
