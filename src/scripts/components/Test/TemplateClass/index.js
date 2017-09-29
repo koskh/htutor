@@ -52,7 +52,7 @@ export class TemplateClass extends React.Component<Props, State> {
         this.soundBtn && this.soundBtn.playSound();
     }
 
-    _onAnswerClick = (answer: string): void => {
+    _answerHandling = (answer: string): void => {
         throw new Error('AbstractTest component. Yoy need to override.');
     };
 

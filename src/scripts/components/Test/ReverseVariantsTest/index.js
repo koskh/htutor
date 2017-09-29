@@ -9,7 +9,7 @@ import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class ReverseVariantsTest extends TemplateClass {
 
-    _onAnswerClick = (answer: string): void => {
+    _answerHandling = (answer: string): void => {
         const { isAnswered } = this.state;
         if (isAnswered)
             return;
@@ -50,7 +50,7 @@ export default class ReverseVariantsTest extends TemplateClass {
                     </div>
                 </div>
 
-                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate qa-quiz-variant" onClick={() => this._onAnswerClick(v)}>{v}</button>)}
+                {_.map(quizVariants, (v, i) => <button key={i} type="button" className="btn btn-light btn-lg btn-block mb-4 text-truncate qa-quiz-variant" onClick={() => this._answerHandling(v)}>{v}</button>)}
 
             </div>
         );
