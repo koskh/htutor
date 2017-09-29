@@ -4,14 +4,9 @@ import _ from 'lodash';
 import * as React from 'react';
 import cn from 'classnames';
 
-import SoundBtn from '../../SoundBtn';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class SpellTest extends TemplateClass {
-    componentDidMount() {
-        this._playSound();
-    }
-
     _onChange({ target }: SyntheticInputEvent<*>) {
         const value = target.value;
 
@@ -47,16 +42,27 @@ export default class SpellTest extends TemplateClass {
     _onHelpClick() {
         const { rightVariants } = this.props;
         const trimmedRightAnswer = _.first(_.split(rightVariants[0], ' ', 1));
-
         const { answer } = this.state;
-        const answeredLength = answer.length;
 
-        if (answer.length === trimmedRightAnswer.length)
-            return;
+        const replacePosition = getWrongPosition(answer, trimmedRightAnswer);
 
-        const helpedAnswer = answer + trimmedRightAnswer[answeredLength];
-        this.setState({ answer: helpedAnswer });
+        const answerPart = answer.substr(0, replacePosition);
+        const helpedPart = trimmedRightAnswer[replacePosition];
+
+        const helpedAnswer = answerPart + helpedPart;
         this._answerHandling(helpedAnswer);
+
+
+        function getWrongPosition(word: string, rightWord: string): number {
+            let position = 0;
+
+            for (position; position < word.length; position += 1) {
+                if (word[position] !== rightWord[position])
+                    break;
+            }
+
+            return position;
+        }
     }
 
     _getPlaceholder(rightVariants: Array<string>): string {

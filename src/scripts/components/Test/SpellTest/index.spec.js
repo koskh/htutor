@@ -55,6 +55,22 @@ describe('<SpellTest />', () => {
         expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(`${questionData.rightVariants[0][0]}${questionData.rightVariants[0][1]}`);
     });
 
+    it('change fist wrong letter when click help', () => {
+        const wrapper = shallow(<SpellTest {...questionData} />);
+        const firstWrongLetter = 't';
+        const secondWrongLetter = 'y';
+
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: firstWrongLetter } });
+        wrapper.find('.qa-quiz-help').simulate('click');
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(questionData.rightVariants[0][0]);
+
+        wrapper.find('.qa-quiz-spell').simulate('change', { target: { value: `${firstWrongLetter}${secondWrongLetter}` } });
+        wrapper.find('.qa-quiz-help').simulate('click');
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(`${questionData.rightVariants[0][0]}`);
+        wrapper.find('.qa-quiz-help').simulate('click');
+        expect(wrapper.find('.qa-quiz-spell').props().value).to.equal(`${questionData.rightVariants[0][0]}${questionData.rightVariants[0][1]}`);
+    });
+
     it('adds letter when click help no more then right word', () => {
         const wrapper = shallow(<SpellTest {...questionData} />);
 
