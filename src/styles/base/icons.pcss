@@ -1,8 +1,15 @@
 .icon {
   display: inline-block;
+  position: relative;
 
   &-sound {
     background: svg-load('../svg/sound.svg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &-text {
+    background: svg-load('../svg/text.svg') !important;
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -24,6 +31,20 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  &-flashlight {
+    background: svg-load('../svg/flashlight.svg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
+.icon-3 {
+  width: 1rem;
+  height: 1rem;
+}
 
+.icon-4 {
+  width: 1.5rem;
+  height: 1.5rem;
+}

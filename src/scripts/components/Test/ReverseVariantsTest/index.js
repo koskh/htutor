@@ -42,7 +42,7 @@ export default class ReverseVariantsTest extends TemplateClass {
                             <div className="col-8 text-truncate qa-quiz-word">
                                 {quizWord}
                             </div>
-                            <div className="col-2 ">
+                            <div className="col-2 d-flex align-items-center justify-content-center">
                                 <SoundBtn urls={sounds} isDisabled={true} ref={soundBtn => { this.soundBtn = soundBtn; }} />
                             </div>
 

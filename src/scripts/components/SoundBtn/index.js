@@ -31,7 +31,7 @@ export default class SoundBtn extends React.Component<Props> {
     render(): React.Element<any> {
         const { isDisabled, urls } = this.props;
         return (
-            <button type="button" className={cn('btn btn-secondary', styles['sound-btn'], 'icon-sound')} disabled={isDisabled || !urls.length} onClick={() => this._onSoundClick()} />
+            <button type="button" className={cn('btn btn-secondary border-0 icon-4 icon-sound')} disabled={isDisabled || !urls.length} onClick={() => this._onSoundClick()} />
         );
     }
 }

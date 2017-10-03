@@ -44,7 +44,8 @@
     "react/jsx-boolean-value": ["error", "always"],
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
-    "react/jsx-indent": [1, 4]
+    "react/jsx-indent": [1, 4],
+    "react/jsx-indent-props": 0
   },
   "settings": {
     "flowtype": {

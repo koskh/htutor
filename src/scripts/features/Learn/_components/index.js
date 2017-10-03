@@ -72,11 +72,11 @@ export default class Test extends React.Component<Props> {
                     (
                         <div className="relative btn btn-light btn-lg btn-block text-left" key={i}>
                             <div className="row">
-                                <div className="col-9">
+                                <div className="col-10">
                                     <div>{v.foreign.join(',')}</div>
                                     <div className="fs-3 text-wrap">{v.native.join(' / ')}</div>
                                 </div>
-                                <div className="col-3 align-self-center text-right ">
+                                <div className="col-2 align-self-center text-center">
                                     <SoundBtn urls={v.sounds} isDisabled={!v.sounds.length} />
                                 </div>
                             </div>

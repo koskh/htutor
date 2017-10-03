@@ -78,9 +78,9 @@ export default class Test extends React.Component<Props> {
                         <div className="btn btn-light btn-lg btn-block mb-2 text-left" key={i}>
                             <div className="row " >
                                 <div className="col-8 text-truncate">{v.title}</div>
-                                <div className="col-4 text-right">
-                                    <button type="button" className={cn('btn btn-secondary', styles['icon-btn'], 'mr-3 icon-blackboard')} onClick={() => this.onLearnClick(v.id)} />
-                                    <button type="button" className={cn('btn btn-secondary', styles['icon-btn'], 'icon-shuffle')} onClick={() => this.onTestClick(v.id)} />
+                                <div className="col-4 d-flex justify-content-end align-items-center">
+                                    <button type="button" className={cn('btn btn-secondary', 'mr-3 border-0 icon-4 icon-text')} onClick={() => this.onLearnClick(v.id)} />
+                                    <button type="button" className={cn('btn btn-secondary', 'border-0 icon-4 icon-shuffle')} onClick={() => this.onTestClick(v.id)} />
                                 </div>
                             </div>
                         </div>

@@ -7,9 +7,18 @@ import cn from 'classnames';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
 export default class SpellTest extends TemplateClass {
+    input: ?HTMLElement = null;
+
+    componentDidMount() {
+        this._setInputFocus();
+    }
+
+    _setInputFocus() {
+        this.input && this.input.focus();
+    }
+
     _onChange({ target }: SyntheticInputEvent<*>) {
         const value = target.value;
-
         this._answerHandling(value);
     }
 
@@ -29,12 +38,12 @@ export default class SpellTest extends TemplateClass {
         const foreignWordClass = isRightAnswer ? foreignWordClasses.right : foreignWordClasses.wrong;
 
         this.setState({ answer: trimmedAnswer });
+        this._setInputFocus();
 
         if (!isRightAnswer)
             return;
 
         // this._playSound();
-
         this.setState({ foreignWordClass, isAnswered: true });
         this.props.onAnswer(isRightAnswer);
     };
@@ -96,8 +105,21 @@ export default class SpellTest extends TemplateClass {
                 </div>
 
                 <div className="input-group input-group-lg mb-4">
-                    <span className="input-group-addon qa-quiz-help" onClick={() => this._onHelpClick()}>@</span>
-                    <input type="text" className="form-control text-lowercase qa-quiz-spell" placeholder={placeholder} value={answer} autoFocus={true} onChange={e => this._onChange(e)} />
+                    <span className="input-group-addon qa-quiz-help" onClick={() => this._onHelpClick()}>
+                        <button type="button" className="btn border-0 icon icon-4 icon-flashlight" />
+                    </span>
+                    <input
+                        type="text"
+                        className="form-control text-lowercase qa-quiz-spell"
+                        placeholder={placeholder}
+                        value={answer}
+                        ref={input => {
+                            this.input = input;
+                        }}
+                        onChange={e => {
+                            this._onChange(e);
+                        }}
+                    />
                 </div>
 
             </div>

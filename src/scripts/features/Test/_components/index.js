@@ -82,9 +82,9 @@ export default class Test extends React.Component<Props, State> {
 
     _generateQuiz(word: TestWord): {QuizComponent: React.createClass, questionData: QuestionData} {
         const variants: QuizVariants = [
-            // { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
-            // { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
-            // { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
+            { Component: ForwardVariantsTest, options: { isForward: true, mustHaveSound: false } },
+            { Component: ReverseVariantsTest, options: { isForward: false, mustHaveSound: false } },
+            { Component: SoundTest, options: { isForward: true, mustHaveSound: true } },
             { Component: SpellTest, options: { isForward: false, mustHaveSound: false } },
         ];
 
