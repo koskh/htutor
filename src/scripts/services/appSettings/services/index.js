@@ -1,11 +1,14 @@
 // @flow
 
 const defaultSettings = {
-    currentBlockId: 1
+    id: 999,
+    data: {
+        currentBlockId: 1
+    }
 };
 
 export function getAppSettings(options: {} = {}): Promise<any> {
-    const {} = options;
+    // const {} = options;
     return new Promise((resolve, error) => {
         setTimeout(() => resolve(defaultSettings), 2000);
     });

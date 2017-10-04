@@ -15,7 +15,7 @@ import '../styles/global.pcss';
 import history from './services/history';
 import Reducers from './store/reducers';
 
-import { getAppSettings } from './services/settings';
+import { makeFetch as getAppSettingsAction } from './services/appSettings/store/actions/fetch';
 
 import DefaultLayout from './layouts/Default';
 
@@ -38,11 +38,11 @@ const store = createStore(
 
 async function applicationStart() {
     try {
-        const settings = await getAppSettings();
+        const settingsThunkAction = await getAppSettingsAction();
+        await settingsThunkAction(store.dispatch);
 
         ReactDOM.render(
             <Provider store={store}>
-                {/* ConnectedRouter will use the store from Provider automatically */}
                 <ConnectedRouter history={history}>
                     <Switch>
                         <Route path="/" component={DefaultLayout} />
@@ -52,8 +52,8 @@ async function applicationStart() {
             document.getElementById('root')
         );
     } catch (e) {
-        console.log('Cant get appSettings');
+        console.log('Cant get application settings');
     }
-};
+}
 
 applicationStart();
