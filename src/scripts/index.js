@@ -15,12 +15,14 @@ import '../styles/global.pcss';
 import history from './services/history';
 import Reducers from './store/reducers';
 
+import { getAppSettings } from './services/settings';
+
 import DefaultLayout from './layouts/Default';
 
 
 const routerMiiddleware = routerMiddleware(history);
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 const preloadedState = process.env.NODE_ENV !== 'production' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || {} : {};
 
 //
@@ -33,14 +35,25 @@ const store = createStore(
     applyMiddleware(routerMiiddleware, thunkMiddleware)
 );
 
-ReactDOM.render(
-    <Provider store={store}>
-        {/* ConnectedRouter will use the store from Provider automatically */}
-        <ConnectedRouter history={history}>
-            <Switch>
-                <Route path="/" component={DefaultLayout} />
-            </Switch>
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById('root')
-);
+
+async function applicationStart() {
+    try {
+        const settings = await getAppSettings();
+
+        ReactDOM.render(
+            <Provider store={store}>
+                {/* ConnectedRouter will use the store from Provider automatically */}
+                <ConnectedRouter history={history}>
+                    <Switch>
+                        <Route path="/" component={DefaultLayout} />
+                    </Switch>
+                </ConnectedRouter>
+            </Provider>,
+            document.getElementById('root')
+        );
+    } catch (e) {
+        console.log('Cant get appSettings');
+    }
+};
+
+applicationStart();

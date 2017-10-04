@@ -71,7 +71,7 @@ export default class Test extends React.Component<Props> {
         return (
 
             <article>
-                <h4 className="text-center">Список доступных уроков</h4>
+                <h4 className="text-center">Изучаемый блок слов</h4>
 
                 {_.map((data: Array<Lesson>), (v, i) =>
                     (

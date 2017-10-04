@@ -1,20 +1,14 @@
 // @flow
 const _ = require('lodash');
 
-const Lesson1 = require('./bd/Lesson_1');
-const Lesson2 = require('./bd/Lesson_2');
-const Lesson3 = require('./bd/Lesson_3');
-const Lesson4 = require('./bd/Lesson_4');
-const Lesson5 = require('./bd/Lesson_5');
+const LessonBlock1 = require('./bd/block_1/');
 
-// eslint-disable-next-line
-const lessons: Array<Lesson> = [
-    Lesson1,
-    Lesson2,
-    Lesson3,
-    Lesson4,
-    Lesson5,
+const LessonBlocks = [
+    LessonBlock1
 ];
+
+const lessons = LessonBlock1.lessons;
+
 
 let AllNatives: Array<string> = [];
 _.each(lessons, lesson => {
