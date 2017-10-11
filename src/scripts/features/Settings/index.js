@@ -1,4 +1,4 @@
-// @flow
+// @flowfix after  deploy
 import { connect } from 'react-redux';
 
 import { makeFetch, cancelFetch} from './store/actions/fetch';

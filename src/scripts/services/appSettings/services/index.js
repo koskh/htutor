@@ -10,7 +10,7 @@ const defaultSettings = {
 export function getAppSettings(options: {} = {}): Promise<any> {
     // const {} = options;
     return new Promise((resolve, error) => {
-        setTimeout(() => resolve(defaultSettings), 2000);
+        setTimeout(() => resolve(defaultSettings), 0);
     });
 }
 

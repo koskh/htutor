@@ -16,6 +16,7 @@ type Props = {
     makeFetch: Function,
     cancelFetch: Function,
     homeComponentStore: ComponentStore,
+    settingsStore: ComponentStore,
     history: any
 }
 
@@ -35,7 +36,8 @@ export default class Test extends React.Component<Props> {
     }
 
     componentDidMount() {
-        this.props.makeFetch();
+        const blockId = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId; // TODO: refneed
+        this.props.makeFetch(blockId);
     }
 
     componentWillUnmount() {

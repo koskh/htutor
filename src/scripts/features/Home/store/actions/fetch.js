@@ -14,12 +14,12 @@ export const failure: ThunkAction = createAction(FETCH_FAILURE);
 
 const Requests: Array<AjaxRequest> = [];
 
-export function makeFetch(): Function {
+export function makeFetch(blockId: number): Function {
     return async (dispatch: Dispatch): Promise<any> => {
         dispatch(request({ error: null }));
 
         try {
-            const request1 = bd.lessons();
+            const request1 = bd.lessons({blockId});
             Requests.push(request1);
             const response = await request1.promise;
 
