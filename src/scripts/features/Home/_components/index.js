@@ -79,13 +79,14 @@ export default class Test extends React.Component<Props> {
         // const word: TestWord = data.words[indexCurrentWord];
         // const questionData = this._generateQuestionData(word);
 
+        const { title, lessons } = data;
 
         return (
 
             <article>
-                <h4 className="text-center">Изучаемый блок слов</h4>
+                <h4 className="text-center">{title}</h4>
 
-                {_.map((data: Array<Lesson>), (v, i) =>
+                {_.map((lessons: Array<Lesson>), (v, i) =>
                     (
                         <div className="btn btn-light btn-lg btn-block mb-2 text-left" key={i}>
                             <div className="row " >

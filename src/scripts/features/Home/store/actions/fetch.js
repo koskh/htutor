@@ -19,7 +19,9 @@ export function makeFetch(blockId: number): Function {
         dispatch(request({ error: null }));
 
         try {
-            const request1 = bd.lessons({blockId});
+            // const request0 = bd.blocks({ blockId });
+
+            const request1 = bd.blocks({ blockId });
             Requests.push(request1);
             const response = await request1.promise;
 
