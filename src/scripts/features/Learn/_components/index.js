@@ -11,12 +11,14 @@ import PendingIndicator from '../../../components/PendingIndicator';
 
 
 import type { ComponentStore } from '../store/reducer';
+import type { SettingsStore } from '../../../services/appSettings/store/reducer';
 
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
     resetStore: Function,
     learnComponentStore: ComponentStore,
+    settingsStore: SettingsStore,
     match: any
 }
 
@@ -35,8 +37,11 @@ export default class Test extends React.Component<Props> {
     }
 
     componentDidMount() {
+        const blockIdFromSettings = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId; // TODO: refneed
+        const blockId = this.props.match.params.blockId || blockIdFromSettings;
+
         const lessonId = this.props.match.params.lessonId;
-        this.props.makeFetch(lessonId);
+        this.props.makeFetch(blockId, lessonId);
     }
 
     componentWillUnmount() {

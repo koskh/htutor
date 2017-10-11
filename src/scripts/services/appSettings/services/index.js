@@ -1,7 +1,6 @@
 // @flow
 
 const defaultSettings = {
-    id: 999,
     data: {
         currentBlockId: 1
     }

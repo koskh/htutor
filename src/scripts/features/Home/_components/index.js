@@ -11,13 +11,15 @@ import PendingIndicator from '../../../components/PendingIndicator';
 import styles from './index.pcss';
 
 import type { ComponentStore } from '../store/reducer';
+import type { SettingsStore } from '../../../services/appSettings/store/reducer';
 
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
     homeComponentStore: ComponentStore,
-    settingsStore: ComponentStore,
-    history: any
+    settingsStore: SettingsStore,
+    history: any,
+    match: any
 }
 
 // type State = {
@@ -36,7 +38,7 @@ export default class Test extends React.Component<Props> {
     }
 
     componentDidMount() {
-        const blockId = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId; // TODO: refneed
+        const blockId = this.getBlockId();
         this.props.makeFetch(blockId);
     }
 
@@ -45,11 +47,19 @@ export default class Test extends React.Component<Props> {
     }
 
     onLearnClick(lessonId: number) {
-        this.props.history.push(`/learn/${lessonId}`);
+        const blockId = this.getBlockId();
+        this.props.history.push(`/learn/${blockId}/${lessonId}`);
     }
 
     onTestClick(lessonId: number) {
-        this.props.history.push(`/test/${lessonId}`);
+        const blockId = this.getBlockId();
+        this.props.history.push(`/test/${blockId}/${lessonId}`);
+    }
+
+    getBlockId() {
+        const blockIdFromSettings = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId; // TODO: refneed
+        const blockId = this.props.match.params.blockId || blockIdFromSettings;
+        return blockId;
     }
 
     render() {

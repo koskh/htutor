@@ -17,6 +17,23 @@ router.get('/random', (req: express$Request, res: express$Response) => {
     res.json(respond);
 });
 
+router.get('/:lessonBlockId/randomLesson', (req: express$Request, res: express$Response) => {
+    const respond: ServerRespond = {};
+    const blockId = Number.parseInt(req.params.lessonBlockId, 10);
+
+    if (Number.isNaN(blockId)) {
+        res.status(400);
+        respond.error = 'Неверные входные данные';
+        res.json(respond);
+        return;
+    }
+
+    const lessonId = getRandomLessonId(blockId);
+
+    respond.data = { blockId, lessonId };
+    res.json(respond);
+});
+
 router.get('/:lessonBlockId?', (req: express$Request, res: express$Response) => {
     const respond: ServerRespond = {};
     const lessonBlockId = Number.parseInt(req.params.lessonBlockId, 10);

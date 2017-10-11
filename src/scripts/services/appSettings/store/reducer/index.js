@@ -2,17 +2,21 @@
 import * as types from '../constants';
 import { createReducer, nextState } from '../../../../store/utilities/index';
 
-export type ComponentStore = {
-    id: ?any,
-    data: ?any,
+export type SettingsStore = {
+    id: number,
+    data: {
+        currentBlockId: number
+    },
     error: ?any,
     isPending: boolean,
     isUpdating: boolean
 }
 
-const initialState: ComponentStore = {
-    id: null,
-    data: null,
+const initialState: SettingsStore = {
+    id: 0,
+    data: {
+        currentBlockId: 0
+    },
     error: null,
     isPending: true,
     isUpdating: false

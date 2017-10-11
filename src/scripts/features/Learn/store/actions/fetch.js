@@ -14,20 +14,22 @@ export const cancel: ThunkAction = createAction(FETCH_CANCEL);
 
 const Requests: Array<AjaxRequest> = [];
 
-export function makeFetch(lessonId: number): Function {
+export function makeFetch(blockId: number, lessonId: number): Function {
     return async (dispatch: Dispatch): Promise<any> => {
         dispatch(request({ error: null }));
 
         try {
             if (!lessonId) {
-                const requestRandomId = bd.randomLessonId();
-                Requests.push(requestRandomId);
-                const responseRandomId = await requestRandomId.promise;
-                //eslint-disable-next-line
-                lessonId = responseRandomId.data.data.id;
+                const randomLesson = bd.randomLesson({blockId});
+                Requests.push(randomLesson);
+                const responseRandomLesson = await randomLesson.promise;
+                // eslint-disable-next-line
+                // blockId = responseRandomLesson.data.data.blockId;
+                // eslint-disable-next-line
+                lessonId = responseRandomLesson.data.data.lessonId;
             }
 
-            const requestLesson = bd.lesson({ lessonId });
+            const requestLesson = bd.lesson({ blockId, lessonId });
             Requests.push(requestLesson);
             const response = await requestLesson.promise;
 

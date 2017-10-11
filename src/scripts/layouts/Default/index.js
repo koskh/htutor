@@ -20,9 +20,9 @@ const DefaultLayout = () => {
             <main className="container">
                 <Switch>
                     <Route exact={true} path="/" component={Home} />
-                    <Route path="/home" component={Home} />
-                    <Route path="/learn/:lessonId?" component={Learn} />
-                    <Route path="/test/:lessonId?" component={Test} />
+                    <Route path="/home/:blockId?" component={Home} />
+                    <Route path="/learn/:blockId?/:lessonId?" component={Learn} />
+                    <Route path="/test/:blockId?/:lessonId?" component={Test} />
                     <Route component={NotFound} />
                 </Switch>
             </main>
