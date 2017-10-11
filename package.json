@@ -89,7 +89,7 @@
     "test": "mocha --require mocha.setup.js src/**/*.spec.js --reporter progress",
     "webpack-watch": "mkdir -p output/static && rimraf output/static/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --watch  --config webpack/webpack.debug.config.js",
     "server-start": "mkdir -p output/static && flow-remove-types --pretty --out-dir output server/src/ && node output/index.js",
-    "build:debug": "mkdir -p output/static &&/static && rimraf output/static/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --config webpack/webpack.debug.config.js",
+    "build:debug": "mkdir -p output/static && rimraf output/static/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --config webpack/webpack.debug.config.js",
     "build:release": "cross-env NODE_ENV=production && mkdir -p output/static && rimraf build/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --config webpack/webpack.release.config.js",
     "first-step": "flow-typed install && mkdir -p output/static",
     "start": "npm run build:release && npm run server-start"
