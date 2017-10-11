@@ -6,33 +6,46 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 
-const { getLessons, getLesson, getRandomLessonId, getTestLesson } = require('../../services/lessons');
+const { getLessons, getLesson, getRandomBlockId, getRandomLessonId, getTestLesson } = require('../../services/lessons');
 
 
-router.get('/', (req: express$Request, res: express$Response) => {
+router.get('/random', (req: express$Request, res: express$Response) => {
     const respond: ServerRespond = {};
-    respond.data = getLessons();
+    const blockId = getRandomBlockId();
+    const lessonId = getRandomLessonId(blockId);
+    respond.data = { blockId, lessonId };
     res.json(respond);
 });
 
-router.get('/randomId', (req: express$Request, res: express$Response) => {
+router.get('/:lessonBlockId?', (req: express$Request, res: express$Response) => {
     const respond: ServerRespond = {};
-    respond.data = { id: getRandomLessonId() };
-    res.json(respond);
-});
+    const lessonBlockId = Number.parseInt(req.params.lessonBlockId, 10);
 
-router.get('/:lessonId?', (req: express$Request, res: express$Response) => {
-    const respond: ServerRespond = {};
-    const lessonId = Number.parseInt(req.params.lessonId, 10);
-
-    if (Number.isNaN(lessonId)) {
+    if (Number.isNaN(lessonBlockId)) {
         res.status(400);
         respond.error = 'Неверные входные данные';
         res.json(respond);
         return;
     }
 
-    const lesson = getLesson(lessonId);
+    respond.data = getLessons(lessonBlockId);
+    res.json(respond);
+});
+
+router.get('/:lessonBlockId/:lessonId?', (req: express$Request, res: express$Response) => {
+    const respond: ServerRespond = {};
+    const lessonBlockId = Number.parseInt(req.params.lessonBlockId, 10);
+    const lessonId = Number.parseInt(req.params.lessonId, 10);
+
+
+    if (Number.isNaN(lessonBlockId) || Number.isNaN(lessonId)) {
+        res.status(400);
+        respond.error = 'Неверные входные данные';
+        res.json(respond);
+        return;
+    }
+
+    const lesson = getLesson(lessonBlockId, lessonId);
 
     if (!lesson) {
         res.status(400);
@@ -45,18 +58,19 @@ router.get('/:lessonId?', (req: express$Request, res: express$Response) => {
     res.json(respond);
 });
 
-router.get('/:lessonId/test', (req: express$Request, res: express$Response) => {
+router.get('/:lessonBlockId/:lessonId/test', (req: express$Request, res: express$Response) => {
     const respond: ServerRespond = { };
+    const lessonBlockId = Number.parseInt(req.params.lessonBlockId, 10);
     const lessonId = Number.parseInt(req.params.lessonId, 10);
 
-    if (Number.isNaN(lessonId)) {
+    if (Number.isNaN(lessonBlockId) || Number.isNaN(lessonId)) {
         res.status(400);
         respond.error = 'Неверные входные данные';
         res.json(respond);
         return;
     }
 
-    const testLesson = getTestLesson(lessonId);
+    const testLesson = getTestLesson(lessonBlockId, lessonId);
 
     if (!testLesson) {
         res.status(400);
