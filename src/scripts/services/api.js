@@ -45,7 +45,7 @@ export const bd: {[string]: Api} = {
     lessons: options => createAjaxRequest('lessons', options.blockId)(),
     randomLesson: options => createAjaxRequest('randomLesson', options.blockId)(),
     lesson: options => createAjaxRequest('lesson', options.blockId, options.lessonId)(options),
-    lessonTest: options => createAjaxRequest('lesson/test', options.lessonId)(options)
+    lessonTest: options => createAjaxRequest('lesson/test', options.blockId, options.lessonId)(options)
     // references2: options => createAjaxRequest('references2', options.userId)(options),
 };
 

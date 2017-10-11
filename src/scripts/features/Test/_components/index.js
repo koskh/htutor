@@ -13,7 +13,7 @@ import SpellTest from '../../../components/Test/SpellTest';
 import generateQuiz from './utilities/generateQuiz';
 
 import type { ComponentStore } from '../store/reducer';
-
+import type { SettingsStore } from '../../../services/appSettings/store/reducer';
 
 export type QuizOptions = { isForward: boolean, mustHaveSound?: boolean, additiveWordsQuantity?: number };
 export type QuizVariant = { Component: React.createClass, options: QuizOptions }
@@ -25,6 +25,7 @@ type Props = {
     cancelFetch: () => void,
     resetStore: () => void,
     testComponentStore: ComponentStore,
+    settingsStore: SettingsStore,
     history: any,
     match: any
 }
@@ -46,8 +47,9 @@ export default class Test extends React.Component<Props, State> {
     }
 
     componentDidMount() {
+        const blockId = this.getBlockId();
         const lessonId: ?string = this.props.match.params.lessonId;
-        this.props.makeFetch(lessonId);
+        this.props.makeFetch(blockId, lessonId);
     }
 
     componentWillUnmount() {
@@ -78,6 +80,12 @@ export default class Test extends React.Component<Props, State> {
             this.onNextClick();
         }, timeNextQuestion);
     };
+
+    getBlockId() {
+        const blockIdFromSettings = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId; // TODO: refneed
+        const blockId = this.props.match.params.blockId || blockIdFromSettings;
+        return blockId;
+    }
 
 
     _generateQuiz(word: TestWord): {QuizComponent: React.createClass, questionData: QuestionData} {

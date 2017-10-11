@@ -24,8 +24,6 @@ export function makeFetch(blockId: number, lessonId: number): Function {
                 Requests.push(randomLesson);
                 const responseRandomLesson = await randomLesson.promise;
                 // eslint-disable-next-line
-                // blockId = responseRandomLesson.data.data.blockId;
-                // eslint-disable-next-line
                 lessonId = responseRandomLesson.data.data.lessonId;
             }
 
