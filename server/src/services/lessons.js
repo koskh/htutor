@@ -1,18 +1,7 @@
 // @flow
 const _ = require('lodash');
 
-const LessonBlock1 = require('./bd/block_1/');
-
-const LessonBlocks = [
-    LessonBlock1
-];
-
-// const lessonsTemp = LessonBlock1.lessons;
-
-
-// const AllNatives: Array<string> =  [];
-// const AllForeigns: Array<string> = [];
-
+const { LessonBlocks } = require('./blocks');
 
 function getAllNatives(lessons): Array<string> {
     let natives = [];
@@ -26,7 +15,7 @@ function getAllNatives(lessons): Array<string> {
 }
 
 
-function getAllForeigns(lessons): Array<string>  {
+function getAllForeigns(lessons): Array<string> {
     let foreigns = [];
     _.each(lessons, lesson => {
         _.each(lesson.words, word => {
