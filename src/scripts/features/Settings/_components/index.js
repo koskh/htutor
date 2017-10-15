@@ -80,7 +80,22 @@ export default class Test extends React.Component<Props> {
 
                 <p>Блоки слов (темн.- активный)</p>
                 {_.map((data: Array<LessonsBlock>), (v, i) =>
-                    <div className={cn('btn  btn-block mb-2 text-left', currentBlockId === v.id ? 'btn-secondary' : 'btn-light')} key={i} onClick={()=>{this.setActiveBlock(v.id)}}> {v.title}</div>
+                    (<div
+                        className={cn('btn  btn-block mb-2 text-left', currentBlockId === v.id ? 'btn-secondary' : 'btn-light')}
+                        key={i}
+                        onClick={() => {
+                            this.setActiveBlock(v.id);
+                        }}
+                    >
+                        <div className="row">
+                            <div className="col-10">
+                                {v.title}
+                            </div>
+                            <div className="col-2 d-flex justify-content-end align-items-center">
+                                <div className={cn('border icon-4', currentBlockId === v.id ? 'icon-check' : '')} />
+                            </div>
+                        </div>
+                    </div>)
                 )}
 
             </article>
