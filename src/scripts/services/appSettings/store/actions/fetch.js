@@ -1,15 +1,15 @@
 // @flow
 import _ from 'lodash';
 
-import { SETTINGS_REQUEST, SETTINGS_SUCCESS, SETTINGS_FAILURE, SETTINGS_CANCEL } from '../constants';
+import { SETTINGS_FETCH_REQUEST, SETTINGS_FETCH_SUCCESS, SETTINGS_FETCH_FAILURE, SETTINGS_FETCH_CANCEL } from '../constants';
 import { createAction } from '../../../../store/utilities/index';
 
-import { getAppSettings, setAppSettings } from '../../services/index';
+import { getAppSettings } from '../../services/index';
 
-export const request: ThunkAction = createAction(SETTINGS_REQUEST);
-export const success: ThunkAction = createAction(SETTINGS_SUCCESS);
-export const failure: ThunkAction = createAction(SETTINGS_FAILURE);
-export const cancel: ThunkAction = createAction(SETTINGS_CANCEL);
+export const request: ThunkAction = createAction(SETTINGS_FETCH_REQUEST);
+export const success: ThunkAction = createAction(SETTINGS_FETCH_SUCCESS);
+export const failure: ThunkAction = createAction(SETTINGS_FETCH_FAILURE);
+export const cancel: ThunkAction = createAction(SETTINGS_FETCH_CANCEL);
 
 
 const Requests: Array<AjaxRequest> = [];

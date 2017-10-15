@@ -1,6 +1,12 @@
 // @flow
 
-const defaultSettings = {
+type Settings = {
+    data: {
+        currentBlockId: number
+    }
+};
+
+const defaultSettings: Settings = {
     data: {
         currentBlockId: 1
     }
@@ -9,10 +15,13 @@ const defaultSettings = {
 export function getAppSettings(options: {} = {}): Promise<any> {
     // const {} = options;
     return new Promise((resolve, error) => {
-        setTimeout(() => resolve(defaultSettings), 0);
+        setTimeout(() => {
+            const settings = JSON.parse( window.localStorage.getItem('settingsData')) || defaultSettings;
+            resolve(settings);
+        }, 0);
     });
 }
 
-export function setAppSettings(options: {} = {}) {
-    const {} = options;
+export function setAppSettings(settingsData: Settings) {
+    window.localStorage.setItem('settingsData', JSON.stringify(settingsData));
 }

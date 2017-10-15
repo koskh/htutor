@@ -4,7 +4,7 @@ import _ from 'lodash';
 import * as React from 'react';
 
 // import invariant from 'invariant';
-// import cn from 'classnames';
+import cn from 'classnames';
 
 import PendingIndicator from '../../../components/PendingIndicator';
 
@@ -15,9 +15,12 @@ import type { SettingsStore } from '../../../services/appSettings/store/reducer'
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
+    makeStore: Function,
+    cancelStore: Function,
     makeFetchComponent: Function,
     cancelFetchComponent: Function,
     settingsStore: SettingsStore,
+    settingsComponentStore: ComponentStore,
     history: any
 }
 
@@ -37,22 +40,28 @@ export default class Test extends React.Component<Props> {
     }
 
     componentDidMount() {
-        this.props.makeFetch();
+        // this.props.makeFetch();
         this.props.makeFetchComponent();
     }
 
     componentWillUnmount() {
-        this.props.cancelFetch();
+        // this.props.cancelFetch();
         this.props.cancelFetchComponent();
+    }
+
+    setActiveBlock(id: number) {
+        const currentSettingsData = this.props.settingsStore;
+        currentSettingsData.data.currentBlockId = id;
+        this.props.makeStore(currentSettingsData);
     }
 
 
     render() {
-        const { isPending, data } = this.props.settingsStore;
+        const { isPending } = this.props.settingsStore;
+        const currentBlockId = this.props.settingsStore.data.currentBlockId;
 
-        debugger;
+        const { data } = this.props.settingsComponentStore;
 
-        // const { indexCurrentWord } = this.state;
 
         if (!data) {
             return (
@@ -63,14 +72,16 @@ export default class Test extends React.Component<Props> {
             );
         }
 
-        // const word: TestWord = data.words[indexCurrentWord];
-        // const questionData = this._generateQuestionData(word);
 
         return (
 
             <article>
                 <h4 className="text-center">Настройки приложения</h4>
 
+                <p>Блоки слов (темн.- активный)</p>
+                {_.map((data: Array<LessonsBlock>), (v, i) =>
+                    <div className={cn('btn  btn-block mb-2 text-left', currentBlockId === v.id ? 'btn-secondary' : 'btn-light')} key={i} onClick={()=>{this.setActiveBlock(v.id)}}> {v.title}</div>
+                )}
 
             </article>
         );

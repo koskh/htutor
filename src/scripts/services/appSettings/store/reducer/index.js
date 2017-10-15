@@ -23,12 +23,16 @@ const initialState: SettingsStore = {
 };
 
 export const actions: ReducerActions = {
-    [types.SETTINGS_REQUEST]: (state, { payload }) => nextState(state, { isPending: true, ...payload }),
-    [types.SETTINGS_SUCCESS]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
-    [types.SETTINGS_FAILURE]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
-    [types.SETTINGS_CANCEL]: state => nextState(state, { isPending: false}),
+    [types.SETTINGS_FETCH_REQUEST]: (state, { payload }) => nextState(state, { isPending: true, ...payload }),
+    [types.SETTINGS_FETCH_SUCCESS]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
+    [types.SETTINGS_FETCH_FAILURE]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
+    [types.SETTINGS_FETCH_CANCEL]: state => nextState(state, { isPending: false }),
 
     [types.SETTINGS_RESET]: () => ({ ...initialState }),
+
+    [types.SETTINGS_STORE_REQUEST]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
+    [types.SETTINGS_STORE_FAILURE]: state => nextState(state, { isPending: false }),
+    [types.SETTINGS_STORE_CANCEL]: state => nextState(state, { isPending: false })
 };
 
 export default createReducer(initialState, actions);
