@@ -30,9 +30,9 @@ export const actions: ReducerActions = {
 
     [types.SETTINGS_RESET]: () => ({ ...initialState }),
 
-    [types.SETTINGS_STORE_REQUEST]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
-    [types.SETTINGS_STORE_FAILURE]: state => nextState(state, { isPending: false }),
-    [types.SETTINGS_STORE_CANCEL]: state => nextState(state, { isPending: false })
+    [types.SETTINGS_SAVE_REQUEST]: (state, { payload }) => nextState(state, { isPending: false, ...payload }),
+    [types.SETTINGS_SAVE_FAILURE]: state => nextState(state, { isPending: false }),
+    [types.SETTINGS_SAVE_CANCEL]: state => nextState(state, { isPending: false })
 };
 
 export default createReducer(initialState, actions);

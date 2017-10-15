@@ -15,8 +15,8 @@ import type { SettingsStore } from '../../../services/appSettings/store/reducer'
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
-    makeStore: Function,
-    cancelStore: Function,
+    makeSave: Function,
+    cancelSave: Function,
     makeFetchComponent: Function,
     cancelFetchComponent: Function,
     settingsStore: SettingsStore,
@@ -45,14 +45,14 @@ export default class Test extends React.Component<Props> {
     }
 
     componentWillUnmount() {
-        // this.props.cancelFetch();
+        this.props.cancelSave();
         this.props.cancelFetchComponent();
     }
 
     setActiveBlock(id: number) {
         const currentSettingsData = this.props.settingsStore;
         currentSettingsData.data.currentBlockId = id;
-        this.props.makeStore(currentSettingsData);
+        this.props.makeSave(currentSettingsData);
     }
 
 
