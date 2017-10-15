@@ -6,7 +6,15 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 
-const { getBlock} = require('../../services/blocks');
+const { getBlocks, getBlock} = require('../../services/blocks');
+
+router.get('/', (req: express$Request, res: express$Response) => {
+    const respond: ServerRespond = {};
+
+    respond.data = getBlocks();
+    res.json(respond);
+});
+
 
 router.get('/:blockId?', (req: express$Request, res: express$Response) => {
     const respond: ServerRespond = {};

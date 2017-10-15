@@ -3,19 +3,22 @@
 import _ from 'lodash';
 import * as React from 'react';
 
-import invariant from 'invariant';
-import cn from 'classnames';
+// import invariant from 'invariant';
+// import cn from 'classnames';
 
 import PendingIndicator from '../../../components/PendingIndicator';
 
 import styles from './index.pcss';
 
 import type { ComponentStore } from '../store/reducer';
+import type { SettingsStore } from '../../../services/appSettings/store/reducer';
 
 type Props = {
     makeFetch: Function,
     cancelFetch: Function,
-    homeComponentStore: ComponentStore,
+    makeFetchComponent: Function,
+    cancelFetchComponent: Function,
+    settingsStore: SettingsStore,
     history: any
 }
 
@@ -35,16 +38,20 @@ export default class Test extends React.Component<Props> {
     }
 
     componentDidMount() {
-        // this.props.makeFetch();
+        this.props.makeFetch();
+        this.props.makeFetchComponent();
     }
 
     componentWillUnmount() {
-        // this.props.cancelFetch();
+        this.props.cancelFetch();
+        this.props.cancelFetchComponent();
     }
 
 
     render() {
-        const { isPending, data } = this.props.homeComponentStore;
+        const { isPending, data } = this.props.settingsStore;
+
+        debugger;
 
         // const { indexCurrentWord } = this.state;
 

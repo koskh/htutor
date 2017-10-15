@@ -42,8 +42,9 @@ export const common: {[string]: Api} = {
 };
 
 export const bd: {[string]: Api} = {
-    blocks: options => createAjaxRequest('blocks', options.blockId)(),
-    lessons: options => createAjaxRequest('lessons', options.blockId)(),
+    blocks: options => createAjaxRequest('blocks')(options),
+    block: options => createAjaxRequest('block', options.blockId)(options),
+    lessons: options => createAjaxRequest('lessons', options.blockId)(options),
     randomLesson: options => createAjaxRequest('randomLesson', options.blockId)(),
     lesson: options => createAjaxRequest('lesson', options.blockId, options.lessonId)(options),
     lessonTest: options => createAjaxRequest('lesson/test', options.blockId, options.lessonId)(options)

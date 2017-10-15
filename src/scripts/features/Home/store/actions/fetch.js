@@ -21,7 +21,7 @@ export function makeFetch(blockId: number): Function {
         try {
             // const request0 = bd.blocks({ blockId });
 
-            const request1 = bd.blocks({ blockId });
+            const request1 = bd.block({ blockId });
             Requests.push(request1);
             const response = await request1.promise;
 

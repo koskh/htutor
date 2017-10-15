@@ -11,8 +11,12 @@ const LessonBlocks = [
 
 exports.LessonBlocks = LessonBlocks;
 
+exports.getBlocks = function (): Array<LessonsBlock> {
+    return LessonBlocks;
+};
+
 exports.getBlock = function (blockId: number): ?LessonsBlock {
-    return  _.find(LessonBlocks, { id: blockId });
+    return _.find(LessonBlocks, { id: blockId });
 };
 
 exports.getRandomBlockId = function (): number {

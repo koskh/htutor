@@ -19,9 +19,9 @@ export function makeFetch(): Function {
         dispatch(request({ error: null }));
 
         try {
-            const request1 = bd.lessons();
-            Requests.push(request1);
-            const response = await request1.promise;
+            const request = bd.blocks();
+            Requests.push(request);
+            const response = await request.promise;
 
             // response.data.words = _.shuffle(response.data.words);
 

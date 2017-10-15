@@ -10,3 +10,12 @@ declare type ReducerActions = {[handler: Type]: ReducerAction};
 type $ExtractFunctionReturn = <V>(v: (...args: any) => V) => V;
 
 declare type State = $ObjMap<Reducers, $ExtractFunctionReturn>;
+
+declare type ComponentStore = {
+    id: ?any,
+    data: ?any,
+    error: ?any,
+    isPending: boolean,
+    isUpdating: boolean
+}
+

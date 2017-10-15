@@ -8,6 +8,7 @@ import Navigation from '../../components/Navigation';
 import Home from '../../features/Home';
 import Test from '../../features/Test';
 import Learn from '../../features/Learn';
+import Settings from '../../features/Settings';
 import NotFound from '../../features/NotFound';
 
 const DefaultLayout = () => {
@@ -23,6 +24,7 @@ const DefaultLayout = () => {
                     <Route path="/home/:blockId?" component={Home} />
                     <Route path="/learn/:blockId?/:lessonId?" component={Learn} />
                     <Route path="/test/:blockId?/:lessonId?" component={Test} />
+                    <Route path="/settings" component={Settings} />
                     <Route component={NotFound} />
                 </Switch>
             </main>
