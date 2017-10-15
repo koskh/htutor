@@ -21,9 +21,9 @@ export type QuizVariants = Array<QuizVariant>
 export type QuestionData = { quizVariants: Array<string>, rightVariants: Array<string>, sounds: Array<string>}
 
 type Props = {
-    makeFetch: (lessonId: ?string) => void,
-    cancelFetch: () => void,
-    resetStore: () => void,
+    makeFetch: Function,
+    cancelFetch: Function,
+    resetStore: Function,
     testComponentStore: ComponentStore,
     settingsStore: SettingsStore,
     history: any,
@@ -82,9 +82,8 @@ export default class Test extends React.Component<Props, State> {
     };
 
     getBlockId() {
-        const blockIdFromSettings = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId; // TODO: refneed
-        const blockId = this.props.match.params.blockId || blockIdFromSettings;
-        return blockId;
+        const blockIdFromSettings = this.props.settingsStore.data && this.props.settingsStore.data.currentBlockId;
+        return this.props.match.params.blockId || blockIdFromSettings;
     }
 
 

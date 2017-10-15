@@ -9,8 +9,6 @@ import styles from './index.pcss';
 import SoundBtn from '../../../components/SoundBtn'
 import PendingIndicator from '../../../components/PendingIndicator';
 
-
-import type { ComponentStore } from '../store/reducer';
 import type { SettingsStore } from '../../../services/appSettings/store/reducer';
 
 type Props = {
