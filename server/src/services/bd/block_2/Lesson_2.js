@@ -18,7 +18,7 @@ module.exports = {
         { foreign: ['entrance'], native: ['вход, въезд', 'входная дверь'], sounds: ['/sounds/e/entrance.ogg'] },
         { foreign: ['promise'], native: ['обещание', 'обещать, давать обещание'], sounds: ['/sounds/p/promise.ogg'] },
         { foreign: ['like'], native: ['аналогичный, подобный', 'разг. возможный; вероятный ( they are like to meet again)', 'любить, нравиться', 'хотеть, желать', 'предпочитать'], sounds: ['/sounds/l/like.ogg'] },
-
+        { foreign: ['argue'], native: ['спорить, препираться', 'аргументировать, утверждать'], sounds: ['/sounds/a/argue.ogg'] },
 
         { foreign: ['ladder'], native: ['лестница, трап', 'лезать, взбираться по лестнице'], sounds: ['/sounds/l/ladder.ogg'] },
         { foreign: ['remember'], native: ['помнить, хранить в памяти', 'вспоминать, припоминать, воскрешать в памяти'], sounds: ['/sounds/r/remember.ogg'] },
