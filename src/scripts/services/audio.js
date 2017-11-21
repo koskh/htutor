@@ -49,7 +49,7 @@ function clearCache() {
             localStorage.clear();
             setAppSettings(settings)
                 .then(() => {
-                    console.log('Cache is cleared');
+                    console.log('Sounds cache is cleared');
                 });
         })
 }
