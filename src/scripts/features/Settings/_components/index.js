@@ -106,7 +106,7 @@ export default class Test extends React.Component<Props> {
                 </div>
 
                 <div className="mb-4">
-                    <p className="font-weight-bold">Настройки приложения</p>
+                    <p className="font-weight-bold">Инструменты</p>
                     <ResetSoundsCache />
                 </div>
 
