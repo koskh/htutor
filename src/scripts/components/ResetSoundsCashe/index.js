@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+import audioSrv from '../../services/audio';
 
 import styles from './index.pcss';
 
@@ -20,7 +21,9 @@ type DefaultProps = {
 const defaultProps: DefaultProps = {
 //     name: null,
 //     children: null
-    onClick: function() {console.log('lick click')}
+    onClick: () => {
+        audioSrv.clearCache();
+    }
 };
 
 

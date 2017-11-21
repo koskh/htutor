@@ -1,3 +1,5 @@
+import {getAppSettings, setAppSettings} from './appSettings/services';
+
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = AudioContext && new AudioContext();
 
@@ -41,6 +43,17 @@ function play(url) {
     }
 }
 
+function clearCache() {
+    getAppSettings()
+        .then(settings => {
+            localStorage.clear();
+            setAppSettings(settings)
+                .then(() => {
+                    console.log('Cache is cleared');
+                });
+        })
+}
+
 function _decodeAudio(bufferString) {
     const fullBuffer = Int8Array.from(bufferString.split(',')).buffer;
 
@@ -53,7 +66,7 @@ function _decodeAudio(bufferString) {
 }
 
 function initialize() {
-    audioSrv = audioSrv || { play };
+    audioSrv = audioSrv || {play, clearCache};
     return audioSrv;
 }
 
