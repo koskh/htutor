@@ -7,10 +7,11 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import PendingIndicator from '../../../components/PendingIndicator';
+import ResetSoundsCache from '../../../components/ResetSoundsCashe';
 
 import styles from './index.pcss';
 
-import type { SettingsStore } from '../../../services/appSettings/store/reducer';
+import type {SettingsStore} from '../../../services/appSettings/store/reducer';
 
 type Props = {
     makeFetch: Function,
@@ -57,17 +58,17 @@ export default class Test extends React.Component<Props> {
 
 
     render() {
-        const { isPending } = this.props.settingsStore;
+        const {isPending} = this.props.settingsStore;
         const currentBlockId = this.props.settingsStore.data.currentBlockId;
 
-        const { data } = this.props.settingsComponentStore;
+        const {data} = this.props.settingsComponentStore;
 
 
         if (!data) {
             return (
                 <article>
                     <h4 className="text-center">Настройки приложения</h4>
-                    <PendingIndicator pending={isPending} />
+                    <PendingIndicator pending={isPending}/>
                 </article>
             );
         }
@@ -78,25 +79,36 @@ export default class Test extends React.Component<Props> {
             <article>
                 <h4 className="text-center">Настройки приложения</h4>
 
-                <p>Блоки слов (темн.- активный)</p>
-                {_.map((data: Array<LessonsBlock>), (v, i) =>
-                    (<div
-                        className={cn('btn  btn-block mb-2 text-left', currentBlockId === v.id ? 'btn-secondary' : 'btn-light')}
-                        key={i}
-                        onClick={() => {
-                            this.setActiveBlock(v.id);
-                        }}
-                    >
-                        <div className="row">
-                            <div className="col-10">
-                                {v.title}
+                <div className="mb-4">
+                    <p className="font-weight-bold">Блоки слов (темн.- активный)</p>
+
+                    {_.map((data: Array<LessonsBlock>), (v, i) =>
+                        (
+                            <div
+                                className={cn('btn  btn-block mb-2 text-left', currentBlockId === v.id ? 'btn-secondary' : 'btn-light')}
+                                key={i}
+                                onClick={() => {
+                                    this.setActiveBlock(v.id);
+                                }}
+                            >
+                                <div className="row">
+                                    <div className="col-10">
+                                        {v.title}
+                                    </div>
+                                    <div className="col-2 d-flex justify-content-end align-items-center">
+                                        <div className={cn('border icon-4', currentBlockId === v.id ? 'icon-check' : '')}/>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div className="col-2 d-flex justify-content-end align-items-center">
-                                <div className={cn('border icon-4', currentBlockId === v.id ? 'icon-check' : '')} />
-                            </div>
-                        </div>
-                    </div>)
-                )}
+                        )
+                    )}
+                </div>
+
+                <div className="mb-4">
+                    <p className="font-weight-bold">Настройки приложения</p>
+                    <ResetSoundsCache />
+                </div>
 
             </article>
         );
