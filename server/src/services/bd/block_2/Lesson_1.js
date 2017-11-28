@@ -24,7 +24,7 @@ module.exports = {
         { foreign: ['modest'], native: ['скромный'], sounds: ['/sounds/m/modest.ogg'] },
         { foreign: ['smell'], native: ['запах; аромат', 'незначительное количество; "капелька", "чуточка"', 'пахнуть'], sounds: ['/sounds/s/smell.ogg'] },
 
-        { foreign: ['ladder'], native: ['лестница, трап', 'лезать, взбираться по лестнице'], sounds: ['/sounds/l/ladder.ogg'] },
+        { foreign: ['ladder'], native: ['лестница, трап', 'взбираться по лестнице'], sounds: ['/sounds/l/ladder.ogg'] },
         { foreign: ['quiet'], native: ['тихий, бесшумный', 'спокойный, тихий'], sounds: ['/sounds/q/quiet.ogg'] },
         { foreign: ['shy'], native: ['застенчивый, робкий', 'стеснительный'], sounds: ['/sounds/s/shy.ogg'] },
         { foreign: ['boring'], native: ['бурение; сверление', 'докучливость, надоедливость'], sounds: ['/sounds/b/boring.ogg'] },

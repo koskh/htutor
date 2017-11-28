@@ -19,6 +19,6 @@ const lessons: Array<Lesson> = [
 
 module.exports = {
     id: 1,
-    title: 'Базовые слова',
+    title: 'Base words',
     lessons
 };
