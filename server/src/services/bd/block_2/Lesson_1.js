@@ -38,5 +38,5 @@ module.exports = {
         { foreign: ['taste'], native: ['вкус', 'пробовать (на вкус); отведать'], sounds: ['/sounds/t/taste.ogg'] },
         { foreign: ['believe'], native: ['доверять', 'верить', 'думать, полагать'], sounds: ['/sounds/b/believe.ogg'] },
     ],
-    title: 'Lesson 1. Who am I?'
+    title: 'Lesson 1. Who am I? (p.1)'
 };
