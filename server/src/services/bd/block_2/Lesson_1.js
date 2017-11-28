@@ -29,7 +29,7 @@ module.exports = {
         { foreign: ['shy'], native: ['застенчивый, робкий', 'стеснительный'], sounds: ['/sounds/s/shy.ogg'] },
         { foreign: ['boring'], native: ['бурение; сверление', 'докучливость, надоедливость'], sounds: ['/sounds/b/boring.ogg'] },
         { foreign: ['see (saw, seen)'], native: ['видеть', 'видеться, встречаться'], sounds: ['/sounds/s/see.ogg'] },
-        { foreign: ['agree'], native: ['соглашаться ', '(разг.) быть полезным, приятным; быть подходящим'], sounds: ['/sounds/a/agree.ogg'] },
+        { foreign: ['agree'], native: ['соглашаться ', '(разг.) быть полезным, приятным; быть подходящим (Wine doesn\'t agree with me.)'], sounds: ['/sounds/a/agree.ogg'] },
 
         { foreign: ['lantern'], native: ['фонарь, фонарик', 'освещать, светить фонарём', 'вешать на фонарном столбе'], sounds: ['/sounds/l/lantern.ogg'] },
         { foreign: ['cheerful'], native: ['весёлый, радостный', 'весёлый; яркий'], sounds: ['/sounds/c/cheerful.ogg'] },
