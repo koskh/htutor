@@ -22,14 +22,14 @@ module.exports = {
         { foreign: ['like'], native: ['аналогичный, подобный', 'разг. возможный; вероятный ( they are like to meet again)', 'любить, нравиться', 'хотеть, желать', 'предпочитать'], sounds: ['/sounds/l/like.ogg'] },
         { foreign: ['leisure'], native: ['досуг, свободное время, at leisure'], sounds: ['/sounds/l/leisure.ogg'] },
         { foreign: ['embarrass'], native: ['затруднять, мешать', 'сбивать с толку, приводить в замешательство, удивлять'], sounds: ['/sounds/e/embarrass.ogg'] },
-        { foreign: ['fright'], native: ['ссильный внезапный испуг', '(разг.) пугало, страшилище'], sounds: ['/sounds/f/fright.ogg'] },
+        { foreign: ['fright'], native: ['сильный внезапный испуг', '(разг.) пугало, страшилище'], sounds: ['/sounds/f/fright.ogg'] },
         { foreign: ['disappoint'], native: ['разочаровывать', 'обманывать (надежды), не оправдывать (ожиданий); расстраивать (планы)'], sounds: ['/sounds/d/disappoint.ogg'] },
 
         { foreign: ['lawn'], native: ['газон, лужайка'], sounds: ['/sounds/l/lawn.ogg'] },
         { foreign: ['annoy'], native: ['раздражать, сердить', 'досаждать, надоедать'], sounds: ['/sounds/a/annoy.ogg'] },
         { foreign: ['guess'], native: ['гадать, догадываться; пытаться отгадать'], sounds: ['/sounds/g/guess.ogg'] },
         { foreign: ['society'], native: ['общество'], sounds: ['/sounds/s/society.ogg'] },
-        { foreign: ['personality'], native: [' индивидуальность, личность, черты личност'], sounds: ['/sounds/p/personality.ogg'] },
+        { foreign: ['personality'], native: ['индивидуальность, личность, черты личност'], sounds: ['/sounds/p/personality.ogg'] },
         { foreign: ['major'], native: ['более важный, значительный, составляющий большую часть', 'ходить с важным видом, ходить с напыщенным видом'], sounds: ['/sounds/m/major.ogg'] },
 
         { foreign: ['bank'], native: ['банк', 'место хранения запасов'], sounds: ['/sounds/b/bank.ogg'] },
