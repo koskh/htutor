@@ -32,15 +32,12 @@ module.exports = {
         { foreign: ['personality'], native: [' индивидуальность, личность, черты личност'], sounds: ['/sounds/p/personality.ogg'] },
         { foreign: ['major'], native: ['более важный, значительный, составляющий большую часть', 'ходить с важным видом, ходить с напыщенным видом'], sounds: ['/sounds/m/major.ogg'] },
 
-
         { foreign: ['bank'], native: ['банк', 'место хранения запасов'], sounds: ['/sounds/b/bank.ogg'] },
         { foreign: ['lively'], native: ['яркий, живой (о картине, образе)', 'активный, деятельный, энергичный'], sounds: ['/sounds/l/lively.ogg'] },
         { foreign: ['excite'], native: ['побуждать, стимулировать, призывать к деятельности', ' вызывать (эмоц, чувств); пробуждать (интерес)', 'возбуждать (сексуально) '], sounds: ['/sounds/e/excite.ogg'] },
         { foreign: ['entertain'], native: ['принимать (гостей)', 'занимать, развлекать'], sounds: ['/sounds/e/entertain.ogg'] },
         { foreign: ['diverse'], native: ['иной, отличный от чего-л.', ' многообразный, разнообразный, разный'], sounds: ['/sounds/d/diverse.ogg'] },
         { foreign: ['argue'], native: ['спорить, препираться', 'аргументировать; утверждать'], sounds: ['/sounds/a/argue.ogg'] },
-
-
     ],
     title: 'Lesson 2. Who am I? (p.2)'
 };
