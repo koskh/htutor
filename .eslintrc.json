@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended"],
   "env": {
     "es6": true,
     "node": true,
@@ -23,6 +23,7 @@
   "globals": {
     "PROJECT_ENV": true
   },
+
   "rules": {
     "arrow-body-style": 0,
     "arrow-parens": [2, "as-needed"],
@@ -36,7 +37,7 @@
     "no-empty": [2, { "allowEmptyCatch": true }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "no-underscore-dangle": 0,
-    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "no-unused-expressions": ["warn", { "allowShortCircuit": true, "allowTernary": true }],
     "no-use-before-define": ["error", { "functions": false }],
     "curly": ["error", "multi-or-nest"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -47,6 +48,7 @@
     "react/jsx-indent": [1, 4],
     "react/jsx-indent-props": 0
   },
+
   "settings": {
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true

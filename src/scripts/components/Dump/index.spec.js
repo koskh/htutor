@@ -13,14 +13,14 @@ describe('components/dump', () => {
 
     it('contains children an expectation', () => {
         const dump = shallow(<Dump>
-          <div className="testClass" />
+            <div className="testClass" />
         </Dump>);
         expect(dump.contains(<div className="testClass" />)).to.equal(true);
     });
 
     it('contains spec with an expectation', () => {
         const dump = shallow(<Dump>
-          <div className="innerClass" />
+            <div className="innerClass" />
         </Dump>);
 
         expect(dump.is('.outerClass')).to.equal(true);
