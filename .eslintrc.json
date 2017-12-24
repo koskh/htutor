@@ -1,17 +1,19 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:jest/recommended", "plugin:flowtype/recommended"],
   "env": {
     "es6": true,
     "node": true,
     "mocha": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
   "plugins": [
     "react",
     "jsx-a11y",
     "import",
-    "flowtype"
+    "flowtype",
+    "jest"
   ],
   "parserOptions": {
     "ecmaFeatures": {
