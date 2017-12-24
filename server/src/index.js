@@ -11,7 +11,7 @@ const path = require('path');
 const api = require('./api');
 
 const app = express();
-const host = '192.168.1.10';
+const host = '0.0.0.0';
 const port = 3001;
 
 const publicPath = path.resolve(__dirname, './static');
@@ -42,6 +42,6 @@ app.listen(port, host, err => {
         return;
     }
 
-    console.log(`Listening at http://localhost:${port}`);
+    console.log(`Listening at http://0.0.0.0:${port}`);
 });
 
