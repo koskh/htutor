@@ -68,7 +68,7 @@ export default class Test extends React.Component<Props> {
 
         return (
 
-            <article>
+            <article className="qa__learn--body">
                 <h4 className="text-center">{data.title}</h4>
 
                 {_.map((data.words: Array<Word>), (v, i) =>

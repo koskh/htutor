@@ -81,8 +81,7 @@ export default class Test extends React.Component<Props> {
         const { title, lessons } = data;
 
         return (
-
-            <article>
+            <article className="qa__home--body">
                 <h4 className="text-center">{title}</h4>
 
                 {_.map((lessons: Array<Lesson>), (v, i) =>
