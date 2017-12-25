@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-import Dump from '.';
+import Dump from '../index';
 
 
 test('renders without errors', () => {
@@ -36,9 +36,6 @@ test('simulates click events', () => {
 });
 
 test('components/Dump renders correctly snapshot', ()=>{
-    const component = renderer.create(<Dump/>);
-    // console.log(component.toJSON());
-
     const tree = renderer.create(<Dump/>).toJSON();
     expect(tree).toMatchSnapshot();
 
