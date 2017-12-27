@@ -21,7 +21,7 @@ test('renders correctly', async () => {
     const screenshot1 = await page.screenshot();
     expect(screenshot1).toMatchImageSnapshot();
 
-    await page.goto('http://192.168.1.8:3001/learn/1');
+    await page.goto('http://192.168.1.8:3001/learn/1/1');
     await  page.waitForSelector('.qa__learn--body');
     const screenshot2 = await page.screenshot();
     expect(screenshot2).toMatchImageSnapshot();

@@ -94,6 +94,7 @@
   },
   "scripts": {
     "test": "jest",
+    "regression": "jest /jest/regression",
     "webpack-watch": "mkdir -p output/static && rimraf output/static/* && ln -s /media/Video/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --watch  --config webpack/webpack.debug.config.js",
     "server-start": "mkdir -p output/static && flow-remove-types --pretty --out-dir output server/src/ && node output/index.js",
     "build:debug": "mkdir -p output/static && rimraf output/static/* && ln -s /media/mp3/soft/Linux_Soft/StarDict_Словари/Sound_En/ output/static/sounds && webpack --config webpack/webpack.debug.config.js",
