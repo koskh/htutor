@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 
-import type { QuizOptions, QuizVariant, QuizVariants, QuestionData } from '../../index';
+import type { QuizOptions, QuizVariant, QuizVariants, QuestionData } from '../index';
 
 export default function generateQuiz(word: TestWord, variants: QuizVariants, randomFunction: (QuizVariants) => QuizVariant = getRandomQuizVariant): {QuizComponent: React$Component<*>, questionData: QuestionData} {
     const variant = getAppropriateQuizVariant(word, variants, randomFunction);

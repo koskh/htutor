@@ -10,7 +10,7 @@ import SoundTest from '../../../components/Test/SoundTest';
 import SpellTest from '../../../components/Test/SpellTest';
 
 
-import generateQuiz from './utilities/generateQuiz';
+import generateQuiz from './generateQuiz';
 
 import type { ComponentStore } from '../store/reducer';
 import type { SettingsStore } from '../../../services/appSettings/store/reducer';
