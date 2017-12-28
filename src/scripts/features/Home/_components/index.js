@@ -7,6 +7,7 @@ import invariant from 'invariant';
 import cn from 'classnames';
 
 import PendingIndicator from '../../../components/PendingIndicator';
+import Spinner from '../../../components/Indicators/Spiner'
 
 import styles from './index.pcss';
 
@@ -70,7 +71,7 @@ export default class Test extends React.Component<Props> {
             return (
                 <article>
                     <h4 className="text-center">Список доступных уроков</h4>
-                    <PendingIndicator pending={isPending} />
+                    <PendingIndicator pending={isPending} Indicator={Spinner}/>
                 </article>
             );
         }

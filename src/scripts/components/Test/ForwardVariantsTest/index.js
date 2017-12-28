@@ -4,6 +4,8 @@ import _ from 'lodash';
 import * as React from 'react';
 import cn from 'classnames';
 
+import templateStyles from '../TemplateClass/index.pcss';
+
 import SoundBtn from '../../SoundBtn';
 import { TemplateClass, foreignWordClasses } from '../TemplateClass';
 
@@ -35,7 +37,7 @@ export default class ForwardVariantsTest extends TemplateClass {
 
         return (
             <div>
-                <div className="d-flex align-items-center justify-content-center quiz-head-height mb-4">
+                <div className={`d-flex align-items-center justify-content-center  ${templateStyles['quiz-head-height']} mb-4`}>
                     <div className={cn('btn btn-lg btn-block', foreignWordClass, 'qa-quiz-place')}>
                         <div className="row">
                             <div className="col-2">

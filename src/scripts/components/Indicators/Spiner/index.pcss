@@ -1,5 +1,7 @@
-$border-color: #72a2d4;
-$border-top-color: color($border-color a(0.1));
+:root {
+  --border-color: #72a2d4;
+  --border-top-color: color(var(--border-color) a(0.1));
+}
 
 @keyframes spin {
   0% {
@@ -13,13 +15,11 @@ $border-top-color: color($border-color a(0.1));
 
 .spinner {
   width: 1rem;
-
   margin: 0 auto;
   border-width: 0.5rem;
   border-style: solid;
   border-radius: 50%;
-  border-color: $border-color;
-  border-top-color: $border-top-color;
-
+  border-color: var( --border-color);
+  border-top-color: var(--border-top-color);
   animation: spin 1s infinite linear;
 }

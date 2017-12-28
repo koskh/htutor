@@ -1,47 +1,43 @@
+/* stylelint-disable */
+@define-mixin icon-bg $name {
+  background: svg-load('../svg/$(name).svg') !important;
+}
+/* stylelint-enable */
+
+
+
 .icon {
   display: inline-block;
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &-sound {
-    background: svg-load('../svg/sound.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg sound;
   }
 
   &-text {
-    background: svg-load('../svg/text.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg text;
   }
 
   &-gauge {
-    background: svg-load('../svg/gauge.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg gauge;
   }
 
   &-blackboard {
-    background: svg-load('../svg/blackboard.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg blackboard;
   }
 
   &-shuffle {
-    background: svg-load('../svg/shuffle.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg shuffle;
   }
 
   &-flashlight {
-    background: svg-load('../svg/flashlight.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg flashlight;
   }
 
   &-check {
-    background: svg-load('../svg/check.svg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin icon-bg check;
   }
 }
 
