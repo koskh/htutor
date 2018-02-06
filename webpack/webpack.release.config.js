@@ -35,7 +35,7 @@ baseConfig.module.rules.push(
                     importLoaders: 1,
                 }
             },
-                'postcss-loader'
+            'postcss-loader'
             ]
         })
     },
@@ -54,7 +54,7 @@ baseConfig.module.rules.push(
                     minimize: true
                 }
             },
-                'postcss-loader'
+            'postcss-loader'
             ]
         })
     }
@@ -77,10 +77,10 @@ baseConfig.plugins.push(
             unsafe: true
         }
     }),
-    new webpack.BannerPlugin(`${pkg.name}   ${new Date()}. RELEASE.`),
+    new webpack.BannerPlugin(`${pkg.name}   ${new Date()}. Production.`),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
-        PROJECT_ENV: JSON.stringify('release')
+        PROJECT_ENV: JSON.stringify('production')
     })
 );
 

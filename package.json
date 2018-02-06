@@ -49,6 +49,8 @@
     "jest-css-modules": "^1.1.0",
     "jest-image-snapshot": "^2.3.0",
     "jsdom": "^11.6.2",
+    "lnk": "^1.1.0",
+    "lnk-cli": "^1.0.1",
     "lodash": "^4.17.5",
     "minifyify": "^7.3.5",
     "mkdirp": "^0.5.1",
@@ -89,22 +91,22 @@
     "webpack": "^3.10.0",
     "webpack-shell-plugin": "^0.5.0"
   },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
   "scripts": {
     "test": "jest",
     "regression": "jest /jest/regression",
     "webpack-watch": "npm run _setup-output-folder && webpack --watch  --config webpack/webpack.debug.config.js",
     "server-start": "mkdirp output/static && flow-remove-types --pretty --out-dir output server/src/ && npm run start",
     "build:debug": "npm run _setup-output-folder && webpack --config webpack/webpack.debug.config.js",
-    "build:release": "cross-env NODE_ENV=production && npm run _setup-output-folder && webpack --config webpack/webpack.release.config.js",
+    "build:release": "npm run _setup-output-folder && webpack --config webpack/webpack.release.config.js",
     "first-step": "npm run _setup-flow-types && npm run _setup-output-folder",
     "start": "node output/index.js",
     "_setup-output-folder": "mkdirp output/static &&  rimraf output/static/*  && lnk ../Sound_En/sounds output/static/",
     "_setup-flow-types": "flow-typed install"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "babel-runtime": "^6.26.0",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2"
   }
 }
