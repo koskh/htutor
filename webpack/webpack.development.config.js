@@ -64,10 +64,10 @@ baseConfig.module.rules.push(
 baseConfig.plugins.push(
     extractBootstrapCss,
     extractApplicationCss,
-    new webpack.BannerPlugin(`${pkg.name}   ${new Date()}. DEBUG.`),
+    new webpack.BannerPlugin(`${pkg.name}   ${new Date()}. Development.`),
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('debug'),
-        PROJECT_ENV: JSON.stringify('debug')
+        'process.env.NODE_ENV': JSON.stringify('development'),
+        PROJECT_ENV: JSON.stringify('development')
     })
 );
 

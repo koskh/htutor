@@ -8,6 +8,7 @@
     "babel-eslint": "^8.2.1",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-flow-runtime": "^0.15.0",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -95,14 +96,15 @@
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "flow-runtime": "^0.16.0"
   },
   "scripts": {
     "test": "jest",
     "regression": "jest /jest/regression",
     "webpack-watch": "npm run _setup-output-folder && webpack --watch  --config webpack/webpack.debug.config.js",
     "server-start": "mkdirp output/static && flow-remove-types --pretty --out-dir output server/src/ && npm run start",
-    "build:debug": "npm run _setup-output-folder && webpack --config webpack/webpack.debug.config.js",
+    "build:development": "npm run _setup-output-folder && webpack --config webpack/webpack.development.config.js",
     "build:production": "npm run _setup-output-folder && webpack --config webpack/webpack.production.config.js",
     "first-step": "npm run _setup-flow-types && npm run _setup-output-folder",
     "start": "node output/index.js",
