@@ -4,7 +4,7 @@ import config from '../../../config/index';
 
 const apiPatch: string = `${config.serverApi}/api`;
 
-const urls: {[key: string]: any} = {
+const urls: {[key: string]: Function} = {
     'references': () => `${apiPatch}/references`,
     'blocks': () => `${apiPatch}/blocks`,
     'block': blockId => `${apiPatch}/blocks/${blockId}`,
