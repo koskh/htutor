@@ -3,7 +3,6 @@ import 'babel-polyfill';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';

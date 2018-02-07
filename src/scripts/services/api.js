@@ -1,7 +1,7 @@
 // @flow
 import axios from 'axios';
 import interceptors from './interceptors';
-import urls from './urls';
+import urls from './urls/index';
 
 const http = axios.create({
     headers: {
