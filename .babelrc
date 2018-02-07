@@ -1,6 +1,6 @@
 {
   "presets": ["env", "react", "stage-0", "flow"],
-  "plugins": [["flow-runtime"], "transform-decorators-legacy", "transform-runtime"],
+  "plugins": [["flow-runtime", {"warn" : true}], "transform-decorators-legacy", "transform-runtime"],
   "env": {
     "test": {
       "plugins": ["istanbul"]

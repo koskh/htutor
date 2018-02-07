@@ -106,7 +106,6 @@
     "server-start": "mkdirp output/static && flow-remove-types --pretty --out-dir output server/src/ && npm run start",
     "build:development": "npm run _setup-output-folder && webpack --config webpack/webpack.development.config.js",
     "build:production": "npm run _setup-output-folder && webpack --config webpack/webpack.production.config.js",
-    "first-step": "npm run _setup-flow-types && npm run _setup-output-folder",
     "start": "node output/index.js",
     "_setup-output-folder": "mkdirp output/static &&  rimraf output/static/*  && lnk ../Sound_En/sounds output/static/",
     "_setup-flow-types": "flow-typed install"
