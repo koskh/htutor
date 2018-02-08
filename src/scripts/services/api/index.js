@@ -1,7 +1,7 @@
 // @flow
 import axios from 'axios';
 import interceptors from './interceptors';
-import urls from './urls/index';
+import urls from '../urls/index';
 
 const http = axios.create({
     headers: {
@@ -16,15 +16,6 @@ const http = axios.create({
 
 // http.interceptors.request.use(undefined, interceptors.before);
 http.interceptors.response.use(undefined, interceptors.failure);
-
-// axios({
-//     method: 'post',
-//     url: '/user/12345',
-//     data: {
-//         firstName: 'Fred',
-//         lastName: 'Flintstone'
-//     }
-// });
 
 const createAjaxRequest = (url: string, ...args0: Array<any>): Function => ({ ...args1 }: Object): AjaxRequest => {
     const CancelToken = axios.CancelToken;

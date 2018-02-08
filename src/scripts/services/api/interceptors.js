@@ -8,7 +8,7 @@
 // };
 //
 
-import history from './history';
+import history from '../history';
 
 const statuses = {
     badRequest: 400,

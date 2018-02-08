@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILURE, FETCH_CANCEL } from '../constants';
 import { createAction } from '../../../../store/utilities/index';
 
-import { bd } from '../../../../services/api';
+import { bd } from '../../../../services/api/index';
 
 export const request: ThunkAction = createAction(FETCH_REQUEST);
 export const success: ThunkAction = createAction(FETCH_SUCCESS);
