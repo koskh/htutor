@@ -102,7 +102,7 @@
   "scripts": {
     "test": "jest",
     "regression": "jest /jest/regression",
-    "webpack-watch": "npm run _setup-output-folder && webpack --watch  --config webpack/webpack.debug.config.js",
+    "webpack-watch": "npm run _setup-output-folder && webpack --watch  --config webpack/webpack.development.config.js",
     "build:development": "npm run _setup-output-folder && webpack --config webpack/webpack.development.config.js",
     "build:production": "npm run _setup-output-folder && webpack --config webpack/webpack.production.config.js",
     "build:server": "mkdirp output/static && flow-remove-types --pretty --out-dir output server/src/",

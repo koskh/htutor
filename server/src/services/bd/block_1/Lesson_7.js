@@ -1,43 +1,46 @@
-// @flow
+//
 
 module.exports = {
     id: 7,
     words: [
-        { foreign: ['wire'], native: ['проволока', 'электрический, телефонный провод', 'телеграф, телеграмма'], sounds: ['/sounds/w/wire.ogg'] },
-        { foreign: ['hold (held, held)'], native: ['держать', 'содержать в себе, вмещать', '(воен.) удерживать, защищать'], sounds: ['/sounds/h/hold.ogg'] },
-        { foreign: ['forget (forgot, forgotten)'], native: ['забывать', 'пренебрегать (кем-л., чем-л.), игнорировать (кого-л., что-л.)'], sounds: ['/sounds/f/forget.ogg'] },
-        { foreign: ['try'], native: ['пытаться, делать попытку', 'попытка'], sounds: ['/sounds/t/try.ogg'] },
-        { foreign: ['stop'], native: ['остановка, задержка', 'остановка общественного транспорта'], sounds: ['/sounds/s/stop.ogg'] },
-        { foreign: ['at'], native: ['у, в, за, на (нахожд. в некот. точке пространства, воздействия, принадлежн, воздейств) ', 'к, до (указыв на место, где заканчив. процесс) '], sounds: ['/sounds/a/at.ogg'] },
+        { foreign: ['picture'], native: ['картина; рисунок'], sounds: ['/sounds/p/picture.ogg'] },
 
-        { foreign: ['modem'], native: ['модем'], sounds: [] },
-        { foreign: ['go on'], native: ['продолжать', 'спешить'], sounds: [] },
-        { foreign: ['remember'], native: ['помнить, хранить в памяти', 'вспоминать, припоминать, воскрешать в памяти'], sounds: ['/sounds/r/remember.ogg'] },
-        { foreign: ['regret'], native: ['сожаление, огорчение', 'раскаяние'], sounds: ['/sounds/r/regret.ogg'] },
-        { foreign: ['cease'], native: ['переставать (делать ч-л.), прекращать', 'прекращаться'], sounds: ['/sounds/c/cease.ogg'] },
-        { foreign: ['dread'], native: ['ужас, благоговейный страх, трепет ', 'страшиться, бояться, трепетать от страха'], sounds: ['/sounds/d/dread.ogg'] },
+        { foreign: ['nail'], native: ['ноготь','коготь', 'гвоздь', 'забивать гвозди; прибивать ( гвоздями )'], sounds: ['/sounds/n/nail.ogg'] },
+        { foreign: ['ancient'], native: ['человек античного мира (греки и римляне)', 'древний'], sounds: ['/sounds/a/ancient.ogg'] },
+        { foreign: ['auxiliary'], native: ['помощник, подчинённый', 'вспомогательные устройства'], sounds: ['/sounds/a/auxiliary.ogg'] },
+        { foreign: ['toll'], native: ['колокольный звон/ звонить в колокол', 'пошлина, сбор / дань / удерживать часть ч-л', '(воен.) потери'], sounds: ['/sounds/t/toll.ogg'] },
+        { foreign: ['mediocre'], native: ['посредственный; среднего качества; заурядный; бездарный'], sounds: ['/sounds/m/mediocre.ogg'] },
+        { foreign: ['honour'], native: ['честь', 'благородство'], sounds: ['/sounds/h/honour.ogg'] },
 
-        { foreign: ['hook'], native: ['крюк, крючок', 'кривой нож; серп', '(разг.) руки-"грабли" '], sounds: ['/sounds/h/hook.ogg'] },
-        { foreign: ['finite'], native: ['ограниченный, имеющий предел', 'имеющий ограниченный срок существования; смертный'], sounds: ['/sounds/f/finite.ogg'] },
-        { foreign: ['fold'], native: ['сгибать, складывать', 'окутывать', '(тех.) фальцевать'], sounds: ['/sounds/f/fold.ogg'] },
-        { foreign: ['hiking'], native: ['туризм'], sounds: ['/sounds/h/hiking.mp3'] },
-        { foreign: ['dish'], native: ['блюдо, кушанье', '(разг.) красотка, лакомый кусочек', 'подавать еду'], sounds: ['/sounds/d/dish.ogg'] },
-        { foreign: ['suit'], native: ['костюм ', 'комплект, набор (одежды и т.п.)', 'прошение, ходатайство'], sounds: ['/sounds/s/suit.ogg'] },
+        { foreign: ['wood'], native: ['лес; роща','древесина; дерево ( материал )'], sounds: ['/sounds/w/wood.ogg'] },
+        { foreign: ['outnumber'], native: ['превосходить численно'], sounds: ['/sounds/o/outnumber.ogg'] },
+        { foreign: ['devastate'], native: ['опустошать, разорять', 'подавлять, угнетать'], sounds: ['/sounds/d/devastate.ogg'] },
+        { foreign: ['thug'], native: ['убийца (из-за угла); головорез; гангстер'], sounds: ['/sounds/t/thug.ogg'] },
+        { foreign: ['poacher'], native: ['браконьер'], sounds: ['/sounds/p/poacher.ogg'] },
+        { foreign: ['wreak'], native: ['причинять ущерб'], sounds: ['/sounds/w/wreak.ogg'] },
 
-        { foreign: ['plank'], native: ['толстая и широкая гладко оструганная доска', 'обшивная доска, обшивка корабля', 'планка'], sounds: ['/sounds/p/plank.ogg'] },
-        { foreign: ['grant'], native: ['дарить, жаловать, предоставлять', 'разрешать; давать согласие (на ч-л.)', 'акт дарения, подарок, дар'], sounds: ['/sounds/g/grant.ogg'] },
-        { foreign: ['juice'], native: ['сок', 'смысл, сущность, соль (чего-л.)', 'выжимать, давить сок', '(разг.) квасить, много пить'], sounds: ['/sounds/j/juice.ogg'] },
-        { foreign: ['useful'], native: ['полезный, пригодный', '(разг.) способный; успешный; весьма похвальный'], sounds: ['/sounds/u/useful.ogg'] },
-        { foreign: ['ugly'], native: ['безобразный, уродливый', 'мерзкий, ужасный, неприятный; противный'], sounds: ['/sounds/u/ugly.ogg'] },
-        { foreign: ['foreign'], native: ['иностранный; заграничный', 'чужой, незнакомый'], sounds: ['/sounds/f/foreign.ogg'] },
+        { foreign: ['glass'], native: ['стекло'], sounds: ['/sounds/g/glass.ogg'] },
+        { foreign: ['noble'], native: ['нобль ( старинная английская золотая монета )',' благородный, великодушный', ' прекрасный, замечательный; превосходный'], sounds: ['/sounds/n/noble.ogg'] },
+        { foreign: ['relative'], native: ['родственник; родственница','относительный'], sounds: ['/sounds/r/relative.ogg'] },
+        { foreign: ['urban'], native: ['городской'], sounds: ['/sounds/u/urban.ogg'] },
+        { foreign: ['unknown'], native: ['неизвестное'], sounds: ['/sounds/u/unknown.ogg'] },
+        { foreign: ['tie'], native: ['бечёвка, лента, шнур; узел, петля; скрепа; скоба', 'галстук', 'связывать, привязывать'], sounds: ['/sounds/t/tie.ogg'] },
 
-        { foreign: ['jacket'], native: ['куртка', 'жакет, пиджак, жилет'], sounds: ['/sounds/j/jacket.ogg'] },
-        { foreign: ['gain'], native: ['добывать, зарабатывать', 'выигрывать, добиваться', 'прибыль, выгода'], sounds: ['/sounds/g/gain.ogg'] },
-        { foreign: ['handsome'], native: ['красивый, статный (о мужчине)', 'статный, солидный, представительный (о женщине)', 'значительный, большой(цена, прибыль, дар)'], sounds: ['/sounds/h/handsome.ogg'] },
-        { foreign: ['bookcase'], native: ['книжный шкаф; книжная полка; этажерка'], sounds: ['/sounds/b/bookcase.mp3'] },
-        { foreign: ['case'], native: ['случай; история; факт', 'доказательства, аргументация', ' коробка, ящик; контейнер', 'чемодан; портфель; дипломат, кейс'], sounds: ['/sounds/c/case.ogg'] },
-        { foreign: ['shuffle'], native: ['смешивать, перемешивать (в беспорядке), тасовать (карты)', ' хитрить, обманывать; вилять, изворачиваться', 'трюк, увёртка, уловка; отговорка', 'ёрзанье'], sounds: ['/sounds/s/shuffle.ogg'] },
+        { foreign: ['ink'], native: ['чернила'], sounds: ['/sounds/i/ink.ogg'] },
+        { foreign: ['beef'], native: ['говядина, мясо', 'разг. туша ( о человеке )', 'разг. (мускульная) сила'], sounds: ['/sounds/b/beef.ogg'] },
+        { foreign: ['plenty'], native: ['изобилие; достаток'], sounds: ['/sounds/p/plenty.ogg'] },
+        { foreign: ['wreck'], native: ['крушение, авария, катастрофа; гибель ( судна, самолёта и т. п.)', ' гибель, крушение ( надежд и т. п. ); крах ( моральный, финансовый и т. п. )'], sounds: ['/sounds/w/wreck.ogg'] },
+        { foreign: ['wedge'], native: ['клин', 'закреплять клином, заклинивать, расклинивать'], sounds: ['/sounds/w/wedge.ogg'] },
+        { foreign: ['somewhat'], native: ['немного, до некоторой степени, несколько; отчасти, слегка', 'кое-что, что-то'], sounds: ['/sounds/s/somewhat.ogg'] },
+
+        { foreign: ['canvas'], native: ['холст; парусина', 'закрыть, накрыть или подбить парусиной, холстом, брезентом'], sounds: ['/sounds/c/canvas.ogg'] },
+        { foreign: ['personality'], native: ['личность, индивидуальность, черты характера'], sounds: ['/sounds/p/personality.ogg'] },
+        { foreign: ['chaos'], native: ['хаос; полный беспорядок'], sounds: ['/sounds/c/chaos.ogg'] },
+        { foreign: ['lack'], native: ['недостаток, нехватка (lack of money)'], sounds: ['/sounds/l/lack.ogg'] },
+        { foreign: ['laboratory'], native: ['лаборатория'], sounds: ['/sounds/l/laboratory.ogg'] },
+        { foreign: ['scene'], native: [' место действия ( в пьесе, романе и т. п. )'], sounds: ['/sounds/s/scene.ogg'] }
+
 
     ],
-    title: 'Lesson 7. ...'
+    title: 'Lesson 7. Picture'
 };
