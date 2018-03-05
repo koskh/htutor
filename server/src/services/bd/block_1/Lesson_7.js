@@ -39,8 +39,6 @@ module.exports = {
         { foreign: ['lack'], native: ['недостаток, нехватка (lack of money)'], sounds: ['/sounds/l/lack.ogg'] },
         { foreign: ['laboratory'], native: ['лаборатория'], sounds: ['/sounds/l/laboratory.ogg'] },
         { foreign: ['scene'], native: [' место действия ( в пьесе, романе и т. п. )'], sounds: ['/sounds/s/scene.ogg'] }
-
-
     ],
     title: 'Lesson 7. Picture'
 };
