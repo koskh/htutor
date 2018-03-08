@@ -1,4 +1,5 @@
 // @flow
+require("source-map-support").install();
 
 const express = require('express');
 const path = require('path');
@@ -29,6 +30,8 @@ const publicPath = path.resolve(__dirname, './static');
 
 
 app.use('/api', api);
+
+throw new Error('test');
 
 app.use(express.static(publicPath));
 

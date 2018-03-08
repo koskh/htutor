@@ -42,7 +42,12 @@ module.exports = [
         externals: nodeExternals(),
         plugins: [
             // new FlowWebpackPlugin(),
+            // new webpack.BannerPlugin({
+            //     banner: require("source-map-support").install(),
+            //     raw: true, entryOnly: false })
+            // new webpack.BannerPlugin({ banner: 'require("source-map-support").install();', raw: true, entryOnly: false }),
         ],
+        devtool: 'sourcemap',
         module: {
             loaders: [
                 {
