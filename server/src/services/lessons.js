@@ -38,6 +38,7 @@ function getShuffledForeignsWords(lessons: Array<Lesson>, shuffledQnt: number): 
 function getLessons(blockId: number): ?Array<Lesson> {
     const lessonBlock = _.find(LessonBlocks, { id: blockId });
     const lessons = lessonBlock && lessonBlock.lessons;
+
     return lessons || [];
 }
 
