@@ -4,7 +4,10 @@ import _ from 'lodash';
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILURE, FETCH_CANCEL } from '../constants';
 import { createAction } from '../../../../store/utilities/index';
 
-import { bd, common } from '../../../../services/api/index';
+// import { bd, common } from '../../../../services/api/index';
+
+import { randomLesson, lessonTest } from '../../../../services/local_requests';
+
 
 export const request: ThunkAction = createAction(FETCH_REQUEST);
 export const success: ThunkAction = createAction(FETCH_SUCCESS);
@@ -20,20 +23,26 @@ export function makeFetch(blockId: number, lessonId: number): Function {
 
         try {
             if (!lessonId) {
-                const randomLesson = bd.randomLesson({blockId});
-                Requests.push(randomLesson);
-                const responseRandomLesson = await randomLesson.promise;
+                // const randomLesson = bd.randomLesson({blockId});
+                // Requests.push(randomLesson);
+                // const responseRandomLesson = await randomLesson.promise;
+                // // eslint-disable-next-line
+                // lessonId = responseRandomLesson.data.data.lessonId;
+
                 // eslint-disable-next-line
-                lessonId = responseRandomLesson.data.data.lessonId;
+                lessonId =  randomLesson(blockId);
             }
 
-            const request1 = bd.lessonTest({ blockId, lessonId });
-            Requests.push(request1);
-            const response = await request1.promise;
+            // const request1 = bd.lessonTest({ blockId, lessonId });
+            // Requests.push(request1);
+            // const response = await request1.promise;
+            //response.data.data.words = _.shuffle(response.data.data.words);
 
-            response.data.data.words = _.shuffle(response.data.data.words);
+            let localResponse =  lessonTest(blockId, lessonId);
 
-            dispatch(success({ data: response.data.data }));
+            localResponse.words = _.shuffle(localResponse.words);
+
+            dispatch(success({ data: localResponse }));
         } catch (error) {
             dispatch(failure({ error }));
         }

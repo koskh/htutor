@@ -1,5 +1,5 @@
 import {getBlocks, getBlock, getRandomBlockId} from '../../../../server/src/services/blocks';
-import {getLesson, getRandomLessonId} from '../../../../server/src/services/lessons';
+import {getLesson, getRandomLessonId, getTestLesson} from '../../../../server/src/services/lessons';
 
 export function blocks(blockId) {
     const localBlockId = Number.parseInt(blockId, 10);
@@ -16,4 +16,12 @@ export function lesson(blockId, lessonId) {
     const localLessonId = Number.parseInt(lessonId, 10);
 
     return getLesson(localBlockId, localLessonId)
+}
+
+
+export function lessonTest( blockId, lessonId) {
+    const localBlockId = Number.parseInt(blockId, 10);
+    const localLessonId = Number.parseInt(lessonId, 10);
+
+    return getTestLesson(localBlockId, localLessonId);
 }
