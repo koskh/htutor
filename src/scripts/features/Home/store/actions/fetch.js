@@ -4,7 +4,9 @@ import _ from 'lodash';
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILURE, FETCH_CANCEL } from '../constants';
 import { createAction } from '../../../../store/utilities/index';
 
-import { bd, common } from '../../../../services/api/index';
+// import { bd, common } from '../../../../services/api/index';
+
+import { blocks} from '../../../../services/local_requests';
 
 export const request: ThunkAction = createAction(FETCH_REQUEST);
 export const success: ThunkAction = createAction(FETCH_SUCCESS);
@@ -19,15 +21,17 @@ export function makeFetch(blockId: number): Function {
         dispatch(request({ error: null }));
 
         try {
-            // const request0 = bd.blocks({ blockId });
+            // // const request0 = bd.blocks({ blockId });
+            //
+            // const request1 = bd.block({ blockId });
+            // Requests.push(request1);
+            // const response = await request1.promise;
+            //
+            // // response.data.words = _.shuffle(response.data.words);
 
-            const request1 = bd.block({ blockId });
-            Requests.push(request1);
-            const response = await request1.promise;
+            const request_local = blocks(blockId);
 
-            // response.data.words = _.shuffle(response.data.words);
-
-            dispatch(success({ data: response.data.data }));
+            dispatch(success({ data:  request_local}));
         } catch (error) {
             dispatch(failure({ error }));
         }

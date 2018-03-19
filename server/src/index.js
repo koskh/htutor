@@ -31,8 +31,6 @@ const publicPath = path.resolve(__dirname, './static');
 
 app.use('/api', api);
 
-throw new Error('test');
-
 app.use(express.static(publicPath));
 
 app.get('*', (request: express$Request, response: express$Response) => {
