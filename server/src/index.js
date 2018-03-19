@@ -29,7 +29,7 @@ const publicPath = path.resolve(__dirname, './static');
 // app.use(require("webpack-hot-middleware")(compiler));
 
 
-app.use('/api', api);
+// app.use('/api', api);
 
 app.use(express.static(publicPath));
 
